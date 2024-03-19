@@ -1,6 +1,9 @@
 <?php
     include_once 'headeradmin.php';
     include_once 'boxdanhmuc.php';
+    include_once '../models/pdo.php';
+    include_once '../models/danhMuc.php';
+    
     if(isset($_GET["act"])){
         $act = $_GET["act"];
         switch ($act){
