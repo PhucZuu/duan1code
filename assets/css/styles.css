@@ -388,7 +388,7 @@ table {
   display: inline-block;
   background-color: var(--first-color);
   border: 2px solid var(--first-color);
-  color: var(--body-color);
+  color: white;
   padding-inline: 1rem;
   height: 35px;
   line-height: 35px;
