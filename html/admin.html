@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <title>Evara Website</title>
+</head>
+
+<body>
+
+  <main class="main">
+    <section class="accounts">
+      <div class="accounts__container_2 container_2 grid">
+        <div class="account__tabs">
+          <p class="account__tab admlist active-tab">
+            <i class="fa-solid fa-sliders"></i><a href="#">Bảng điều khiển</a> 
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-layer-group"></i><a href="../html/adminDanhMuc.html">Danh mục</a>
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-boxes-stacked"></i><a href="">Sản phẩm</a>
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-clipboard"></i><a href="#">Đơn hàng</a>
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-comment"></i><a href="../html/adminBinhLuan.html">Bình luận</a>
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-user"></i><a href="#">Người dùng</a>
+          </p>
+
+          <p class="account__tab admlist">
+            <i class="fa-solid fa-right-from-bracket"></i><a href="#">Logout</a>
+          </p>
+        </div>
+
+        <div class="tabs__content">
+          <div class="tab__content active-tab">
+            <h3 class="tab__header">Bảng điều khiển</h3>
+
+            <div class="tab__body">
+              <p class="tab__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur itaque possimus magnam veritatis
+                perspiciatis consectetur vitae quos sunt nostrum velit.
+              </p>
+            </div>
+          </div>
+
+
+          <div class="tab__content">
+            <h3 class="tab__header">Your Order</h3>
+
+            <div class="tab__body">
+              <table class="placed__order-table">
+                <tr>
+                  <th>Orders</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                  <th>Actions</th>
+                </tr>
+
+                <tr>
+                  <td>#1357</td>
+                  <td>03 - 09 - 2023</td>
+                  <td>Processing</td>
+                  <td>$125.00</td>
+                  <td><a href="#" class="view__order">View</a></td>
+                </tr>
+
+                <tr>
+                  <td>#1890</td>
+                  <td>10 - 05 - 2023</td>
+                  <td>Completed</td>
+                  <td>$1305.00</td>
+                  <td><a href="#" class="view__order">View</a></td>
+                </tr>
+
+                <tr>
+                  <td>#2366</td>
+                  <td>20 - 11 - 2023</td>
+                  <td>Processing</td>
+                  <td>$280.00</td>
+                  <td><a href="#" class="view__order">View</a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab__content">
+            <h3 class="tab__header">Update Profile</h3>
+
+            <div class="tab__body">
+              <form action="" class="form grid">
+                <input type="text" placeholder="Username" class="form__input">
+
+                <div class="form__btn">
+                  <button class="btn btn--md">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="tab__content">
+            <h3 class="tab__header">Shipping Address</h3>
+
+            <div class="tab__body">
+              <address class="address">
+                3522 Intersate <br> 75 Business Spur, <br> Sault Ste. <br>
+                Marie, MI 49783 New York
+              </address>
+              <p class="city">New York</p>
+              <a href="" class="edit">Edit</a>
+            </div>
+          </div>
+
+
+          <div class="tab__content">
+            <h3 class="tab__header">Change Password</h3>
+
+            <div class="tab__body">
+              <form action="" class="form grid">
+                <input type="password" placeholder="Current Password" class="form__input">
+
+                <input type="password" placeholder="New Password" class="form__input">
+
+                <input type="password" placeholder="Confirm Password" class="form__input">
+
+                <div class="form__btn">
+                  <button class="btn btn--md">Save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

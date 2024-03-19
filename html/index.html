@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+
+  <link rel="shortcut icon" href="../assets/img/logo.svg" type="image/x-icon">
+
+  <title>Evara Website</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__top">
+      <div class="header__container container">
+        <div class="header__contact">
+          <span>+84 683 313 294</span>
+          <span>Our location</span>
+        </div>
+        <p class="header__alert-news">
+        </p>
+        <a href="login-register.html" class="header__top-action">
+          Đăng nhập / Đăng ký
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <img src="../assets/img/logo.svg" alt="" class="nav__logo-img">
+      </a>
+
+      <div class="nav__menu" id="nav-menu">
+        <div class="nav__menu-top">
+          <!-- LOGO -->
+          <a href="index.html" class="nav__menu-logo">
+            <img src="../assets/img/logo.svg" alt="">
+          </a>
+
+          <div class="nav__close" id="nav-close">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
+        </div>
+
+        <!-- DANH MỤC -->
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="index.html" class="nav__link active-link">Trang chủ</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="shop.html" class="nav__link">Shop</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="accounts.html" class="nav__link">Tài khoản</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="login-register.html" class="nav__link">Đăng nhập</a>
+          </li>
+        </ul>
+        
+        <!-- THANH TÌM KIẾM -->
+        <div class="header__search">
+          <input type="text" class="form__input" placeholder="Tìm kiếm sản phẩm...">
+
+          <button class="search__btn">
+            <img src="../assets/img/search.png" alt="">
+          </button>
+        </div>
+      </div>
+
+      <div class="header__user--actions">
+        <a href="cart.html" class="header__action-btn">
+          <img src="../assets/img/icon-cart.svg" alt="">
+          <span class="count">3</span>
+        </a>
+
+        <div class="header__action-btn nav__toggle" id="nav-toggle">
+          <img src="../assets/img/menu-burger.svg" alt="">
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- END HEADER -->
+
+
+  <main class="main">
+
+    <!-- BANNER -->
+    <section class="home section--lg">
+      <div class="home__container container grid">
+        <div class="home__content">
+          <span class="home__subtitle">Khuyến mãi hấp dẫn</span>
+          <h1 class="home__title">Xu hướng thời trang
+            <span>Bộ sưu tập đặc biệt</span>
+          </h1>
+          <p class="home__description">Tiết kiệm nhiều hơn với phiếu giảm giá và giảm giá tới 20%</p>
+          <a href="shop.html" class="btn">Shop Now</a>
+        </div>
+
+        <img src="../assets/img/home-img.png" alt="" class="home__img">
+      </div>
+    </section>
+
+    <!-- FILTER -->
+    <section class="products section container">
+      <div class="tab__btns">
+        <span class="tab__btn active-tab">Featured</span>
+        <span class="tab__btn">Popular</span>
+        <span class="tab__btn">New added</span>
+      </div>
+      
+      <!-- DANH SÁCH SẢN PHẨM -->
+      <div class=" tab__items">
+          <div class="tab__item active-tab">
+            <div class="products__container grid">
+              <!-- SẢN PHẨM -->
+              <div class="product__item">
+                <div class="product__banner">
+                  <a href="details.html" class="product__imgaes">
+                    <!-- ẢNH CHÍNH -->
+                    <img src="../assets/img/product-1-1.jpg" alt="" class="product__img defaule">
+                  </a>
+
+                  <!-- ICON HOVER -->
+                  <!-- <div class="producut__actions">
+                    <a href="#" class="action__btn" aria-lable="Quick View">
+                      <i class="fa-regular fa-eye"></i>
+                    </a>
+
+                    <a href="#" class="action__btn" aria-lable="Add to Wishlist">
+                      <i class="fa-solid fa-heart"></i>
+                    </a>
+
+                    <a href="#" class="action__btn" aria-lable="Compare">
+                      <i class="fa-solid fa-shuffle"></i>
+                    </a>
+                  </div> -->
+
+                  <!-- SALE/HOT -->
+                  <div class="product__badge light-pink">Hot</div>
+                </div>
+
+                <div class="product_content">
+                  <span class="product__category">Clothing</span>
+                  <a href="details.html">
+                    <h3 class="product__title">Colorful Pattern Shirts</h3>
+                  </a>
+                  
+                  <div class="product__price flex">
+                    <span class="new__price">$238.85</span>
+                    <span class="old__price">$240.8</span>
+                  </div>
+
+                  <!-- THÊM VÀO GIỎ -->
+                  <a href="#" class="action__btn cart__btn" aria-lable="Add To Cart">
+                    <i class="fa-solid fa-shop"></i>
+                  </a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter section home__newsletter">
+      <div class="newsletter__container container grid">
+        <h3 class="newsletter__title flex">
+          <img src="../assets/img/icon-email.svg" alt="" class="newsletter__icon">
+          Sign up to Newsletter
+        </h3>
+
+        <p class="newsletter__description">
+          ..and receive $25 coupon for first shopping
+        </p>
+
+        <form action="" class="newsletter__form">
+          <input type="text" class="newsletter__input" placeholder="Enter your email">
+          <button type="submit" class="newletter__btn">Subscribe</button>
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer container">
+    <div class="footer__container grid">
+      <div class="footer__content">
+        <a href="index.html" class="footer__logo">
+          <img src="../assets/img/logo.svg" alt="" class="footer__logo-img">
+        </a>
+        <h4 class="footer__subtitle">Liên hệ</h4>
+
+        <p class="footer__description">
+          <span> Địa chỉ:</span>
+          Hai Ba Trung, Ha Noi
+        </p>
+
+        <p class="footer__description">
+          <span> Điện thoại:</span>
+          +84 000 000 000
+        </p>
+
+        <p class="footer__description">
+          <span>Thời gian:</span>
+          10:00 - 18:00, T2 - T7
+        </p>
+
+        <div class="footer__social">
+          <h4 class="footer__subtitle">Theo dõi chúng tôi</h4>
+
+          <div class="footer__social-links flex">
+            <a href="">
+              <img src="../assets/img/icon-facebook.svg" alt="" class="footer__social-icon">
+            </a>
+
+            <a href="">
+              <img src="../assets/img/icon-twitter.svg" alt="" class="footer__social-icon">
+            </a>
+
+            <a href="">
+              <img src="../assets/img/icon-instagram.svg" alt="" class="footer__social-icon">
+            </a>
+
+            <a href="">
+              <img src="../assets/img/icon-pinterest.svg" alt="" class="footer__social-icon">
+            </a>
+
+            <a href="">
+              <img src="../assets/img/icon-youtube.svg" alt="" class="footer__social-icon">
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__content">
+        <h3 class="footer__title">Thông tin thêm</h3>
+
+        <ul class="footer__links">
+          <li><a href="" class="footer__link">Về chúng tôi</a></li>
+          <li><a href="" class="footer__link">Thông tin giao hàng</a></li>
+          <li><a href="" class="footer__link">Chính sách bảo mật</a></li>
+          <li><a href="" class="footer__link">Điều khoản và điều kiện</a></li>
+          <li><a href="" class="footer__link">Liên hệ với chúng tôi</a></li>
+          <li><a href="" class="footer__link">Trung tâm hỗ trợ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__content">
+        <h3 class="footer__title">Tài khoản</h3>
+
+        <ul class="footer__links">
+          <li><a href="" class="footer__link">Đăng nhập</a></li>
+          <li><a href="" class="footer__link">Xem giỏ hàng</a></li>
+          <li><a href="" class="footer__link">Theo dõi đơn hàng</a></li>
+          <li><a href="" class="footer__link">Hỗ trợ</a></li>
+          <li><a href="" class="footer__link">Đặt hàng</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__content">
+        <h3 class="footer__title">Cổng thanh toán an toàn</h3>
+        <img src="../assets/img/payment-method.png" alt="" class="payment__img">
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="copyright">&copy; 2024 Group 6. All right reserved</p>
+      <span class="designer">Designer by Group 6</span>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
