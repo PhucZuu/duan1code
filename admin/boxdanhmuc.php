@@ -9,7 +9,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-boxes-stacked"></i><a href="">Sản phẩm</a>
+            <i class="fa-solid fa-boxes-stacked"></i><a href="index.php?act=listsp">Sản phẩm</a>
           </p>
 
           <p class="account__tab admlist">

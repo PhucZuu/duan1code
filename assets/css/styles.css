@@ -764,7 +764,9 @@ table {
   display: flex;
   column-gap: 1.5rem;
 }
-
+#mota {
+  border: 1px solid rgb(164, 164, 164);
+}
 .countdown__amount {
   position: relative;
 }
