@@ -29,6 +29,18 @@
         return $list;
     }
 
+    function load_ten_dm($iddm){
+        if($iddm>0){
+            //lấy dữ liệu của bản ghi về
+            $sql = "select * from danhmuc where id_danh_muc=".$iddm;
+            $dm = pdo_query_one($sql);
+            extract($dm);
+            return $ten_danh_muc;
+        }else{
+            return "";
+        }
+    }
+
     function loadAllProducts(){
         $sql="SELECT DISTINCT id_sanpham,ten_san_pham,gia,hinh_anh,giam_gia,ten_danh_muc FROM bienthe JOIN sanpham ON sanpham.id_san_pham=bienthe.id_sanpham 
         JOIN danhmuc ON danhmuc.id_danh_muc=sanpham.id_danhmuc WHERE sanpham.kich_hoat=1";

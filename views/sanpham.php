@@ -1,6 +1,6 @@
 <main class="main">
     <section class="breadcrumb">
-        <h2>SẢN PHẨM</h2>
+        <h2>SẢN PHẨM <strong style="text-transform: uppercase"><?= $tendm; ?></strong></h2>
     </section>
     <div class=" tab__items">
         <div class="tab__item active-tab">
