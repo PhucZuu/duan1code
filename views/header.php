@@ -70,11 +70,14 @@
         
         <!-- THANH TÌM KIẾM -->
         <div class="header__search">
-          <input type="text" class="form__input" placeholder="Tìm kiếm sản phẩm...">
+        <form action="index.php?act=shop" method="post">
+            <input type="text" class="form__input" placeholder="Tìm kiếm sản phẩm..." name="keyword">
 
-          <button class="search__btn">
-            <img src="./assets/img/search.png" alt="">
-          </button>
+            <button class="search__btn">
+              <img src="./assets/img/search.png" alt="">
+            </button>
+            <!-- <input type="submit" name="timkiem" value="tìm kiếm"> -->
+          </form>
         </div>
       </div>
 

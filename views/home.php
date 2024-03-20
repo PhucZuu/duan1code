@@ -4,7 +4,7 @@
       <div class="home__container container grid">
         <div class="home__content">
           <span class="home__subtitle">Khuyến mãi hấp dẫn</span>
-          <h1 class="home__title">Xu hướng thời trang
+          <h1 class="home__title">Xu hướng thời trang <br>
             <span>Bộ sưu tập đặc biệt</span>
           </h1>
           <p class="home__description">Tiết kiệm nhiều hơn với phiếu giảm giá và giảm giá tới 20%</p>

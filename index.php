@@ -21,6 +21,23 @@
             $products=loadAllProducts();
             include_once './views/home.php';
             break;
+        case 'shop':
+            if (isset($_POST['keyword']) && ($_POST['keyword'] != 0)){
+                $keyword = $_POST['keyword'];
+            } else {
+                $keyword = "";
+            }
+            if (isset($_GET['iddm']) && ($_GET['iddm'] > 0)) {
+                $iddm = $_GET['iddm'];
+                // echo $iddm;
+                // die();
+            }else{
+                $iddm = 0;
+            }
+            $dssp = loadAllPro3($keyword,$iddm);
+            include "views/sanpham.php";
+            break;
+            
         case 'details':
             if(isset($_GET['idpro']) && $_GET['idpro']>0){
                 $id_san_pham = $_GET['idpro'];
@@ -32,10 +49,10 @@
                 include_once './views/home.php';
             }
             break;
-        case 'shop':
-                $products=loadAllProducts();
-                include_once './views/shop.php';
-            break;
+        // case 'shop':
+        //         $products=loadAllProducts();
+        //         include_once './views/shop.php';
+        //     break;
         default:
             # code...
             break;

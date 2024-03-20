@@ -14,6 +14,21 @@
         $list = pdo_query($sql);
         return $list;
     }
+    function loadAllPro3($keyword="",$iddm=0){
+        $sql = "SELECT * FROM sanpham JOIN bienthe ON sanpham.id_san_pham = bienthe.id_sanpham WHERE sanpham.kich_hoat=1";
+        if($keyword != ""){
+            $sql .= " and ten_san_pham like '%".$keyword."%'";
+        }
+        if($iddm > 0){
+            $sql .= " AND id_danhmuc = '".$iddm."' ";
+        }
+        $sql .= " ORDER BY id_danhmuc desc";
+        // echo $sql;
+        // die();
+        $list = pdo_query($sql);
+        return $list;
+    }
+
     function loadAllProducts(){
         $sql="SELECT DISTINCT id_sanpham,ten_san_pham,gia,hinh_anh,giam_gia FROM bienthe JOIN sanpham ON sanpham.id_san_pham=bienthe.id_sanpham WHERE sanpham.kich_hoat=1";
         $list = pdo_query($sql);
