@@ -40,10 +40,11 @@
             
         case 'details':
             if(isset($_GET['idpro']) && $_GET['idpro']>0){
-                $id_san_pham = $_GET['idpro'];
-                $onePro = loadOne_pro($id_san_pham);
-                extract($onePro);
-                $othersPro = loadOthers_pro($id_san_pham,$id_danhmuc);
+                $id_sanpham = $_GET['idpro'];
+                $colors=getAllColorsById($id_sanpham);
+                $sizes=getAllSizesById($id_sanpham);
+                $onePro = loadOne_pro($id_sanpham);
+                
                 include_once './views/details.php';
             }else{
                 include_once './views/home.php';
