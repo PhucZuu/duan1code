@@ -1,7 +1,8 @@
+<section class="products section container">
 <main class="main">
     <section class="breadcrumb">
-        <h2>SẢN PHẨM <strong style="text-transform: uppercase"><?= $tendm; ?></strong></h2>
-    </section>
+        <h3 style="padding-left:10px">SẢN PHẨM <strong style="text-transform: uppercase"><?= $tendm; ?></strong></h3>
+    </section><br>
     <div class=" tab__items">
         <div class="tab__item active-tab">
             <div class="products__container grid">
@@ -49,6 +50,5 @@
         </div>
     </div>
 
-
-
 </main>
+</section>

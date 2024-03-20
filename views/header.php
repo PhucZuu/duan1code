@@ -60,11 +60,11 @@
           </li>
 
           <li class="nav__item">
-            <a href="accounts.html" class="nav__link">Tài khoản</a>
+            <a href="" class="nav__link">Tài khoản</a>
           </li>
 
           <li class="nav__item">
-            <a href="login-register.html" class="nav__link">Đăng nhập</a>
+            <a href="index.php?act=dangky" class="nav__link">Đăng nhập</a>
           </li>
         </ul>
         

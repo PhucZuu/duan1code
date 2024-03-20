@@ -993,6 +993,7 @@ table {
 .breadcrumb {
   background-color: rgb(223, 222, 222);
   padding-block: 1.5rem;
+  
 }
 
 .breadcrumb__list {
@@ -1018,6 +1019,7 @@ table {
   column-gap: 0.625rem;
   margin-top: 2.75rem;
 }
+
 
 .pagination__link {
   display: inline-block;
@@ -2021,3 +2023,4 @@ table {
     display: block;
   }
 }
+
