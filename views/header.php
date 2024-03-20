@@ -33,14 +33,14 @@
     </div>
 
     <nav class="nav container">
-      <a href="index.html" class="nav__logo">
+      <a href="index.php" class="nav__logo">
         <img src="./assets/img/logo.svg" alt="" class="nav__logo-img">
       </a>
 
       <div class="nav__menu" id="nav-menu">
         <div class="nav__menu-top">
           <!-- LOGO -->
-          <a href="index.html" class="nav__menu-logo">
+          <a href="index.php" class="nav__menu-logo">
             <img src="./assets/img/logo.svg" alt="">
           </a>
 
@@ -52,11 +52,11 @@
         <!-- DANH MỤC -->
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="index.html" class="nav__link active-link">Trang chủ</a>
+            <a href="index.php" class="nav__link active-link">Trang chủ</a>
           </li>
 
           <li class="nav__item">
-            <a href="shop.html" class="nav__link">Shop</a>
+            <a href="index.php?act=shop" class="nav__link">Shop</a>
           </li>
 
           <li class="nav__item">
@@ -93,19 +93,4 @@
   <!-- END HEADER -->
 
 
-  <main class="main">
-        <!-- BANNER -->
-        <section class="home section--lg">
-      <div class="home__container container grid">
-        <div class="home__content">
-          <span class="home__subtitle">Khuyến mãi hấp dẫn</span>
-          <h1 class="home__title">Xu hướng thời trang
-            <span>Bộ sưu tập đặc biệt</span>
-          </h1>
-          <p class="home__description">Tiết kiệm nhiều hơn với phiếu giảm giá và giảm giá tới 20%</p>
-          <a href="shop.html" class="btn">Shop Now</a>
-        </div>
-
-        <img src="./assets/img/home-img.png" alt="" class="home__img">
-      </div>
-    </section>
+ 

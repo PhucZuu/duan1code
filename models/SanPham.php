@@ -5,6 +5,20 @@
         $list=pdo_query($sql);
         return $list;
     }
+    function loadAllPro2($keyword,$iddm=0){
+        $sql = "SELECT * FROM sanpham WHERE 1";
+        if($iddm > 0){
+            $sql .= " AND id_danhmuc = '".$iddm."' ";
+        }
+        $sql .= " ORDER BY id_danhmuc desc";
+        $list = pdo_query($sql);
+        return $list;
+    }
+    function loadAllProducts(){
+        $sql="SELECT DISTINCT id_sanpham,ten_san_pham,gia,hinh_anh,giam_gia FROM bienthe JOIN sanpham ON sanpham.id_san_pham=bienthe.id_sanpham WHERE sanpham.kich_hoat=1";
+        $list = pdo_query($sql);
+        return $list;
+    }
     function insert_product($id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta){
         $sql="INSERT INTO sanpham(id_danhmuc,ten_san_pham,hinh_anh,mo_ta) VALUES ('$id_danhmuc','$ten_san_pham','$hinh_anh','$mo_ta')";
         pdo_execute($sql);
@@ -13,6 +27,11 @@
         $sql="SELECT * FROM sanpham WHERE id_san_pham=$id_san_pham";
         $sanpham=pdo_query_one($sql);
         return $sanpham;
+    }
+    function loadOthers_pro($id_san_pham,$id_danhmuc){
+        $sql="SELECT * FROM sanpham WHERE id_danhmuc = '.$id_danhmuc.' AND id_san_pham<>$id_san_pham";
+        $list=pdo_query($sql);
+        return $list;
     }
     function update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta){
         if($hinh_anh){
@@ -70,5 +89,14 @@
     function delete_variant($id_bien_the){
         $sql="DELETE FROM bienthe WHERE id_bien_the=$id_bien_the";
         pdo_execute($sql);
+    }
+
+    function load_ten_danhmuc($iddm){
+        $sql = "select * from danhmuc where id_danh_muc=".$iddm;
+        $dm = pdo_query_one($sql);
+        extract($dm);
+        // print_r($dm);
+        // die();
+        return $ten_danh_muc;
     }
 ?>

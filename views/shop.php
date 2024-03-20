@@ -1,37 +1,7 @@
-<main class="main">
-        <!-- BANNER -->
-        <section class="home section--lg">
-      <div class="home__container container grid">
-        <div class="home__content">
-          <span class="home__subtitle">Khuyến mãi hấp dẫn</span>
-          <h1 class="home__title">Xu hướng thời trang
-            <span>Bộ sưu tập đặc biệt</span>
-          </h1>
-          <p class="home__description">Tiết kiệm nhiều hơn với phiếu giảm giá và giảm giá tới 20%</p>
-          <a href="shop.html" class="btn">Shop Now</a>
-        </div>
-
-        <img src="./assets/img/home-img.png" alt="" class="home__img">
-      </div>
-    </section>
-    <!-- FILTER -->
-    <section class="products section container">
-      <div class="tab__btns">
-        <?php
-        foreach ($danhMuc as $dm){
-          extract($dm);
-          // print_r($dm);
-          // die();
-          $linkdm = 'index.php?act=shop&iddm='.$id_danh_muc;
-          echo '
-          <a href="'.$linkdm.'"><span class="tab__btn active-tab">'.$ten_danh_muc.'</span></a>
-          ';
-        }
-        ?>
-      </div>
+<section class="products section container">
       
-      <!-- DANH SÁCH SẢN PHẨM -->
-      <div class=" tab__items">
+<!-- DANH SÁCH SẢN PHẨM -->
+<div class=" tab__items">
           <div class="tab__item active-tab">
             <div class="products__container grid">
               <!-- SẢN PHẨM -->
