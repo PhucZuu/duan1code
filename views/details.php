@@ -3,6 +3,8 @@
       <ul class="breadcrumb__list flex container">
         <?php 
         extract($onePro); 
+        $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
+        
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
         <li><span class="breadcrumb__link">></span></li>
@@ -22,9 +24,9 @@
       <h3 class="details__title">'.$ten_san_pham.'</h3>
 
       <div class="details__price flex">
-        <span class="new__price">$116</span>
-        <span class="old__price">$190</span>
-        <span class="save__price">25% Off</span>
+        <span class="new__price">$'.($giam_gia==0?$gia:($gia * ((100 - $giam_gia) / 100))).'</span>
+        <span class="old__price">'.($giam_gia==0?"":"$".$gia).'</span>
+        <span class="save__price">'.($giam_gia!=0?$giam_gia."% Off":"").'</span>
       </div>
 
       <p class="short__description">
@@ -33,68 +35,53 @@
 
       <ul class="product__list">
         <li class="list__item flex">
-          <i class="fa-solid fa-crown"></i>1 Year AL Jazeera Brand Warranty
+          <i class="fa-solid fa-crown"></i>Thời trang độc quyền tại shop
         </li>
 
         <li class="list__item flex">
-          <i class="fa-solid fa-arrows-rotate"></i>30 Day Return Policy
+          <i class="fa-solid fa-arrows-rotate"></i>Chính sách đổi trả trong 30 ngày
         </li>
 
         <li class="list__item flex">
-          <i class="fa-regular fa-credit-card"></i>Card on Delivery available
+          <i class="fa-regular fa-credit-card"></i>Thanh toán trực tuyến
         </li>
       </ul>
-
+      
       <div class="details__color flex">
-        <span class="details__color-title">Color</span>
+        <span class="details__color-title">Màu sắc</span>
 
-        <ul class="color__list">
-          <li>
-            <a href="#" class="color__link" style="background-color: hsl(37, 100%, 65%);"></a>
-          </li>
+        <ul class="color__list">';
+          foreach($colors as $color){
+            extract($color); 
+            echo '
+              <li>
+                <a href="#" class="color__link" style="background-color: '.$ma_mau.';"></a>
+              </li>
+            ';
+          }
+        echo '</ul>
+      </div>';
 
-          <li>
-            <a href="#" class="color__link" style="background-color: hsl(353, 100%, 67%);"></a>
-          </li>
-
-          <li>
-            <a href="#" class="color__link" style="background-color: hsl(49, 100%, 60%);"></a>
-          </li>
-
-          <li>
-            <a href="#" class="color__link" style="background-color: hsl(304, 100%, 78%);"></a>
-          </li>
-
-          <li>
-            <a href="#" class="color__link" style="background-color: hsl(126,61%, 52%);"></a>
-          </li>
-        </ul>
-      </div>
-
+      echo '
       <div class="details__size flex">
-        <span class="details__size-title">Size</span>
+        <span class="details__size-title">Kích cỡ</span>
+        
+        <ul class="size__list">';
+          foreach($sizes as $size){
+            extract($size); 
+            echo '
+            <li>
+              <a href="#" class="size__link">'.$ten_kich_co.'</a>
+            </li>
+            ';
+          }
+          
 
-        <ul class="size__list">
-          <li>
-            <a href="#" class="size__link size-active">M</a>
-          </li>
-
-          <li>
-            <a href="#" class="size__link">L</a>
-          </li>
-
-          <li>
-            <a href="#" class="size__link">XL</a>
-          </li>
-
-          <li>
-            <a href="#" class="size__link">XXL</a>
-          </li>
-        </ul>
+        echo '
       </div>
 
       <div class="details__action">
-        <input type="number" name="" id="" class="quantity" value="3">
+        <input type="number" name="" id="" class="quantity" min="1" step="1" value="1">
 
         <a href="#" class="btn btn-sm">Add to Cart</a>
 
@@ -187,38 +174,22 @@
         <a href="'.$linkPro.'" class="product__imgaes">
           <!-- ẢNH CHÍNH -->
           <img src="./uploads/'.$hinh_anh.'" alt="" class="product__img defaule">
-          <!-- ẢNH HOVER -->
-          <img src="./uploads/'.$hinh_anh.'" alt="" class="product__img hover">
+          
         </a>
 
-        <!-- ICON HOVER -->
-        <!-- <div class="producut__actions">
-          <a href="#" class="action__btn" aria-lable="Quick View">
-            <i class="fa-regular fa-eye"></i>
-          </a>
-
-          <a href="#" class="action__btn" aria-lable="Add to Wishlist">
-            <i class="fa-solid fa-heart"></i>
-          </a>
-
-          <a href="#" class="action__btn" aria-lable="Compare">
-            <i class="fa-solid fa-shuffle"></i>
-          </a>
-        </div> -->
-
         <!-- SALE/HOT -->
-        <div class="product__badge light-pink">Hot</div>
+        <div class="product__badge light-pink">'.(empty($giam_gia) ? "Hot" : "-".$giam_gia."%").'</div>
       </div>
 
       <div class="product_content">
-        <span class="product__category">Clothing</span>
+        <span class="product__category">'.$ten_danh_muc.'</span>
         <a href="details.html">
-          <h3 class="product__title">Colorful Pattern Shirts</h3>
+          <h3 class="product__title">'.$ten_san_pham.'</h3>
         </a>
         
         <div class="product__price flex">
-          <span class="new__price">$238.85</span>
-          <span class="old__price">$240.8</span>
+          <span class="new__price">$'.($giam_gia==0?$gia:($gia * ((100 - $giam_gia) / 100))).'</span>
+          <span class="old__price">' . (empty($giam_gia) ? "" :"$". $gia) . '</span>
         </div>
 
         <!-- THÊM VÀO GIỎ -->

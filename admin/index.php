@@ -100,32 +100,34 @@
                     break;
                 case 'suasp':
                     if(isset($_GET['id_san_pham'])&&($_GET['id_san_pham']>0)){
-                        $sp=loadOne_pro($_GET['id_san_pham']);
+                        $sp=loadOneProduct($_GET['id_san_pham']);
                     }
                     $listdanhmuc=loadAll_danhmuc();
                     include ('sanpham/update.php');
                     break;
                 case 'updatesp':
-                    $id_san_pham=$_POST['id_san_pham'];
-                    $id_danhmuc=$_POST['id_danhmuc'];
-                    $ten_san_pham=$_POST['ten_san_pham'];
-                    $hinh_anh=$_FILES['hinh_anh']['name'];
-                    $mo_ta=$_POST['mo_ta'];
-                    // echo "<pre>";
-                    // print_r([$id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta]);
-                    // die;
-                    if ($hinh_anh) {
-                        $target_dir='../uploads/';
-                        $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
-                        if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                        } else {
-                            // echo "Sorry, there was an error uploading your file.";
+                    if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        $id_san_pham=$_POST['id_san_pham'];
+                        $id_danhmuc=$_POST['id_danhmuc'];
+                        $ten_san_pham=$_POST['ten_san_pham'];
+                        $hinh_anh=$_FILES['hinh_anh']['name'];
+                        $mo_ta=$_POST['mo_ta'];
+                        // echo "<pre>";
+                        // print_r([$id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta]);
+                        // die;
+                        if ($hinh_anh) {
+                            $target_dir='../uploads/';
+                            $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
+                            if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                            } else {
+                                // echo "Sorry, there was an error uploading your file.";
+                            }
+                        }else{
+                            $hinh_anh="";
                         }
-                    }else{
-                        $hinh_anh="";
+                        update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta);
+                        header('Location: index.php?act=listsp');
                     }
-                    update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta);
-                    header('Location: index.php?act=listsp');
                     break;
                 case 'xoasp':
                     //kiểm tra id có tồn tại ko để xóa
