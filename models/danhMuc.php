@@ -5,7 +5,7 @@
     }
 
     function loadAll_danhmuc(){
-        $sql = "select * from danhmuc order by id_danh_muc desc ";
+        $sql = "select * from danhmuc WHERE danhmuc.kich_hoat=1 order by id_danh_muc desc";
         $listdanhmuc = pdo_query($sql);
         return $listdanhmuc;
     }

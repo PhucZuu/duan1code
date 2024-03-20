@@ -9,15 +9,18 @@
     
     // Điều hướng
     include_once './views/header.php';
-    $act= $_GET['act'] ?? '/';
-    switch ($act) {
-        case '/':
-            homeIndex();
-            break;
-        
-        default:
-            # code...
-            break;
+    if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
+        $act = $_GET['act'];
+        switch ($act) {
+            case 'sanpham':
+                // homeIndex();
+                
+                break;
+            
+            default:
+                # code...
+                break;
+        }
     }
     include_once './views/footer.php';
 
