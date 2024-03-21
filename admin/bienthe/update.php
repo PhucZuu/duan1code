@@ -3,7 +3,7 @@
     <h3 class="tab__header">SỬA BIẾN THỂ</h3>
     <?php extract($variant);?>
     <div class="register">
-        <form action="index.php?act=updatebt" class="form grid" method="post" enctype="multipart/form-data">
+        <form action="index.php?act=updatebt&id_bien_the=<?=$id_bien_the?>" class="form grid" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_sanpham" value="<?= $id_sanpham?>">
             <input type="hidden" name="id_bien_the" value="<?= $id_bien_the?>">
             <span>Màu sắc</span>
@@ -25,9 +25,9 @@
                     ?>
             </select>
             <span>Giá</span>
-            <input type="number" placeholder="Nhập giá tiền" min="0" step="0.01" class="form__input" name="gia" value="<?= $gia?>" required>
+            <input type="number" placeholder="Nhập giá tiền" min="0" step="0.01" class="form__input" name="gia" value="<?= $gia?>"><span class="error"><?= $errPrice?></span>
             <span>Số lượng</span>
-            <input type="number" placeholder="Nhập số lượng tồn kho" min="0" step="1" class="form__input" name="so_luong" value="<?= $so_luong?>" required>
+            <input type="number" placeholder="Nhập số lượng tồn kho" min="0" step="1" class="form__input" name="so_luong" value="<?= $so_luong?>"><span class="error"><?= $errQuantity?></span>
             <span>Giảm giá</span>
             <input type="number" placeholder="Nhập vào % giảm giá (Để trống nếu không có giảm giá)" min="0" max="100" step="1" class="form__input" value="<?= $giam_gia?>" name="giam_gia">
             

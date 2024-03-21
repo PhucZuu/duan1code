@@ -405,6 +405,10 @@ table {
   font-family: var(--body-font);
 }
 
+.error{
+  color: red;
+}
+
 .btn-md {
   height: 45px;
   line-height: 42px;
