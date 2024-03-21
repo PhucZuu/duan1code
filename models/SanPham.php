@@ -42,10 +42,16 @@
     }
 
     function loadAllProducts(){
-        $sql="SELECT DISTINCT id_sanpham,ten_san_pham,gia,hinh_anh,giam_gia,ten_danh_muc FROM bienthe JOIN sanpham ON sanpham.id_san_pham=bienthe.id_sanpham 
-        JOIN danhmuc ON danhmuc.id_danh_muc=sanpham.id_danhmuc WHERE sanpham.kich_hoat=1";
+        $sql="SELECT DISTINCT id_san_pham,ten_san_pham,hinh_anh,ten_danh_muc FROM sanpham JOIN danhmuc ON danhmuc.id_danh_muc=sanpham.id_danhmuc WHERE sanpham.kich_hoat=1";
         $list = pdo_query($sql);
         return $list;
+    }
+
+    //lấy giá của sản phẩm biến thể
+    function loadPriceVariant($idPro) {
+        $sql = "SELECT gia, giam_gia FROM bienthe WHERE id_sanpham=$idPro ORDER BY gia DESC";
+        $variant = pdo_query_one($sql);
+        return $variant;
     }
     function insert_product($id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta){
         $sql="INSERT INTO sanpham(id_danhmuc,ten_san_pham,hinh_anh,mo_ta) VALUES ('$id_danhmuc','$ten_san_pham','$hinh_anh','$mo_ta')";
