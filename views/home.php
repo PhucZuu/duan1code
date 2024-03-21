@@ -8,7 +8,7 @@
             <span>Bộ sưu tập đặc biệt</span>
           </h1>
           <p class="home__description">Tiết kiệm nhiều hơn với phiếu giảm giá và giảm giá tới 20%</p>
-          <a href="shop.html" class="btn">Shop Now</a>
+          <a href="index.php?act=shop" class="btn">Shop Now</a>
         </div>
 
         <img src="./assets/img/home-img.png" alt="" class="home__img">
