@@ -9,14 +9,23 @@
         $act = $_GET["act"];
         switch ($act){
             case 'adddm':
-                //kiểm tra xem người dùng có click vào nút add hay không
+
+                $errIddm = '';
+                $errTendm = '';
+
                 if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
                     $ten_danh_muc = $_POST['ten_danh_muc'];
 
-                    insert_danhmuc($ten_danh_muc);
-
-                    //thông báo đã thực thi xong
-                    $thongbao = "Thêm thành công";
+                    $isCheck = true;
+                    if(!$ten_danh_muc){
+                        $isCheck = false;
+                        $errTendm = 'Bạn không được để trống tên danh mục';
+                    }
+                    if($isCheck){
+                        insert_danhmuc($ten_danh_muc);
+                        $thongbao = "Thêm thành công";
+                    }
+                    
                 }
                 include "danhmuc/add.php";
                 break;
@@ -27,21 +36,19 @@
                 break;
 
             case 'xoadm':
-                //kiểm tra id có tồn tại ko để xóa
+                
                 if(isset($_GET['id_danh_muc'])&&(($_GET['id_danh_muc'])>0)){
                     $id_danh_muc = $_GET['id_danh_muc'];
-                    // echo $id_danh_muc;
                     delete_danhmuc($id_danh_muc);
 
                 }
 
-                // trong file pdo phần này có return kết quả trả về nền ta cần gán về 1 giá trị
+                
                 $listdanhmuc = loadAll_danhmuc();
                 include "danhmuc/list.php";
                 break;
 
                 case 'suadm':
-                    //kiểm tra id có tồn tại ko để xóa
                     if(isset($_GET['id_danh_muc'])&&(($_GET['id_danh_muc'])>0)){
                         $id_danh_muc = $_GET['id_danh_muc'];
                         // echo $id_danh_muc;
@@ -52,7 +59,6 @@
                     break;
 
                 case 'updatedm':
-                    //làm như phần act ở trên
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                         $id_danh_muc = $_POST['id_danh_muc'];
                         $ten_danh_muc = $_POST['ten_danh_muc'];
