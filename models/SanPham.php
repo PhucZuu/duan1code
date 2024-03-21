@@ -50,7 +50,7 @@
 
     //lấy giá của sản phẩm biến thể
     function loadPriceVariant($idPro) {
-        $sql = "SELECT gia, giam_gia FROM bienthe WHERE id_sanpham=$idPro ORDER BY gia DESC";
+        $sql = "SELECT id_bien_the,gia, giam_gia FROM bienthe WHERE id_sanpham=$idPro ORDER BY gia DESC";
         $variant = pdo_query_one($sql);
         return $variant;
     }
@@ -68,11 +68,13 @@
         $sanpham=pdo_query_one($sql);
         return $sanpham;
     }
+    // lấy ra màu
     function getAllColorsById($id_sanpham){
-        $sql="SELECT id_mausac,ten_mau_sac,ma_mau,id_mau_sac FROM bienthe JOIN mausac ON mausac.id_mau_sac=bienthe.id_mausac WHERE id_sanpham=$id_sanpham";
+        $sql="SELECT DISTINCT id_mau_sac,ten_mau_sac,ma_mau FROM bienthe JOIN mausac ON mausac.id_mau_sac=bienthe.id_mausac WHERE id_sanpham=$id_sanpham";
         $sanpham=pdo_query($sql);
         return $sanpham;
     }
+    // Lấy ra size
     function getAllSizesById($id_sanpham){
         $sql="SELECT DISTINCT id_kichco,id_kich_co,ten_kich_co FROM bienthe JOIN kichco ON bienthe.id_kichco=kichco.id_kich_co WHERE id_sanpham=$id_sanpham";
         $sanpham=pdo_query($sql);
