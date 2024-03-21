@@ -2024,3 +2024,7 @@ table {
   }
 }
 
+/* chỉnh các span ở admin phần form */
+.form{
+  text-align: start;
+}
