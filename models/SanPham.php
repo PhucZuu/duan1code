@@ -15,14 +15,15 @@
         return $list;
     }
     function loadAllPro3($keyword="",$iddm=0){
-        $sql = "SELECT * FROM sanpham JOIN bienthe ON sanpham.id_san_pham = bienthe.id_sanpham WHERE sanpham.kich_hoat=1";
+        $sql = "SELECT id_san_pham,id_danhmuc,danhmuc.ten_danh_muc,ten_san_pham,hinh_anh,mo_ta,luot_xem,sanpham.kich_hoat FROM sanpham 
+        JOIN danhmuc ON sanpham.id_danhmuc=danhmuc.id_danh_muc WHERE sanpham.kich_hoat=1";
         if($keyword != ""){
             $sql .= " and ten_san_pham like '%".$keyword."%'";
         }
         if($iddm > 0){
             $sql .= " AND id_danhmuc = '".$iddm."' ";
         }
-        $sql .= " ORDER BY id_danhmuc desc";
+        // $sql .= " ORDER BY id_danhmuc desc";
         // echo $sql;
         // die();
         $list = pdo_query($sql);

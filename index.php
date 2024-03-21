@@ -34,7 +34,7 @@
             }else{
                 $iddm = 0;
             }
-            $dssp = loadAllPro3($keyword,$iddm);
+            $products = loadAllPro3($keyword,$iddm);
             $tendm = load_ten_dm($iddm);
             include "views/sanpham.php";
             break;
