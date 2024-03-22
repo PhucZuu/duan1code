@@ -24,9 +24,9 @@
                     ?>
             </select>
             <span>Giá</span>
-            <input type="number" placeholder="Nhập giá tiền" min="0" step="0.01" class="form__input" name="gia" required>
+            <input type="number" placeholder="Nhập giá tiền" min="0" step="0.01" class="form__input" name="gia"><span class="error"><?= $errPrice?></span>
             <span>Số lượng</span>
-            <input type="number" placeholder="Nhập số lượng tồn kho" min="0" step="1" class="form__input" name="so_luong" required>
+            <input type="number" placeholder="Nhập số lượng tồn kho" min="0" step="1" class="form__input" name="so_luong"><span class="error"><?= $errQuantity?></span>
             <span>Giảm giá</span>
             <input type="number" placeholder="Nhập vào % giảm giá (Để trống nếu không có giảm giá)" min="0" max="100" step="1" class="form__input" name="giam_gia">
             

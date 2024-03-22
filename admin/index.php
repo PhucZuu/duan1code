@@ -93,13 +93,35 @@
                     include './sanpham/list.php';
                     break;
                 case 'addsp':
+                    $errNameProduct='';
+                    $errImage='';
+                    $errDescription='';
+                    $allowed=['jpg','jpeg','png'];
                     if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
+                        $check=true;
                         $id_danhmuc=$_POST['id_danhmuc'];
                         $ten_san_pham=$_POST['ten_san_pham'];
                         $hinh_anh=$_FILES['hinh_anh']['name'];
                         $mo_ta=$_POST['mo_ta'];
-                        
-                        if($hinh_anh){
+                        if($ten_san_pham==""){
+                            $errNameProduct="Tên sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($hinh_anh==""){
+                            $errImage="Hình ảnh sản phẩm không được để trống";
+                            $check=false;
+                        }else{
+                            $img_ex=pathinfo($hinh_anh, PATHINFO_EXTENSION);
+                            if(!in_array($img_ex,$allowed)){
+                                $errImage="Không đúng định dạng ảnh";
+                                $check=false;
+                            }
+                        }
+                        if($mo_ta==""){
+                            $errDescription="Mô tả sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($check){
                             $target_dir='../uploads/';
                             $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
                             if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
@@ -109,7 +131,7 @@
                                 // echo "Sorry, there was an error uploading your file.";
                             }
                         }else{
-                            $thongbao = "Thêm thất bại";
+                            $thongbao="Thêm thất bại";
                         }
                         
                     }
@@ -117,6 +139,9 @@
                     include './sanpham/add.php';
                     break;
                 case 'suasp':
+                    $errNameProduct='';
+                    $errImage='';
+                    $errDescription='';
                     if(isset($_GET['id_san_pham'])&&($_GET['id_san_pham']>0)){
                         $sp=loadOneProduct($_GET['id_san_pham']);
                     }
@@ -124,7 +149,12 @@
                     include ('sanpham/update.php');
                     break;
                 case 'updatesp':
+                    $errNameProduct='';
+                    $errImage='';
+                    $errDescription='';
+                    $allowed=['jpg','jpeg','png'];
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        $check=true;
                         $id_san_pham=$_POST['id_san_pham'];
                         $id_danhmuc=$_POST['id_danhmuc'];
                         $ten_san_pham=$_POST['ten_san_pham'];
@@ -133,19 +163,42 @@
                         // echo "<pre>";
                         // print_r([$id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta]);
                         // die;
-                        if ($hinh_anh) {
-                            $target_dir='../uploads/';
-                            $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
-                            if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                            } else {
-                                // echo "Sorry, there was an error uploading your file.";
+                        if($ten_san_pham==""){
+                            $errNameProduct="Tên sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($hinh_anh){
+                            $img_ex=pathinfo($hinh_anh, PATHINFO_EXTENSION);
+                            if(!in_array($img_ex,$allowed)){
+                                $errImage="Không đúng định dạng ảnh";
+                                $check=false;
+                            }else{
+                                $target_dir='../uploads/';
+                                $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
+                                if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                                } else {
+                                    // echo "Sorry, there was an error uploading your file.";
+                                }
                             }
                         }else{
                             $hinh_anh="";
                         }
-                        update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta);
-                        header('Location: index.php?act=listsp');
+                        if($mo_ta==""){
+                            $errDescription="Mô tả sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($check){
+                            update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta);
+                            header('Location: index.php?act=listsp');
+                        }else{
+                            if(isset($_GET['id_san_pham'])&&($_GET['id_san_pham']>0)){
+                                $sp=loadOneProduct($_GET['id_san_pham']);
+                            }
+                            $listdanhmuc=loadAll_danhmuc();
+                            include 'sanpham/update.php';
+                        }
                     }
+                    
                     break;
                 case 'xoasp':
                     //kiểm tra id có tồn tại ko để xóa
@@ -161,22 +214,36 @@
                     include 'bienthe/list.php';
                     break;
                 case 'addbt':
+                    $errPrice='';
+                    $errQuantity='';
                     if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
+                        $check=true;
                         $id_sanpham=$_POST['id_sanpham'];
                         $id_kichco=$_POST['id_kichco'];
                         $id_mausac=$_POST['id_mausac'];
                         $gia=$_POST['gia'];
                         $so_luong=$_POST['so_luong'];
                         $giam_gia=$_POST['giam_gia'];
-
+                        if($gia==""){
+                            $errPrice="Giá sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($so_luong==""){
+                            $errQuantity="Số lượng sản phẩm không được để trống";
+                            $check=false;
+                        }
                         if(!$giam_gia){
                             $giam_gia=0;
+                        }
+                        if($check){
+                            insert_variant($id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia);
+                            $thongbao="Thêm thành công";
+                        }else{
+                            $thongbao="Thêm thất bại";
                         }
                         // echo "<pre>";
                         // print_r([$id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia]);
                         // die;
-                        insert_variant($id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia);
-                        $thongbao="Thêm thành công";
                     }
                     $id_sanpham=$_GET['id_san_pham'];
                     $sizes=loadAllSizes();
@@ -184,6 +251,8 @@
                     include 'bienthe/add.php';
                     break;
                 case 'suabt':
+                    $errPrice='';
+                    $errQuantity='';
                     if(isset($_GET['id_bien_the'])&&($_GET['id_bien_the']>0)){
                         $variant=loadOne_variant($_GET['id_bien_the']);
                     }
@@ -192,7 +261,10 @@
                     include ('bienthe/update.php');
                     break;
                 case 'updatebt':
+                    $errPrice='';
+                    $errQuantity='';
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        $check=true;
                         $id_bien_the=$_POST['id_bien_the'];
                         $id_sanpham=$_POST['id_sanpham'];
                         $id_kichco=$_POST['id_kichco'];
@@ -200,15 +272,31 @@
                         $gia=$_POST['gia'];
                         $so_luong=$_POST['so_luong'];
                         $giam_gia=$_POST['giam_gia'];
-
+                        if($gia==""){
+                            $errPrice="Giá sản phẩm không được để trống";
+                            $check=false;
+                        }
+                        if($so_luong==""){
+                            $errQuantity="Số lượng sản phẩm không được để trống";
+                            $check=false;
+                        }
                         if(!$giam_gia){
                             $giam_gia=0;
+                        }
+                        if ($check) {
+                            update_variant($id_bien_the,$id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia);
+                            header("Location: index.php?act=listbt&id_san_pham=$id_sanpham");
+                        }else{
+                            if(isset($_GET['id_bien_the'])&&($_GET['id_bien_the']>0)){
+                                $variant=loadOne_variant($_GET['id_bien_the']);
+                            }
+                            $sizes=loadAllSizes();
+                            $colors=loadAllColors();
+                            include ('bienthe/update.php');
                         }
                         // echo "<pre>";
                         // print_r([$id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia]);
                         // die;
-                        update_variant($id_bien_the,$id_sanpham,$id_kichco,$id_mausac,$gia,$so_luong,$giam_gia);
-                        header("Location: index.php?act=listbt&id_san_pham=$id_sanpham");
                     }
                     break;
                 case 'xoabt':
