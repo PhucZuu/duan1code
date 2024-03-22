@@ -47,9 +47,9 @@
 
             <h2 class="thongbao">
                 <?php
-                    // if(isset($thongbao) && ($thongbao != "")){
-                    // echo '<h2 style="color:green">'.$thongbao.'</h2>';
-                    // }
+                    if(isset($thongbao) && ($thongbao != "")){
+                    echo '<h2 style="color:green">'.$thongbao.'</h2>';
+                    }
                 ?>
             </h2>
 
