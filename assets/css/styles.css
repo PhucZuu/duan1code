@@ -90,8 +90,12 @@ ul {
 
 a {
   text-decoration: none;
+  color: black;
 }
-
+a:hover{
+  font-weight: bold;
+  color: var(--first-color);
+}
 p {
   line-height: 1.5rem;
 }
@@ -1579,7 +1583,7 @@ table {
 
 .login-register__container {
   grid-template-columns: repeat(2, 1fr);
-  align-items: flex-start;
+  align-items: flex-start; 
 }
 
 .login,
@@ -1587,6 +1591,8 @@ table {
   border: 1px solid var(--border-color-alt);
   padding: 2rem;
   border-radius: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .accounts__container {

@@ -9,6 +9,7 @@
     include_once './models/pdo.php';
     include_once './models/SanPham.php';
     include_once './models/danhMuc.php';
+    include_once './models/taikhoan.php';
     // Điều hướng
     include_once './views/header.php';
 
@@ -55,6 +56,83 @@
         //         $products=loadAllProducts();
         //         include_once './views/shop.php';
         //     break;
+
+        case 'dangky':
+            $ten_dang_nhap = "";
+            $email = "";
+            $mat_khau = "";
+
+            $errTenDangNhap = "";
+            $errEmail = "";
+            $errPass = "";
+            if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+                // echo "<pre>";
+                //  print_r($_POST);
+                //  print_r($_FILES);
+                //  die();
+                // echo "</pre>";
+                $ten_dang_nhap = $_POST["ten_dang_nhap"];
+                $email = $_POST["email"];
+                $mat_khau = $_POST["mat_khau"];
+
+                // print_r([$ten_dang_nhap,$email,$mat_khau]);
+                // die();
+                
+
+                $isCheck = true;
+                if(!$ten_dang_nhap){
+                    $isCheck = false;
+                    $errTenDangNhap = 'Bạn không được để trống tên đăng nhập';
+                }
+                if(!$email){
+                    $isCheck = false;
+                    $errEmail = 'Bạn không được để trống email';
+                }
+                if(!$mat_khau){
+                    $isCheck = false;
+                    $errPass = 'Bạn không được để trống pass';
+                }
+                if($isCheck){
+                    insert_taikhoan($ten_dang_nhap,$email,$mat_khau);
+                    $thongbao = "Thêm dữ liệu thành công";
+                }
+            }
+            include "views/taikhoan/dangky.php";
+            break;
+        case 'dangnhap':
+            $ten_dang_nhap = "";
+            $mat_khau = "";
+
+            $errTenDangNhap = "";
+            $errPass = "";
+            
+            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                $ten_dang_nhap = $_POST["ten_dang_nhap"];
+                $mat_khau = $_POST["mat_khau"];
+                $checkuser = checkuser($ten_dang_nhap, $mat_khau);
+
+                $isCheck = true;
+                if(!$ten_dang_nhap){
+                    $isCheck = false;
+                    $errTenDangNhap = 'Bạn không được để trống tên đăng nhập';
+                }
+                if(!$mat_khau){
+                    $isCheck = false;
+                    $errPass = 'Bạn không được để trống pass';
+                }
+                
+                if($isCheck){
+                    if (is_array($checkuser)) {
+                        $_SESSION['nguoidung'] = $checkuser;
+                        $thongbao = "Đăng nhập thành công";
+                        // header('Location: index.php');
+                    } else {
+                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                    }
+                }
+            }
+            include "views/taikhoan/dangnhap.php";
+            break;
         default:
             # code...
             break;

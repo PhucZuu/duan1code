@@ -9,7 +9,7 @@
         $act = $_GET["act"];
         switch ($act){
             case 'adddm':
-
+                $ten_danh_muc = '';
                 $errIddm = '';
                 $errTendm = '';
 
@@ -36,19 +36,19 @@
                 break;
 
             case 'xoadm':
-                
                 if(isset($_GET['id_danh_muc'])&&(($_GET['id_danh_muc'])>0)){
                     $id_danh_muc = $_GET['id_danh_muc'];
                     delete_danhmuc($id_danh_muc);
-
                 }
-
-                
                 $listdanhmuc = loadAll_danhmuc();
                 include "danhmuc/list.php";
                 break;
 
                 case 'suadm':
+                    $id_danh_muc = '';
+                    $ten_danh_muc = '';
+                    $errIddm = '';
+                    $errTendm = '';
                     if(isset($_GET['id_danh_muc'])&&(($_GET['id_danh_muc'])>0)){
                         $id_danh_muc = $_GET['id_danh_muc'];
                         // echo $id_danh_muc;
@@ -59,6 +59,10 @@
                     break;
 
                 case 'updatedm':
+                    $id_danh_muc = '';
+                    $ten_danh_muc = '';
+                    $errIddm = '';
+                    $errTendm = '';
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                         $id_danh_muc = $_POST['id_danh_muc'];
                         $ten_danh_muc = $_POST['ten_danh_muc'];
@@ -67,14 +71,22 @@
                         // print_r([$id_danh_muc,$ten_danh_muc]);
                         // echo '</pre>';
 
-
-                        update_danhmuc($id_danh_muc,$ten_danh_muc);
-                        //thông báo đã thực thi xong
-                        $thongbao = "Cập nhật thành công";
+                        $isCheck = true;
+                        if(!$ten_danh_muc){
+                            $isCheck = false;
+                            $errTendm = 'Bạn không được để trống tên danh mục';
+                        }
+                        if($isCheck){
+                            update_danhmuc($id_danh_muc,$ten_danh_muc);
+                            //thông báo đã thực thi xong
+                            $thongbao = "Cập nhật thành công";
+                            
+                        }
                     }
                     $listdanhmuc = loadAll_danhmuc();
                     
-                    include "danhmuc/list.php";
+                    include "danhmuc/update.php";
+                    // include "danhmuc/list.php";
                     break;
                 case 'listsp':
                     $listsp=loadAllPro();

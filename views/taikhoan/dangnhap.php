@@ -1,0 +1,58 @@
+<section class="login-register section--lg">
+    <div class="login-register__container container grid">
+    <div class="login">
+            <h3 class="section__title">Đăng nhập</h3>
+            <?php
+                if(isset($_SESSION['nguoidung'])){
+                    extract($_SESSION['nguoidung']);
+            ?>
+            <div class="">
+                <h4 style="color: var(--first-color);">Xin chào <?= $ten_dang_nhap ?></h4><br>
+                
+            </div>
+            <div class="">
+                <li>
+                    <a href="index.php?act=edit_taikhoan">Cập nhật tài khoản</a>
+                </li>
+                <li>
+                    <a href="admin/index.php">Đăng nhập admin</a>
+                </li>
+                <li>
+                    <a href="index.php?act=thoat">Thoát</a>
+                </li>
+            </div>
+            <?php
+                }else{
+            ?>
+        
+
+            <form action="index.php?act=dangnhap" method="post" class="form grid">
+                <input type="text" placeholder="Tên đăng nhập" class="form__input" name="ten_dang_nhap" value="<?= $ten_dang_nhap ?>">
+                <span style="color:red"><?= $errTenDangNhap ?></span>
+
+                <input type="password" placeholder="Mật khẩu" class="form__input" name="mat_khau" value="<?= $mat_khau ?>">
+                <span style="color:red"><?= $errPass ?></span>
+
+                <div class="form__btn">
+                    <input type="submit" class="btn" value="Đăng nhập" name="dangnhap">
+                </div>
+            </form>
+            <?php }?>
+            <li>
+                <a href="index.php?act=quenmk">Quên mật khẩu</a>
+            </li>
+            <li>
+                <a href="index.php?act=dangky">Đăng ký thành viên</a>
+            </li>
+
+            <h2 class="thongbao">
+                <?php
+                    // if(isset($thongbao) && ($thongbao != "")){
+                    // echo '<h2 style="color:green">'.$thongbao.'</h2>';
+                    // }
+                ?>
+            </h2>
+
+        </div>
+    </div>
+</section>

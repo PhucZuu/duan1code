@@ -26,8 +26,8 @@
         </div>
         <p class="header__alert-news">
         </p>
-        <a href="login-register.html" class="header__top-action">
-          Đăng nhập / Đăng ký
+        <a href="index.php?act=dangnhap" class="header__top-action">
+          Đăng nhập
         </a>
       </div>
     </div>
@@ -64,7 +64,7 @@
           </li>
 
           <li class="nav__item">
-            <a href="index.php?act=dangky" class="nav__link">Đăng nhập</a>
+            <a href="index.php?act=dangky" class="nav__link">Đăng ký</a>
           </li>
         </ul>
         
