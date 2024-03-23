@@ -44,19 +44,41 @@
             if(isset($_GET['idpro']) && $_GET['idpro']>0){
                 $id_sanpham = $_GET['idpro'];
                 $colors=getAllColorsById($id_sanpham);
-                $sizes=getAllSizesById($id_sanpham);
+                if(isset($_GET['idcolor'])){
+                    $id_color=$_GET['idcolor'];
+                    $sizes=getAllSizesOfColor($id_sanpham,$id_color);
+                }else{
+                    $sizes=getAllSizesById($id_sanpham);
+                }
                 $onePro = loadOne_pro($id_sanpham);
                 
                 include_once './views/details.php';
             }else{
                 include_once './views/home.php';
             }
+            
+
             break;
         // case 'shop':
         //         $products=loadAllProducts();
         //         include_once './views/shop.php';
         //     break;
-
+        case 'chooseColor':
+            $id_sanpham=$_GET['idpro'];
+            if(isset($_POST['colors'])){
+                $id_color=$_POST['colors'];
+                if(isset($_POST['sizes'])){
+                    $id_size=$_POST['sizes'];
+                    header("Location: index.php?act=details&idpro=$id_sanpham&idcolor=$id_color&idsize=$id_size");
+                }else{
+                    header("Location: index.php?act=details&idpro=$id_sanpham&idcolor=$id_color");
+                }
+            }
+            
+            break;
+        case 'addToCart':
+            
+            break;
         case 'dangky':
             $ten_dang_nhap = "";
             $email = "";

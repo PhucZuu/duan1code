@@ -470,7 +470,11 @@ table {
   font-size: var(--tiny-font-size);
   transition: all 0.5s;
 }
-
+.showColor{
+  padding:5px 15px;
+  border-radius: 100px;
+  margin:0px 5px;
+}
 .swiper-button-prev {
   left: initial;
   right: 3rem;

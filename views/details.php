@@ -3,15 +3,17 @@
       <ul class="breadcrumb__list flex container">
         <?php 
         extract($onePro); 
-        $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
+        
         
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
         <li><span class="breadcrumb__link">></span></li>
         <li><span class="breadcrumb__link"></span></li>
+        
       </ul>
     </section>
     <section class="details section--lg">
+      
     <?php 
     echo '
     <div class="details__container container grid ac">
@@ -46,56 +48,70 @@
           <i class="fa-regular fa-credit-card"></i>Thanh toán trực tuyến
         </li>
       </ul>
-      
-      <div class="details__color flex">
-        <span class="details__color-title">Màu sắc</span>
 
-        <ul class="color__list">';
-          foreach($colors as $color){
-            extract($color); 
-            echo '
-              <li>
-                <a href="#" class="color__link" style="background-color: '.$ma_mau.';"></a>
-              </li>
-            ';
-          }
-        echo '</ul>
-      </div>';
+      <form action="index.php?act=chooseColor&idpro='.$id_sanpham.'" method="post">
+
+        <div class="details__color flex">
+          <span class="details__color-title">Màu sắc</span>
+          
+          <ul class="color__list">';
+          $id_color='';
+            if(isset($_GET['idcolor'])){
+              $id_color=$_GET['idcolor'];
+            }
+            foreach($colors as $color){
+              extract($color); 
+              echo '
+                <li>
+                  <input type="radio" '.($id_color==$id_mau_sac?"checked":"").' name="colors" onclick="return this.form.submit()" class="colors" value='.$id_mau_sac.'><label class="showColor" style="background-color:'.$ma_mau.';"></label>
+                </li>
+              ';
+            }
+          echo '</ul>
+        </div>';
 
       echo '
       <div class="details__size flex">
         <span class="details__size-title">Kích cỡ</span>
         
         <ul class="size__list">';
+          $id_size='';
+          if(isset($_GET['idsize'])){
+            $id_size=$_GET['idsize'];
+          }
           foreach($sizes as $size){
             extract($size); 
             echo '
             <li>
-              <a href="#" class="size__link">'.$ten_kich_co.'</a>
+              <input type="radio" name="sizes" '.($id_size==$id_kichco?"checked":"").' onclick="return this.form.submit()" value="'.$id_kichco.'" id=""><label>'.$ten_kich_co.'</label>
             </li>
             ';
           }
           
 
         echo '
-      </div>
-
-      <div class="details__action">
-        <input type="number" name="" id="" class="quantity" min="1" step="1" value="1">
-
-        <a href="#" class="btn btn-sm">Add to Cart</a>
-
-        <!-- <a href="#" class="details__action-btn details__action-btn--color">
-          <i class="fa-solid fa-heart"></i>
-        </a> -->
+        </form>
       </div>
 
       
 
+      <div class="details__action">
+      <form action="index.php" method="post">
+        <input type="number" name="" id="" class="quantity" min="1" step="1" value="1">
+
+        <a href="#" class="btn btn-sm"><input type="submit" value="" name="addToCart">Add to Cart</a>
+
+      </div>
+      </form>
+      
+
     </div>
   </div>';
+  
     ?>
+    
     </section>
+    
     <!-- BÌNH LUẬN -->
     <section class="details__tab container">
       <div class="detail__tabs">
@@ -165,8 +181,12 @@
 
         <!-- sẢN PHẨM -->
       <?php 
+      $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
       foreach ($othersPro as $others){
         extract($others);
+        $variant_price_others = loadPriceVariantOthers($id_san_pham);
+        $gia = $variant_price_others['gia'];
+        $giam_gia = $variant_price_others['giam_gia'];
         $linkPro = "index.php?act=details&idpro=".$id_san_pham;
       echo '
       <div class="product__item">
@@ -204,5 +224,5 @@
 
       </div>
     </section>
-
+    
   </main>
