@@ -12,6 +12,7 @@
     include_once './models/taikhoan.php';
     // Điều hướng
     include_once './views/header.php';
+    session_start();
 
     $products = loadAllPro();
     $danhMuc = loadAll_danhmuc();

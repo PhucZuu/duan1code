@@ -2,8 +2,8 @@
     <section class="breadcrumb">
       <ul class="breadcrumb__list flex container">
         <?php 
-        extract($onePro); 
-        
+        extract($onePro);
+        // echo $id_sanpham; die();
         
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
@@ -111,66 +111,16 @@
     ?>
     
     </section>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      $("#binhluan").load("views/binhluan/form.php", {idpro: <?= $id_sanpham?>});
+    });
+    </script>
+
+
     <!-- BÌNH LUẬN -->
-    <section class="details__tab container">
-      <div class="detail__tabs">
-        <span class="detail__tab active-tab">
-          Bình luận
-        </span>
-      </div>
-
-      <div class="details__tabs-content">
-        <div class="details__tab-content active-tab">
-          <div class="cart__comment">
-            <div class="comments">
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-1.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">John Doe</span>
-                    <span class="timestamp">2 hours ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting!</p>
-                </div>
-              </div>
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-3.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">Kim Doe</span>
-                    <span class="timestamp">3 hours ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting! It's really interesting! It's really interesting! It's really interesting!
-                    It's really interesting! It's really interesting! It's really interesting!
-                  </p>
-                </div>
-              </div>
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-2.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">Emma Stone</span>
-                    <span class="timestamp">2 weeks ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting!</p>
-                </div>
-              </div>
-            </div>
-            <form action="" class="comment__form form grid">
-              <div class="form__group">
-                <input type="text" class="form__input" placeholder="Viết bình luận">
-                <div class="form__btn">
-                  <button class="btn flex btn--sm">
-                    <i class="fa-solid fa-comment"></i> Gửi
-                  </button>
-                </div>
-              </div>
-            </form>
-            
-          </div>
-
-        </div>
+    <section class="details__tab container" id="binhluan">
 
     </section>
 

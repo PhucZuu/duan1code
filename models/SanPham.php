@@ -64,7 +64,7 @@
         return $sanpham;
     }
     function loadOne_pro($id_sanpham){
-        $sql="SELECT ten_san_pham,gia,giam_gia,mo_ta,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
+        $sql="SELECT id_sanpham,ten_san_pham,gia,giam_gia,mo_ta,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
         $sanpham=pdo_query_one($sql);
         return $sanpham;
     }
