@@ -4,6 +4,7 @@
     include_once '../models/pdo.php';
     include_once '../models/danhMuc.php';
     include_once '../models/SanPham.php';
+    include_once '../models/binhLuan.php';
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -306,6 +307,19 @@
                         delete_variant($_GET['id_bien_the']);
                         header("Location: index.php?act=listbt&id_san_pham=$id_sanpham");
                     }
+                    break;
+                case 'listbl':
+                    $listbinhluan = loadAll_binhluan(0);
+                    include 'binhluan/list.php';
+                    break;
+                case 'xoabl':
+                    if(isset($_GET['id_binh_luan'])&&(($_GET['id_binh_luan'])>0)){
+                        $id_binh_luan = $_GET['id_binh_luan'];
+                        // echo $id_binh_luan; die;
+                        delete_binhluan($id_binh_luan);
+                    }
+                    $listbinhluan = loadAll_binhluan(0);
+                    include "binhluan/list.php";
                     break;
         }
     }

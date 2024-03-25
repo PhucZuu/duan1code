@@ -16,6 +16,7 @@
                     $variant_price = loadPriceVariant($id_san_pham);
                     $gia = $variant_price['gia'];
                     $giam_gia = $variant_price['giam_gia'];
+                    
                     echo '<div class="product__item">
                     <div class="product__banner">
                         <a href="' . $linkPro . '" class="product__imgaes">
