@@ -174,13 +174,18 @@
         pdo_execute($sql);
     }
     
-    function hot(){
-        $sql = "SELECT id_san_pham, ten_san_pham, luot_xem
-        FROM sanpham
-        ORDER BY luot_xem DESC
-        LIMIT 10;
-        ";
-        $hot=pdo_query($sql);
-        return $hot;
+    function hot() {
+        $sql = "SELECT id_san_pham
+                FROM sanpham
+                ORDER BY luot_xem DESC
+                LIMIT 3;
+                ";
+        $hot = pdo_query($sql);
+        $result = array();
+        foreach ($hot as $row) {
+            $result[] = $row['id_san_pham'];
+        }
+        return $result;
     }
+    
 ?>

@@ -16,6 +16,7 @@
 
     $products = loadAllPro();
     $danhMuc = loadAll_danhmuc();
+    $hot = hot();
 
     $act= $_GET['act'] ?? '/';
     switch ($act) {
