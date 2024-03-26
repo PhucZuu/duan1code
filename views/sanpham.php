@@ -10,6 +10,7 @@
                 // echo "<pre>";
                 // print_r($dssp);
                 // die;
+
                 extract($hot);
                 $hot_ids = hot();
                 foreach ($products as $pro) {
@@ -34,12 +35,11 @@
                         </a>
 
                         <!-- SALE/HOT -->
-                        <div class="' . (empty($giam_gia) ? 'hidden' : 'product__badge light-pink') . '">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</div>
-                  <div class="product__badgee light-red' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
+                  <div class="product__badge light-pink' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
                     </div>
 
                     <div class="product_content">
-                        <span class="product__category">Clothing</span>
+                        <span class="product__category">'.$ten_danh_muc.'</span>
                         <a href="' . $linkPro . '">
                         <h3 class="product__title">' . $ten_san_pham . '</h3>
                         </a>
@@ -47,6 +47,7 @@
                         <div class="product__price flex">
                         <span class="new__price">$' . ($giam_gia == 0 ? $gia : $gia * ((100 - $giam_gia) / 100)) . '</span>
                         <span class="old__price">' . (empty ($giam_gia) ? "" : $gia) . '</span>
+                        <span class="discount">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</span>
                     </div>
                     
 

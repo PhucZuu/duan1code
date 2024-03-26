@@ -63,8 +63,7 @@
                   </a>
 
                   <!-- SALE/HOT -->
-                  <div class="' . (empty($giam_gia) ? 'hidden' : 'product__badge light-pink') . '">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</div>
-                  <div class="product__badgee light-red' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
+                  <div class="product__badge light-pink' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
                 </div>
 
                 <div class="product_content">
@@ -76,6 +75,7 @@
                   <div class="product__price flex">
                   <span class="new__price">$' . ($giam_gia == 0 ? $gia : $gia * ((100 - $giam_gia) / 100)) . '</span>
                   <span class="old__price">' . (empty($giam_gia) ? "" :"$". $gia) . '</span>
+                  <span class="discount">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</span>
               </div>
               
 

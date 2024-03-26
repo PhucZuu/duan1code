@@ -618,7 +618,10 @@ table {
 .hidden {
   display: none;
 }
-
+.discount{
+  color: red;
+  font-weight: bold;
+}
 .product__badgee.light-red {
   background-color: hsl(0, 89%, 48%);
 }
@@ -936,9 +939,10 @@ table {
 }
 
 .newletter__btn {
+  white-space: nowrap;
   background-color: var(--title-color);
   color: var(--body-color);
-  padding-inline: 2rem;
+  padding-inline: 1.8rem;
   border-radius: 0 0.25rem 0.25rem 0;
   font-family: var(--second-font);
   font-weight: var(--weight-500);
