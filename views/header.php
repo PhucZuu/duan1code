@@ -82,9 +82,9 @@
       </div>
 
       <div class="header__user--actions">
-        <a href="cart.html" class="header__action-btn">
+        <a href="index.php?act=viewCart" class="header__action-btn">
           <img src="./assets/img/icon-cart.svg" alt="">
-          <span class="count">3</span>
+          <span class="count"><?= $countProducts?></span>
         </a>
 
         <div class="header__action-btn nav__toggle" id="nav-toggle">

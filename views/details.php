@@ -4,7 +4,13 @@
         <?php 
         extract($onePro);
         // echo $id_sanpham; die();
-        
+        // kiểm tra xem người dùng có chọn vào các thuộc tính sản phẩm
+        $get_id_color=null;
+        $get_id_size=null;
+        if(isset($_GET['idcolor'])&&isset($_GET['idsize'])){
+          $get_id_color=$_GET['idcolor'];
+          $get_id_size=$_GET['idsize'];
+        }
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
         <li><span class="breadcrumb__link">></span></li>
@@ -49,7 +55,7 @@
         </li>
       </ul>
 
-      <form action="index.php?act=chooseColor&idpro='.$id_sanpham.'" method="post">
+      <form action="index.php?act=chooseColor&idpro='.$id_sanpham.'" method="post" id="form_color">
 
         <div class="details__color flex">
           <span class="details__color-title">Màu sắc</span>
@@ -96,10 +102,13 @@
       
 
       <div class="details__action">
-      <form action="index.php" method="post">
-        <input type="number" name="" id="" class="quantity" min="1" step="1" value="1">
-
-        <a href="#" class="btn btn-sm"><input type="submit" value="" name="addToCart">Add to Cart</a>
+      
+      <form action="index.php?act=addToCart" method="post">
+        <input type="number" name="quantity" id="" class="quantity" min="1" step="1" value="1">
+        <input type="hidden" name="id_sanpham" id="" class="quantity" min="1" step="1" value="'.$id_sanpham.'">
+        <input type="hidden" name="id_mausac" id="" class="quantity" min="1" step="1" value="'.$get_id_color.'">
+        <input type="hidden" name="id_kichco" id="" class="quantity" min="1" step="1" value="'.$get_id_size.'">
+        <input type="submit" class="btn btn-sm" value="Thêm vào giỏ hàng" name="addToCart" '.($get_id_color?($get_id_size?"":"disabled"):"disabled").'>
 
       </div>
       </form>
@@ -116,6 +125,7 @@
       $(document).ready(function(){
       $("#binhluan").load("views/binhluan/form.php", {idpro: <?= $id_sanpham?>});
     });
+
     </script>
 
 
@@ -135,6 +145,7 @@
       foreach ($othersPro as $others){
         extract($others);
         $variant_price_others = loadPriceVariantOthers($id_san_pham);
+        $id_bien_the=$variant_price_others['id_bien_the'];
         $gia = $variant_price_others['gia'];
         $giam_gia = $variant_price_others['giam_gia'];
         $linkPro = "index.php?act=details&idpro=".$id_san_pham;
@@ -153,7 +164,7 @@
 
       <div class="product_content">
         <span class="product__category">'.$ten_danh_muc.'</span>
-        <a href="details.html">
+        <a href="'.$linkPro.'">
           <h3 class="product__title">'.$ten_san_pham.'</h3>
         </a>
         
@@ -163,7 +174,7 @@
         </div>
 
         <!-- THÊM VÀO GIỎ -->
-        <a href="#" class="action__btn cart__btn" aria-lable="Add To Cart">
+        <a href="index.php?act=addToCart&idbt='.$id_bien_the.'" class="action__btn cart__btn" aria-lable="Thêm vào giỏ hàng">
           <i class="fa-solid fa-shop"></i>
         </a>
       </div>
