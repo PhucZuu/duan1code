@@ -5,15 +5,19 @@
 
     // require controllers
     
+    session_start();
+    if(!isset($_SESSION['myCart'])){
+        $_SESSION['myCart']=[];   
+    }
+    $countProducts=count($_SESSION['myCart']);
     // require models
     include_once './models/pdo.php';
     include_once './models/SanPham.php';
+    include_once './models/giohang.php';
     include_once './models/danhMuc.php';
     include_once './models/taikhoan.php';
     // Điều hướng
     include_once './views/header.php';
-    session_start();
-
     $products = loadAllPro();
     $danhMuc = loadAll_danhmuc();
     $hot = hot();
@@ -75,8 +79,52 @@
             }
             
             break;
+        case 'viewCart':
+            include 'views/giohang/giohang.php';
+            break;
         case 'addToCart':
+            if(!isset($_GET['idbt'])){
+                $id_sanpham=$_POST['id_sanpham'];
+                $id_color=$_POST['id_mausac'];
+                $id_size=$_POST['id_kichco'];
+                $quantity=$_POST['quantity'];
+                $details=getVariantById($id_sanpham,$id_color,$id_size);
+            }else{
+                $id_bien_the=$_GET['idbt'];
+                $details=getVariantByIdVar($id_bien_the);
+                $quantity=1;
+            }
+            extract($details);
+            $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
+            array_push($_SESSION['myCart'],$addProduct);
+            include 'views/giohang/giohang.php';
             
+
+            // if(isset($_GET['idpro'])&&isset($_GET['idcolor'])&&isset($_GET['idsize'])){
+            //     $id_sanpham=$_GET['idpro'];
+            //     $id_color=$_GET['idcolor'];
+            //     $id_size=$_GET['idsize'];
+            //     $quantity=$_POST['quantity'];
+            //     // echo '<pre>';
+            //     // print_r([$id_sanpham,$id_color,$id_size]);
+            //     // die;
+            //     $details=getVariantById($id_sanpham,$id_color,$id_size);
+            //     extract($details);
+            //     $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
+            //     echo '<pre>';
+            //     print_r($addProduct);
+            //     die;
+
+            // }else if(isset($_GET['idbt'])){
+            //     $id_bien_the=$_GET['idbt'];
+            //     $quantity=1;
+            //     $details=getVariantByIdVar($id_bien_the);
+            //     extract($details);
+            //     $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
+            //     echo '<pre>';
+            //     print_r($addProduct);
+            //     die;
+            // }
             break;
         case 'dangky':
             $ten_dang_nhap = "";

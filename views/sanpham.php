@@ -17,6 +17,7 @@
                     extract($pro);
                     $linkPro = "index.php?act=details&idpro=" . $id_san_pham;
                     $variant_price = loadPriceVariant($id_san_pham);
+                    $id_bien_the= $variant_price['id_bien_the'];
                     $gia = $variant_price['gia'];
                     $giam_gia = $variant_price['giam_gia'];
                     $hott = "";
@@ -52,7 +53,7 @@
                     
 
                         <!-- THÊM VÀO GIỎ -->
-                        <a href="#" class="action__btn cart__btn" aria-lable="Thêm vào giỏ hàng">
+                        <a href="index.php?act=addToCart&idbt='.$id_bien_the.'" class="action__btn cart__btn" aria-lable="Thêm vào giỏ hàng">
                         <i class="fa-solid fa-shop"></i>
                         </a>
                     </div>
@@ -63,6 +64,5 @@
             </div>
         </div>
     </div>
-
 </main>
 </section>
