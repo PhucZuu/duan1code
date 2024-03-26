@@ -64,7 +64,7 @@
         return $sanpham;
     }
     function loadOne_pro($id_sanpham){
-        $sql="SELECT id_sanpham,ten_san_pham,gia,giam_gia,mo_ta,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
+        $sql="SELECT id_sanpham,ten_san_pham,gia,giam_gia,mo_ta,luot_xem,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
         $sanpham=pdo_query_one($sql);
         return $sanpham;
     }
@@ -168,4 +168,24 @@
         // die();
         return $ten_danh_muc;
     }
+
+    function view($id_sanpham){
+        $sql = "UPDATE sanpham SET luot_xem=luot_xem+1 WHERE id_san_pham=$id_sanpham";
+        pdo_execute($sql);
+    }
+    
+    function hot() {
+        $sql = "SELECT id_san_pham
+                FROM sanpham
+                ORDER BY luot_xem DESC
+                LIMIT 3;
+                ";
+        $hot = pdo_query($sql);
+        $result = array();
+        foreach ($hot as $row) {
+            $result[] = $row['id_san_pham'];
+        }
+        return $result;
+    }
+    
 ?>

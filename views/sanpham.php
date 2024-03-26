@@ -10,6 +10,8 @@
                 // echo "<pre>";
                 // print_r($dssp);
                 // die;
+                extract($hot);
+                $hot_ids = hot();
                 foreach ($products as $pro) {
                     extract($pro);
                     $linkPro = "index.php?act=details&idpro=" . $id_san_pham;
@@ -17,6 +19,14 @@
                     $id_bien_the= $variant_price['id_bien_the'];
                     $gia = $variant_price['gia'];
                     $giam_gia = $variant_price['giam_gia'];
+                    $hott = "";
+                    $check = false;
+                    if (in_array($id_san_pham, $hot_ids)) {
+                    $hott = "Hot";
+                    $check = true;
+                    }else{
+                    $hott ="";
+                    }
                     echo '<div class="product__item">
                     <div class="product__banner">
                         <a href="' . $linkPro . '" class="product__imgaes">
@@ -25,7 +35,8 @@
                         </a>
 
                         <!-- SALE/HOT -->
-                        <div class="product__badge light-pink">' . (empty ($giam_gia) ? "Hot" : "-" . $giam_gia . "%") . '</div>
+                        <div class="' . (empty($giam_gia) ? 'hidden' : 'product__badge light-pink') . '">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</div>
+                  <div class="product__badgee light-red' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
                     </div>
 
                     <div class="product_content">

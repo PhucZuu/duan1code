@@ -17,7 +17,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-comment"></i><a href="../html/adminBinhLuan.html">Bình luận</a>
+            <i class="fa-solid fa-comment"></i><a href="index.php?act=listbl">Bình luận</a>
           </p>
 
           <p class="account__tab admlist">

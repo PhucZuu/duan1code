@@ -20,6 +20,7 @@
     include_once './views/header.php';
     $products = loadAllPro();
     $danhMuc = loadAll_danhmuc();
+    $hot = hot();
 
     $act= $_GET['act'] ?? '/';
     switch ($act) {
@@ -58,16 +59,13 @@
                 $onePro = loadOne_pro($id_sanpham);
                 
                 include_once './views/details.php';
+                view($id_sanpham);
             }else{
                 include_once './views/home.php';
             }
             
 
             break;
-        // case 'shop':
-        //         $products=loadAllProducts();
-        //         include_once './views/shop.php';
-        //     break;
         case 'chooseColor':
             $id_sanpham=$_GET['idpro'];
             if(isset($_POST['colors'])){
