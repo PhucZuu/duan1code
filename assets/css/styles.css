@@ -403,6 +403,25 @@ table {
   transition: all 0.4s var(--transition);
   margin: 5px;
 }
+.btn2 {
+  display: inline-block;
+  background-color: var(--first-color);
+  border: 2px solid var(--first-color);
+  /* color: var(--body-color); */
+  padding-inline: 1.75rem;
+  height: 49px;
+  line-height: 49px;
+  border-radius: 0.25rem;
+  font-family: var(--second-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--weight-700);
+  transition: all 0.4s var(--transition);
+}
+
+.btn2:hover {
+  background-color: #088179;
+  color: white;
+}
 
 .btn--md,
 .btn--sm {
@@ -2037,4 +2056,113 @@ table {
 /* chỉnh các span ở admin phần form */
 .form{
   text-align: start;
+}
+
+
+/* --------------------------------------------- */
+/* giới thiệu */
+.product2 {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+/* product 2 */
+.gioithieu{
+  display: none;
+}
+.product2 .gt1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 1350px;
+  padding-top: 42px;
+  font-family: Roboto;
+  margin-top: 30px;
+}
+.product2 .gt1 .text{
+  margin-top: 6px;
+  width: 50%;
+}
+.product2 .gt1 span{
+  font-size: 20.7px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #abadab;
+  padding-left: 120px;
+}
+.product2 .gt1 h2{
+  padding-left: 120px;
+  padding-top: 10px;
+}
+.product2 .gt1 p{
+  color: #4f5050;
+  font-weight: 10px;
+  max-width: 650px;
+}
+.product2 .gioithieu img{
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  padding-bottom: 20px;
+}
+.product2 img:hover{
+  filter: opacity(88%);
+}
+
+.product2 .gt2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 1350px;
+  margin-top: 80px;
+  padding-bottom: 30px;
+}
+.product2 .gt2 .text{
+  margin-top: 50px;
+  max-width: 560px;
+  padding-bottom: 20px;
+}
+.product2 .gt2 span{
+  font-size: 20px;
+  text-align: center;
+  color: #abadab;
+  padding-left: 80px;
+}
+.product2 .gt2 h2{
+  padding: 10px 150px;
+}
+.product2 .gt2 p{
+  padding-right: 30px;
+  color: #4f5050;
+  font-weight: 10px;
+  max-width: 450px;
+  margin-left: 20px;
+}
+
+
+/* hỗ trợ */
+.hotro{
+  max-width: 1350px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 40px 70px;
+}
+.hotro article{
+  width: 250px;
+  text-align: center;
+  margin-left: 40px;
+}
+.hotro .hotro-img img{
+  width: 60px;
+  height: 60px;
+  margin-left: 100px;
+}
+.hotro .hotro-text label{
+  font-size: 20px;
+}
+.hotro .hotro-text p{
+  color: #535353;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  font-size: 13px;
 }

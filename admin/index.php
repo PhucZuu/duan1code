@@ -4,6 +4,7 @@
     include_once '../models/pdo.php';
     include_once '../models/danhMuc.php';
     include_once '../models/SanPham.php';
+    include_once '../models/taikhoan.php';
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -307,6 +308,133 @@
                         header("Location: index.php?act=listbt&id_san_pham=$id_sanpham");
                     }
                     break;
+
+                case "listtk":
+                    $listtaikhoan = loadAll_taikhoan();
+                    include "nguoidung/list.php";
+                    break;
+                case "suatk":
+                    $ten_dang_nhap = "";
+                    $email = "";
+                    $mat_khau = "";
+                    $ho_va_ten = "";
+                    $hinh_anh = "";
+                    $so_dien_thoai = "";
+                    $dia_chi = "";
+
+                    $errTenDangNhap = "";
+                    $errEmail = "";
+                    $errPass = "";
+                    $errImage = "";
+                    $errName = "";
+                    $errSdt = "";
+                    $errDiaChi = "";
+                    if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
+                        $id_nguoi_dung = $_GET['id_nguoi_dung'];
+                        $tk = loadone_taikhoan($id_nguoi_dung);
+                        // print_r($tk);
+                    }
+                    include "nguoidung/update.php";
+                    break;
+                // case "updatetk":
+                //     $ten_dang_nhap = "";
+                //     $email = "";
+                //     $ho_va_ten = "";
+                //     $hinh_anh = "";
+                //     $so_dien_thoai = "";
+                //     $dia_chi = "";
+                //     $vai_tro = "";
+
+                //     $errTenDangNhap = "";
+                //     $errEmail = "";
+                //     $errImage = "";
+                //     $errName = "";
+                //     $errSdt = "";
+                //     $errDiaChi = "";
+
+                //     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                //         echo '<pre>';
+                //         print_r($_POST);
+                //         print_r($_FILES);
+                //         echo '</pre>';
+
+                //         $ten_dang_nhap = $_POST["ten_dang_nhap"];
+                //         $email = $_POST["email"];
+                //         $ho_va_ten = $_POST["ho_va_ten"];
+                //         $hinh_anh = $_FILES['hinh_anh']['name'];
+                //         $so_dien_thoai = $_POST["so_dien_thoai"];
+                //         $dia_chi = $_POST["dia_chi"];
+                //         $vai_tro = $_POST["vai_tro"];
+                //         $id_nguoi_dung = $_POST["id_nguoi_dung"];
+
+                //         $isCheck = true;
+                //         if(!$ten_dang_nhap){
+                //             $isCheck = false;
+                //             $errTenDangNhap = 'Bạn không được để trống tên đăng nhập';
+                //         }
+                //         if(!$email){
+                //             $isCheck = false;
+                //             $errEmail = 'Bạn không được để trống email';
+                //         }
+                //         if(!$ho_va_ten){
+                //             $isCheck = false;
+                //             $errName = 'Bạn không được để trống họ tên';
+                //         }
+                //         if(!$so_dien_thoai){
+                //             $isCheck = false;
+                //             $errSdt = 'Bạn không được để trống số điện thoại';
+                //         }
+                //         if(!$dia_chi){
+                //             $isCheck = false;
+                //             $errDiaChi = 'Bạn không được để trống địa chỉ';
+                //         }
+                        
+                //         if($isCheck){
+                //             $target_dir='./uploads/';
+                //             $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
+                //             if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                //                 update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro);                                $thongbao = "Thêm thành công";
+                //             } else {
+                //                 // echo "Sorry, there was an error uploading your file.";
+                //             }
+                //         }else{
+                //             $thongbao="Thêm thất bại";
+                //         }
+                        
+                //     }
+
+                //     include "nguoidung/update.php";
+                //     break;  
+
+                case 'updatetk':
+                    if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        if(isset($_POST['id_nguoi_dung'], $_POST['ten_dang_nhap'], $_POST['email'],$_POST['ho_va_ten'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
+                            $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                            $ten_dang_nhap = isset($_POST['ten_dang_nhap']) ? $_POST['ten_dang_nhap'] : '';
+                            $email = isset($_POST['email']) ? $_POST['email'] : '';
+                            $so_dien_thoai = isset($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : '';
+                            $ho_va_ten = isset($_POST['ho_va_ten']) ? $_POST['ho_va_ten'] : '';
+                            $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
+                            $vai_tro = isset($_POST['vai_tro']) ? $_POST['vai_tro'] : ''; 
+                            $hinh_anh = $_FILES['hinh_anh']['name'];
+                            $target_dir="./uploads/";
+                            $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                            if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                                // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " đã Uploads.";
+                            } else {
+                                //echo "Không Uploads được file";
+                            }                   
+                            update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro);
+                            // $_SESSION['nguoidung'] = checkuser($ten_dang_nhap, $mat_khau);
+                            $thongbao = "Chỉnh sửa tài khoản thành công!";
+                            header('Location: index.php?act=listtk');           
+                        }else{
+                            echo 'Không update được';
+                        }
+                    }      
+                    // include "views/nguoidung/update.php";
+                    break;
+
         }
     }
     else{

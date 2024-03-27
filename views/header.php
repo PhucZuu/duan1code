@@ -13,6 +13,10 @@
 
   <link rel="shortcut icon" href="./assets/img/logo.svg" type="image/x-icon">
 
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="./fontawesome-free/css/all.min.css">
+
   <title>Evara Website</title>
 </head>
 
@@ -26,11 +30,37 @@
         </div>
         <p class="header__alert-news">
         </p>
-        <a href="index.php?act=dangnhap" class="header__top-action">
-          Đăng nhập
-        </a>
+          <?php
+            if(isset($_SESSION['nguoidung'])){
+              extract( $_SESSION['nguoidung']);
+          ?>
+              <div class="relative" onclick="toggleDropdown()">
+                <div class="flex mr-4">
+                  <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt="">
+                  <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
+                </div>
+                <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-28 bg-white rounded-md shadow-md z-10">
+                    <div class="grid-cols-1">
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm" href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm" href="index.php?act=thoat">Đăng xuất</a>
+                    </div>
+                </ul>
+              </div>
+              <?php
+                  }else{
+              ?>
+            <div class="m-7 mr-3 md:mr-7 md:m-0 flex ">
+                <a href="index.php?act=dangnhap"
+                    class="flex text-2xl text-green-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center cursor-pointer">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+            <?php } ?>
+      
       </div>
     </div>
+
+
 
     <nav class="nav container">
       <a href="index.php" class="nav__logo">
@@ -60,12 +90,16 @@
           </li>
 
           <li class="nav__item">
-            <a href="" class="nav__link">Tài khoản</a>
+            <a href="index.php?act=taikhoan" class="nav__link">Tài khoản</a>
           </li>
 
           <li class="nav__item">
-            <a href="index.php?act=dangky" class="nav__link">Đăng ký</a>
+            <a href="index.php?act=gioithieu" class="nav__link">Giới thiệu</a>
           </li>
+
+          <!-- <li class="nav__item">
+            <a href="index.php?act=dangky" class="nav__link">Đăng ký</a>
+          </li> -->
         </ul>
         
         <!-- THANH TÌM KIẾM -->
