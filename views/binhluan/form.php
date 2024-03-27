@@ -62,11 +62,11 @@ $listbinhluan = loadAll_binhluan($idpro);
     if(isset($_POST['guibinhluan']) && $_POST['guibinhluan']){
         $id_sanpham = $_POST['idpro'];
         $noi_dung = $_POST['noi_dung'];
-        $id_nguoidung = 1; // Đây là ID của người dùng đã đăng nhập
+        $id_nguoidung = $_SESSION['nguoidung']['id_nguoi_dung'];
         $ngay_binh_luan = date('Y-m-d');
-        
+        // echo $id_nguoidung; die();
         insert_binhluan($noi_dung, $id_nguoidung, $id_sanpham, $ngay_binh_luan);
-        header("Location: " . $_SERVER['HTTP_REFERER']);
+        header("Location: ". $_SERVER['HTTP_REFERER']);
     }
     ?>
 </body>

@@ -106,9 +106,11 @@
       <p class="copyright">&copy; 2024 Group 6. All right reserved</p>
       <span class="designer">Designer by Group 6</span>
     </div>
-
+    
+    <script src="../assets/js/main.js"></script>
+    <script src="./assets/js/taikhoan.js"></script>
   </footer>
-
+  
 </body>
 
 </html>

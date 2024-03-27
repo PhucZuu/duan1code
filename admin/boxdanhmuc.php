@@ -21,7 +21,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-user"></i><a href="#">Người dùng</a>
+            <i class="fa-solid fa-user"></i><a href="index.php?act=listtk">Người dùng</a>
           </p>
 
           <p class="account__tab admlist">
