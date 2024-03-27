@@ -10,8 +10,8 @@
         </p>
 
         <form action="" class="newsletter__form">
-          <input type="text" class="newsletter__input" placeholder="Enter your email">
-          <button type="submit" class="newletter__btn">Subscribe</button>
+          <input type="text" class="newsletter__input" placeholder="Nhập email của bạn">
+          <button type="submit" class="newletter__btn">Đăng ký</button>
         </form>
       </div>
 

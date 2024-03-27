@@ -64,13 +64,22 @@
         return $sanpham;
     }
     function loadOne_pro($id_sanpham){
-        $sql="SELECT ten_san_pham,gia,giam_gia,mo_ta,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
+        $sql="SELECT id_sanpham,ten_san_pham,gia,giam_gia,mo_ta,luot_xem,hinh_anh,id_danhmuc FROM bienthe JOIN sanpham ON bienthe.id_sanpham=sanpham.id_san_pham WHERE id_sanpham=$id_sanpham";
         $sanpham=pdo_query_one($sql);
         return $sanpham;
     }
     // lấy ra màu
     function getAllColorsById($id_sanpham){
         $sql="SELECT DISTINCT id_mau_sac,ten_mau_sac,ma_mau FROM bienthe JOIN mausac ON mausac.id_mau_sac=bienthe.id_mausac WHERE id_sanpham=$id_sanpham";
+        $sanpham=pdo_query($sql);
+        return $sanpham;
+    }
+    // lấy size của color
+    function getAllSizesOfColor($id_sanpham,$id_color){
+        $sql="SELECT bienthe.*, ten_mau_sac, ten_kich_co FROM `bienthe` 
+        JOIN mausac ON bienthe.id_mausac = mausac.id_mau_sac 
+        JOIN kichco ON kichco.id_kich_co=bienthe.id_kichco 
+        WHERE bienthe.id_mausac=$id_color AND id_sanpham=$id_sanpham";
         $sanpham=pdo_query($sql);
         return $sanpham;
     }
@@ -81,12 +90,15 @@
         return $sanpham;
     }
     function loadOthers_pro($id_sanpham,$id_danhmuc){
-        $sql="SELECT DISTINCT ten_san_pham,hinh_anh,gia,giam_gia,id_sanpham,id_danhmuc,id_san_pham,ten_danh_muc FROM bienthe 
-        JOIN sanpham ON sanpham.id_san_pham=bienthe.id_sanpham 
-        JOIN danhmuc ON sanpham.id_danhmuc=danhmuc.id_danh_muc 
-        WHERE id_sanpham<>$id_sanpham AND id_danhmuc=$id_danhmuc";
+        $sql="SELECT id_san_pham,ten_san_pham,hinh_anh,ten_danh_muc FROM sanpham JOIN danhmuc ON danhmuc.id_danh_muc=sanpham.id_danhmuc WHERE sanpham.kich_hoat=1 
+        AND id_san_pham<>$id_sanpham AND id_danhmuc=$id_danhmuc";
         $list=pdo_query($sql);
         return $list;
+    }
+    function loadPriceVariantOthers($id_sanpham){
+        $sql = "SELECT id_bien_the,gia, giam_gia FROM bienthe WHERE id_sanpham=$id_sanpham ORDER BY gia DESC";
+        $variant = pdo_query_one($sql);
+        return $variant;
     }
     function update_product($id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta){
         if($hinh_anh!=""){
@@ -156,4 +168,24 @@
         // die();
         return $ten_danh_muc;
     }
+
+    function view($id_sanpham){
+        $sql = "UPDATE sanpham SET luot_xem=luot_xem+1 WHERE id_san_pham=$id_sanpham";
+        pdo_execute($sql);
+    }
+    
+    function hot() {
+        $sql = "SELECT id_san_pham
+                FROM sanpham
+                ORDER BY luot_xem DESC
+                LIMIT 3;
+                ";
+        $hot = pdo_query($sql);
+        $result = array();
+        foreach ($hot as $row) {
+            $result[] = $row['id_san_pham'];
+        }
+        return $result;
+    }
+    
 ?>

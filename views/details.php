@@ -2,16 +2,24 @@
     <section class="breadcrumb">
       <ul class="breadcrumb__list flex container">
         <?php 
-        extract($onePro); 
-        $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
-        
+        extract($onePro);
+        // echo $id_sanpham; die();
+        // kiểm tra xem người dùng có chọn vào các thuộc tính sản phẩm
+        $get_id_color=null;
+        $get_id_size=null;
+        if(isset($_GET['idcolor'])&&isset($_GET['idsize'])){
+          $get_id_color=$_GET['idcolor'];
+          $get_id_size=$_GET['idsize'];
+        }
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
         <li><span class="breadcrumb__link">></span></li>
         <li><span class="breadcrumb__link"></span></li>
+        
       </ul>
     </section>
     <section class="details section--lg">
+      
     <?php 
     echo '
     <div class="details__container container grid ac">
@@ -46,115 +54,83 @@
           <i class="fa-regular fa-credit-card"></i>Thanh toán trực tuyến
         </li>
       </ul>
-      
-      <div class="details__color flex">
-        <span class="details__color-title">Màu sắc</span>
 
-        <ul class="color__list">';
-          foreach($colors as $color){
-            extract($color); 
-            echo '
-              <li>
-                <a href="#" class="color__link" style="background-color: '.$ma_mau.';"></a>
-              </li>
-            ';
-          }
-        echo '</ul>
-      </div>';
+      <form action="index.php?act=chooseColor&idpro='.$id_sanpham.'" method="post" id="form_color">
+
+        <div class="details__color flex">
+          <span class="details__color-title">Màu sắc</span>
+          
+          <ul class="color__list">';
+          $id_color='';
+            if(isset($_GET['idcolor'])){
+              $id_color=$_GET['idcolor'];
+            }
+            foreach($colors as $color){
+              extract($color); 
+              echo '
+                <li>
+                  <input type="radio" '.($id_color==$id_mau_sac?"checked":"").' name="colors" onclick="return this.form.submit()" class="colors" value='.$id_mau_sac.'><label class="showColor" style="background-color:'.$ma_mau.';"></label>
+                </li>
+              ';
+            }
+          echo '</ul>
+        </div>';
 
       echo '
       <div class="details__size flex">
         <span class="details__size-title">Kích cỡ</span>
         
         <ul class="size__list">';
+          $id_size='';
+          if(isset($_GET['idsize'])){
+            $id_size=$_GET['idsize'];
+          }
           foreach($sizes as $size){
             extract($size); 
             echo '
             <li>
-              <a href="#" class="size__link">'.$ten_kich_co.'</a>
+              <input type="radio" name="sizes" '.($id_size==$id_kichco?"checked":"").' onclick="return this.form.submit()" value="'.$id_kichco.'" id=""><label>'.$ten_kich_co.'</label>
             </li>
             ';
           }
           
 
         echo '
-      </div>
-
-      <div class="details__action">
-        <input type="number" name="" id="" class="quantity" min="1" step="1" value="1">
-
-        <a href="#" class="btn btn-sm">Add to Cart</a>
-
-        <!-- <a href="#" class="details__action-btn details__action-btn--color">
-          <i class="fa-solid fa-heart"></i>
-        </a> -->
+        </form>
       </div>
 
       
 
+      <div class="details__action">
+      
+      <form action="index.php?act=addToCart" method="post">
+        <input type="number" name="quantity" id="" class="quantity" min="1" step="1" value="1">
+        <input type="hidden" name="id_sanpham" id="" class="quantity" min="1" step="1" value="'.$id_sanpham.'">
+        <input type="hidden" name="id_mausac" id="" class="quantity" min="1" step="1" value="'.$get_id_color.'">
+        <input type="hidden" name="id_kichco" id="" class="quantity" min="1" step="1" value="'.$get_id_size.'">
+        <input type="submit" class="btn btn-sm" value="Thêm vào giỏ hàng" name="addToCart" '.($get_id_color?($get_id_size?"":"disabled"):"disabled").'>
+
+      </div>
+      </form>
+      
+
     </div>
   </div>';
+  
     ?>
+    
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      $("#binhluan").load("views/binhluan/form.php", {idpro: <?= $id_sanpham?>});
+    });
+
+    </script>
+
+
     <!-- BÌNH LUẬN -->
-    <section class="details__tab container">
-      <div class="detail__tabs">
-        <span class="detail__tab active-tab">
-          Bình luận
-        </span>
-      </div>
-
-      <div class="details__tabs-content">
-        <div class="details__tab-content active-tab">
-          <div class="cart__comment">
-            <div class="comments">
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-1.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">John Doe</span>
-                    <span class="timestamp">2 hours ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting!</p>
-                </div>
-              </div>
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-3.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">Kim Doe</span>
-                    <span class="timestamp">3 hours ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting! It's really interesting! It's really interesting! It's really interesting!
-                    It's really interesting! It's really interesting! It's really interesting!
-                  </p>
-                </div>
-              </div>
-              <div class="comment">
-                <div class="avatar"><img src="/assets/img/avatar-2.jpg" alt="Avatar"></div>
-                <div class="comment-content">
-                  <div class="comment-header">
-                    <span class="username">Emma Stone</span>
-                    <span class="timestamp">2 weeks ago</span>
-                  </div>
-                  <p class="comment-text">This is a comment on the post. It's really interesting!</p>
-                </div>
-              </div>
-            </div>
-            <form action="" class="comment__form form grid">
-              <div class="form__group">
-                <input type="text" class="form__input" placeholder="Viết bình luận">
-                <div class="form__btn">
-                  <button class="btn flex btn--sm">
-                    <i class="fa-solid fa-comment"></i> Gửi
-                  </button>
-                </div>
-              </div>
-            </form>
-            
-          </div>
-
-        </div>
+    <section class="details__tab container" id="binhluan">
 
     </section>
 
@@ -165,8 +141,13 @@
 
         <!-- sẢN PHẨM -->
       <?php 
+      $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
       foreach ($othersPro as $others){
         extract($others);
+        $variant_price_others = loadPriceVariantOthers($id_san_pham);
+        $id_bien_the=$variant_price_others['id_bien_the'];
+        $gia = $variant_price_others['gia'];
+        $giam_gia = $variant_price_others['giam_gia'];
         $linkPro = "index.php?act=details&idpro=".$id_san_pham;
       echo '
       <div class="product__item">
@@ -183,7 +164,7 @@
 
       <div class="product_content">
         <span class="product__category">'.$ten_danh_muc.'</span>
-        <a href="details.html">
+        <a href="'.$linkPro.'">
           <h3 class="product__title">'.$ten_san_pham.'</h3>
         </a>
         
@@ -193,7 +174,7 @@
         </div>
 
         <!-- THÊM VÀO GIỎ -->
-        <a href="#" class="action__btn cart__btn" aria-lable="Add To Cart">
+        <a href="index.php?act=addToCart&idbt='.$id_bien_the.'" class="action__btn cart__btn" aria-lable="Thêm vào giỏ hàng">
           <i class="fa-solid fa-shop"></i>
         </a>
       </div>
@@ -204,5 +185,5 @@
 
       </div>
     </section>
-
+    
   </main>

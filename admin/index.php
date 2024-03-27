@@ -5,6 +5,7 @@
     include_once '../models/danhMuc.php';
     include_once '../models/SanPham.php';
     include_once '../models/taikhoan.php';
+    include_once '../models/binhLuan.php';
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -336,75 +337,7 @@
                     }
                     include "nguoidung/update.php";
                     break;
-                // case "updatetk":
-                //     $ten_dang_nhap = "";
-                //     $email = "";
-                //     $ho_va_ten = "";
-                //     $hinh_anh = "";
-                //     $so_dien_thoai = "";
-                //     $dia_chi = "";
-                //     $vai_tro = "";
-
-                //     $errTenDangNhap = "";
-                //     $errEmail = "";
-                //     $errImage = "";
-                //     $errName = "";
-                //     $errSdt = "";
-                //     $errDiaChi = "";
-
-                //     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                //         echo '<pre>';
-                //         print_r($_POST);
-                //         print_r($_FILES);
-                //         echo '</pre>';
-
-                //         $ten_dang_nhap = $_POST["ten_dang_nhap"];
-                //         $email = $_POST["email"];
-                //         $ho_va_ten = $_POST["ho_va_ten"];
-                //         $hinh_anh = $_FILES['hinh_anh']['name'];
-                //         $so_dien_thoai = $_POST["so_dien_thoai"];
-                //         $dia_chi = $_POST["dia_chi"];
-                //         $vai_tro = $_POST["vai_tro"];
-                //         $id_nguoi_dung = $_POST["id_nguoi_dung"];
-
-                //         $isCheck = true;
-                //         if(!$ten_dang_nhap){
-                //             $isCheck = false;
-                //             $errTenDangNhap = 'Bạn không được để trống tên đăng nhập';
-                //         }
-                //         if(!$email){
-                //             $isCheck = false;
-                //             $errEmail = 'Bạn không được để trống email';
-                //         }
-                //         if(!$ho_va_ten){
-                //             $isCheck = false;
-                //             $errName = 'Bạn không được để trống họ tên';
-                //         }
-                //         if(!$so_dien_thoai){
-                //             $isCheck = false;
-                //             $errSdt = 'Bạn không được để trống số điện thoại';
-                //         }
-                //         if(!$dia_chi){
-                //             $isCheck = false;
-                //             $errDiaChi = 'Bạn không được để trống địa chỉ';
-                //         }
-                        
-                //         if($isCheck){
-                //             $target_dir='./uploads/';
-                //             $target_file= $target_dir . basename($_FILES['hinh_anh']['name']);
-                //             if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                //                 update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro);                                $thongbao = "Thêm thành công";
-                //             } else {
-                //                 // echo "Sorry, there was an error uploading your file.";
-                //             }
-                //         }else{
-                //             $thongbao="Thêm thất bại";
-                //         }
-                        
-                //     }
-
-                //     include "nguoidung/update.php";
-                //     break;  
+                 
 
                 case 'updatetk':
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
@@ -435,6 +368,19 @@
                     // include "views/nguoidung/update.php";
                     break;
 
+                case 'listbl':
+                    $listbinhluan = loadAll_binhluan(0);
+                    include 'binhluan/list.php';
+                    break;
+                case 'xoabl':
+                    if(isset($_GET['id_binh_luan'])&&(($_GET['id_binh_luan'])>0)){
+                        $id_binh_luan = $_GET['id_binh_luan'];
+                        // echo $id_binh_luan; die;
+                        delete_binhluan($id_binh_luan);
+                    }
+                    $listbinhluan = loadAll_binhluan(0);
+                    include "binhluan/list.php";
+                    break;
         }
     }
     else{

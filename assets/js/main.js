@@ -6,3 +6,5 @@ navList.forEach(list => {
         list.classList.add('active-tab');
     })
 })
+
+const cart=document.querySelector()
