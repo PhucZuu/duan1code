@@ -19,37 +19,4 @@
         $variant = pdo_query_one($sql);
         return $variant;
     }
-    function viewCart(){
-        foreach($_SESSION['myCart'] as $key=>$value){
-            $hinh="./uploads/".$value[5];
-            $gia=null;
-            if($value[2]!=0?$gia=($value[1] * ((100 - $value[2]) / 100)):$gia=$value[1]);
-            $thanhtien=$value[3]*$gia;
-
-
-            echo '
-            <tr>
-            <td>
-              <img src="'.$hinh.'" alt="" class="table__img">
-            </td>
-    
-            <td>
-              <h3 class="table__title">'.$value[4].'</h3>
-            </td>
-    
-            <td><span class="table__price">'.$gia.'</span></td>
-    
-            <td><input type="number" value="'.$value[3].'" class="quantity"></td>
-    
-            <td>
-              <span>
-                <div class="table__subtotal">'.$thanhtien.'</div>
-              </span>
-            </td>
-    
-            <td><i class="fa-solid fa-trash-can"></i></td>
-            </tr>
-            ';
-        }
-    }
 ?>
