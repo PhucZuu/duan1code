@@ -128,10 +128,19 @@
             header('Location: index.php?act=viewCart');
             break;
         case 'checkout':
+
             $ten_nguoi_dung='';
             $so_dien_thoai='';
             $dia_chi='';
             $email='';
+
+            $errName='';
+            $errPhone="";
+            $errAddress='';
+            $errEmail='';
+            $errPay='';
+            
+
             if(isset($_SESSION['nguoidung'])){
                 $ten_nguoi_dung=$_SESSION['nguoidung']['ho_va_ten'];
                 $so_dien_thoai=$_SESSION['nguoidung']['so_dien_thoai'];
@@ -146,7 +155,65 @@
             include 'views/giohang/checkout.php';
             break;
         case 'checkoutConfirm':
+            $ten_nguoi_dung='';
+            $so_dien_thoai='';
+            $dia_chi='';
+            $email='';
             
+
+            $errName='';
+            $errPhone="";
+            $errAddress='';
+            $errEmail='';
+            if(isset($_POST['checkoutConfirm'])&&($_POST['checkoutConfirm'])){
+                $ho_va_ten=trim($_POST['ho_va_ten']);
+                $so_dien_thoai=trim($_POST['so_dien_thoai']);
+                $dia_chi=trim($_POST['dia_chi']);
+                $email=trim($_POST['email']);
+                $payment=$_POST['payment'];
+                $tong_thanh_tien=totalPriceOrders();
+                $check=true;
+                // echo $tong_thanh_tien;
+                // die;
+                if (!$ho_va_ten) {
+                    $errName="Nhập tên người nhận hàng";
+                    $check=false;
+                }
+                if (!$so_dien_thoai) {
+                    $errPhone="Nhập số điện thoại người nhận hàng";
+                    $check=false;
+                }
+                if (!$dia_chi) {
+                    $errAddress="Nhập địa chỉ nhận hàng";
+                    $check=false;
+                }
+                if (!$email) {
+                    $errEmail="Nhập email người nhận hàng";
+                    $check=false;
+                }
+                if (!$payment) {
+                    $errPay="Chọn phương thức thanh toán";
+                    $check=false;
+                }
+                if ($check) {
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,$payment,$tong_thanh_tien);
+                    foreach($_SESSION['myCart'] as $product){
+                        $id_bienthe=$product[0];
+                        $gia=$product[1];
+                        $so_luong=$product[2];
+                        $thanh_tien=$product[7];
+                        addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
+                    }
+                    // cập nhật lại giỏ hàng
+                    unset($_SESSION['myCart']);
+                    if($payment=='2'){
+                        checkOutOnline($tong_thanh_tien,$id_donhang);
+                    }
+                    header("Location: http://localhost/duan1code/views/thankyou.php");
+                }else{
+                    include 'views/giohang/checkout.php';
+                }
+            }
             break;
         case 'deleteProductInCart':
             if(isset($_GET['idProductInCart'])){

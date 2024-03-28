@@ -427,6 +427,28 @@ table {
 .btn--sm {
   font-family: var(--body-font);
 }
+.boxthank{
+  border: 1px solid #088179;
+  width: 800px;
+  height: 400px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 25px;
+  align-items: center;
+
+}
+.followOrder{
+  color: #088179;
+  font-size: large;
+}
+.thankforpurchase{
+  margin: 5px 0px;
+  line-height: 30px;
+}
+.thankforpurchase h3{
+  font-size: 25px;
+  color: #088179;
+}
 
 .error{
   color: red;

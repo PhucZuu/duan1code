@@ -14,13 +14,13 @@
         <h3 class="section__title">Chi tiết đơn hàng</h3>
 
         <form action="index.php?act=checkoutConfirm" method="post" class="form grid">
-        <input type="text" class="form__input" name='ho_va_ten' placeholder="Họ và tên" value="<?= $ten_nguoi_dung?>">
+        <input type="text" class="form__input" name='ho_va_ten' placeholder="Họ và tên" value="<?= $ten_nguoi_dung?>"><span class="error"><?= $errName?></span>
 
-        <input type="text" class="form__input" name="so_dien_thoai" placeholder="Số điện thoại" value="<?= $so_dien_thoai?>">
+        <input type="text" class="form__input" name="so_dien_thoai" placeholder="Số điện thoại" value="<?= $so_dien_thoai?>"><span class="error"><?=$errPhone?></span>
         
-        <input type="text" class="form__input" name="dia_chi" placeholder="Địa chỉ" value="<?= $dia_chi?>">
+        <input type="text" class="form__input" name="dia_chi" placeholder="Địa chỉ" value="<?= $dia_chi?>"><span class="error"><?= $errAddress?></span>
 
-        <input type="text" class="form__input" name="email" placeholder="Email" value="<?= $email?>">
+        <input type="text" class="form__input" name="email" placeholder="Email" value="<?= $email?>"><span class="error"><?= $errEmail?></span>
 
         <h3 class="checkout__title">Thông tin thêm</h3>
 
@@ -74,20 +74,20 @@
         <h3 class="checkout__title payment__title">Phương thức thanh toán</h3>
 
         <div class="payment__option flex">
-            <input type="radio" name="recive" value="1" class="payment__input">
+            <input type="radio" name="payment" value="1" class="payment__input" checked>
             <label for="" class="payment__label">Thanh toán khi nhận hàng</label>
         </div>
 
         <div class="payment__option flex">
-            <input type="radio" name="momo" value="2" class="payment__input">
-            <label for="" class="payment__label">Thanh toán qua MOMO</label>
+            <input type="radio" name="payment" value="2" class="payment__input">
+            <label for="" class="payment__label">Thanh toán qua VNPay</label>
         </div>
 
-        <div class="payment__option flex">
+        <!-- <div class="payment__option flex">
             <input type="radio" name="vnpay" class="payment__input">
             <label for="" class="payment__label">Paypal</label>
-        </div>
-        <input type="submit" class="btn btn--md" value="Xác nhân thanh toán">
+        </div> -->
+        <input type="submit" name="checkoutConfirm" class="btn btn--md" value="Xác nhân thanh toán">
         <!-- <button class="btn btn--md"><a href="#" class="checkoutConfirm">Xác nhận thanh toán</a></button> -->
 
         </div>

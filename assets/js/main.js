@@ -7,5 +7,3 @@ navList.forEach(list => {
     })
 })
 
-const quantity=document.querySelector('.quantityProductCart');
-quantity.addEventListener('change');
