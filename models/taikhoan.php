@@ -71,4 +71,23 @@
         echo $sql;
         pdo_execute($sql);
     }
+
+    function kiemTraMatKhauHienTai($id_nguoi_dung,$mat_khau){
+        $sql = "SELECT * FROM nguoidung WHERE id_nguoi_dung = '$id_nguoi_dung' AND mat_khau = '$mat_khau'";
+        $result = pdo_query_one($sql);
+        if ($result) {
+            return true; // Mật khẩu hiện tại chính xác
+        } else {
+            return false; // Mật khẩu hiện tại không chính xác
+        }
+    }
+
+    function capNhatMatKhauMoi($id_nguoi_dung,$mat_khau_moi){
+        $sql = "UPDATE nguoidung SET mat_khau = '$mat_khau_moi' WHERE id_nguoi_dung = '$id_nguoi_dung'";
+        $mk = pdo_query_one($sql);
+        return $mk;
+    }
+
+   
+
 ?>
