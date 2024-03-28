@@ -498,7 +498,37 @@ table {
   left: initial;
   right: 3rem;
 }
-
+.priceOrders{
+  color: rgb(33, 167, 33);
+}
+.removeProduct{
+  cursor: pointer;
+}
+.emptyCart{
+  text-align: center;
+}
+.imgEmpty{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 350px;
+}
+.checkoutConfirm{
+  color: white;
+}
+.imgEmpty img{
+  width: 350px;
+  height: 350px;
+}
+.back{
+  text-decoration: underline;
+}
+.totalProductPrice{
+  text-align: right;
+}
+.totalPrice{
+  color: var(--first-color);
+}
 .swiper-button-next {
   right: 2px;
 }

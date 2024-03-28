@@ -10,64 +10,83 @@
   </ul>
 </section>
 
+<?php if (count($_SESSION['myCart'])>0) { ?>
+    <section class="cart section--lg container">
+      <div class="table__container">
+        <table class="table">
+          <tr>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+            <th>Xóa</th>
+          </tr>
+    
+          <?php
+            $priceOrders=null;
+            foreach($_SESSION['myCart'] as $key=>$value){
+                $hinh="./uploads/".$value[4];
+                $thanhtien=$value[2]*$value[1];
+                $priceOrders+=$thanhtien;
+    
+                echo '
+                <tr>
+                <td>
+                  <img src="'.$hinh.'" alt="" class="table__img">
+                </td>
+        
+                <td>
+                  <h3 class="table__title">'.$value[3].'</h3>
+                  <span class="table_color">Màu sắc: '.$value[6].'</span><br>
+                  <span class="table_size">Kích cỡ: '.$value[5].'</span>
+                </td>
+        
+                <td><span class="table__price">$'.$value[1].'</span></td>
+        
+                <td><input type="number" min="1" step="1" value="'.$value[2].'" class="quantity"></td>
+        
+                <td>
+                  <span>
+                    <div class="table__subtotal">$'.$thanhtien.'</div>
+                  </span>
+                </td>
+        
+                <td><a class="removeProduct" href="index.php?act=deleteProductInCart&idProductInCart='.$key.'"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
+                ';
+            }
+          ?>
+    
+        </table>
+        <div class="totalProductPrice">
+          <h3 class="totalPrice">Tổng thành tiền</h3>
+          <span class="priceOrders">$<?=$priceOrders?$priceOrders:0?></span>
+        </div>
+      </div>
+    
+      <div class="cart__actions">
+    
+        <a href="index.php" class="btn flex btn--md">
+          <i class="fa-solid fa-bag-shopping"></i> Tiếp tục mua hàng
+        </a>
+        <a href="<?= $priceOrders?'index.php?act=checkout':""?>" class="btn flex btn--md">
+            <i class="fa-solid fa-box"></i> Đặt hàng
+          </a>
+      </div>
+    
+    </section>
+    
+  <?php }else{?>
+    <section class="cart section--lg container emptyCart">
+      <h3>Bạn chưa chọn sản phẩm nào</h3>
+      <div class="imgEmpty">
+        <img src="./assets/img/emptycart.png" alt="emptyImage">
+      </div>
+      <span>Hãy nhanh tay chọn ngay những sản phẩm yêu thích. </span><a class="back" href="index.php">Tiếp tục mua hàng</a>
+      
+    </section>
 
-<section class="cart section--lg container">
-  <div class="table__container">
-    <table class="table">
-      <tr>
-        <th>Hình ảnh</th>
-        <th>Tên sản phẩm</th>
-        <th>Giá</th>
-        <th>Số lượng</th>
-        <th>Tổng</th>
-        <th>Xóa</th>
-      </tr>
-
-      <?php
-        viewCart();
-      ?>
-
-    </table>
-  </div>
-
-  <div class="cart__actions">
-
-    <a href="index.php" class="btn flex btn--md">
-      <i class="fa-solid fa-bag-shopping"></i> Tiếp tục mua hàng
-    </a>
-  </div>
-
-  <div class="divider">
-    <i class="fa-solid fa-fingerprint"></i>
-  </div>
-
-  <div class="cart__group grid">
-
-    <div class="cart__total">
-      <h3 class="section__title">Tổng giỏ hàng</h3>
-
-      <table class="cart__total-table">
-        <tr>
-          <td><span class="card__total-title">Tổng thành tiền</span></td>
-          <td><span class="card__total-price">$240.00</span></td>
-        </tr>
-
-        <tr>
-          <td><span class="card__total-title">Phí vận chuyển</span></td>
-          <td><span class="card__total-price">$10.00</span></td>
-        </tr>
-
-        <tr>
-          <td><span class="card__total-title">Tổng</span></td>
-          <td><span class="card__total-price">$250.00</span></td>
-        </tr>
-      </table>
-
-      <a href="checkout.html" class="btn flex btn--md">
-        <i class="fa-solid fa-box"></i> Đặt hàng
-      </a>
-    </div>
-  </div>
-</section>
+  <?php } ?>
 
 </main>
