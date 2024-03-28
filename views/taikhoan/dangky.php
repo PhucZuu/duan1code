@@ -24,7 +24,7 @@
         <span style="color:red"><?= $errDiaChi ?></span>
 
         <div class="form__btn">
-          <input type="submit" class="btn2" value="Đăng ký" name="dangky">
+          <input type="submit" class="btn" value="Đăng ký" name="dangky">
         </div>
       </form><br>
       <h2 class="thongbao">

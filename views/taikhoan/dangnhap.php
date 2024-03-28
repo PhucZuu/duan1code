@@ -12,7 +12,7 @@
                 <span style="color:red"><?= $errPass ?></span>
 
                 <div class="form__btn">
-                        <input type="submit" class="btn2" value="Đăng nhập" name="dangnhap">
+                        <input type="submit" class="btn" value="Đăng nhập" name="dangnhap">
                 </div>
             </form>
             

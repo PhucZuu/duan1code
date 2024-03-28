@@ -20,7 +20,7 @@
 
         <div class="form__btn">
             <input type="hidden" name="id_nguoi_dung" value="<?= $id_nguoi_dung ?>">
-          <input type="submit" class="btn2" value="Cập nhật" name="capnhat">
+          <input type="submit" class="btn" value="Cập nhật" name="capnhat">
         </div>
       </form><br>
       <h2 class="thongbao">

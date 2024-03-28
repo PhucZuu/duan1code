@@ -17,6 +17,7 @@
     include_once './models/giohang.php';
     include_once './models/danhMuc.php';
     include_once './models/taikhoan.php';
+    include_once './models/binhluan.php';
     // Điều hướng
     include_once './views/header.php';
     $products = loadAllPro();
@@ -312,12 +313,35 @@
             }      
             include "views/taikhoan/updatetk.php";
             break;
-
-            
+            case "editmk":
+                if (isset($_POST['doimk'])) {
+                    // Lấy dữ liệu từ biểu mẫu
+                    $mat_khau = $_POST['mat_khau'];
+                    $mat_khau_moi = $_POST['mat_khau_moi'];
+                    $xac_nhan_mk = $_POST['xac_nhan_mk'];
+                    $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                    
+                    // Kiểm tra xem mật khẩu hiện tại có khớp với mật khẩu trong cơ sở dữ liệu hay không
+                    if (!kiemTraMatKhauHienTai($id_nguoi_dung,$mat_khau)) {
+                        $thongbao = "Mật khẩu hiện tại không chính xác.";
+                    }
+                    // // Kiểm tra xem mật khẩu mới và xác nhận mật khẩu có khớp nhau hay không
+                    elseif ($mat_khau_moi != $xac_nhan_mk) {
+                        $thongbao = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                    }
+                    // Tiến hành cập nhật mật khẩu mới
+                    else {
+                        // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
+                        capNhatMatKhauMoi($id_nguoi_dung,$mat_khau_moi);
+                        
+                        $thongbao = "Thay đổi mật khẩu thành công.";
+                    }
+                }
+                include "views/taikhoan/editmk.php";
+            break;
             case "gioithieu":
                 include "views/gioithieu.php";
                 break;
-
            
         default:
             # code...
