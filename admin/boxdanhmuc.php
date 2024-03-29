@@ -5,7 +5,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-layer-group"></i><a href="index.php?act=adddm">Danh mục</a>
+            <i class="fa-solid fa-layer-group"></i><a href="index.php?act=listdm">Danh mục</a>
           </p>
 
           <p class="account__tab admlist">
