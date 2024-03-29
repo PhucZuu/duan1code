@@ -1,11 +1,34 @@
-<?php 
+<?php
 session_start();
 include_once '../../models/binhluan.php';
 include_once '../../models/pdo.php';
 
 $idpro = $_REQUEST['idpro'];
+$errNoi_dung = "";
 
 $listbinhluan = loadAll_binhluan($idpro);
+
+if(isset($_POST['guibinhluan']) && $_POST['guibinhluan']){
+    $isCheck = true;
+    $id_sanpham = $_POST['idpro'];
+    $noi_dung = $_POST['noi_dung'];
+    $trimp_noi_dung = trim($noi_dung);
+    $id_nguoidung = isset($_SESSION['nguoidung']['id_nguoi_dung']) ? $_SESSION['nguoidung']['id_nguoi_dung'] : null;
+    $ngay_binh_luan = date('Y-m-d');
+
+    if(!$trimp_noi_dung){ 
+        $isCheck = false;
+        $errNoi_dung = "Bạn không được để trống bình luận";
+        header("Location: ". $_SERVER['HTTP_REFERER']);
+    }
+
+    if($isCheck){
+        insert_binhluan($noi_dung, $id_nguoidung, $id_sanpham, $ngay_binh_luan);
+        header("Location: ". $_SERVER['HTTP_REFERER']);
+        exit(); 
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +52,7 @@ $listbinhluan = loadAll_binhluan($idpro);
                 <?php foreach ($listbinhluan as $bl) : ?>
                     <div class="comments">
                         <div class="comment">
-                            <div class="avatar"><img src="./uploads/<?= $bl['hinh_anh'] ?>" alt="Avatar"></div>
+                            <div class="avatar"><img style="object-fit: cover;" src="./uploads/<?= $bl['hinh_anh'] ?>" alt="Avatar"></div>
                             <div class="comment-content">
                                 <div class="comment-header">
                                     <span class="username"><?= $bl['ho_va_ten'] ?></span>
@@ -45,11 +68,12 @@ $listbinhluan = loadAll_binhluan($idpro);
                     <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="comment__form form grid">
                         <div class="form__group">
                             <input type="hidden" name="idpro" value="<?= $idpro ?>">
-                            <input type="text" class="form__input" name="noi_dung" placeholder="Viết bình luận">
+                            <input type="text" class="form__input" name="noi_dung" id="comments" placeholder="Viết bình luận">
                             <div class="form__btn">
-                                <input type="submit" name="guibinhluan" value="Gửi" class="btn flex btn--sm">
+                                <input type="submit" id="btnsub" name="guibinhluan" value="Gửi" class="btn flex btn--sm">
                             </div>
                         </div>
+                        <span style="color:red"><?= $errNoi_dung ?></span>
                     </form>
                 <?php else : ?>
                     <p>Bạn cần đăng nhập để bình luận</p>
@@ -58,16 +82,5 @@ $listbinhluan = loadAll_binhluan($idpro);
         </div>
     </div>
 
-    <?php 
-    if(isset($_POST['guibinhluan']) && $_POST['guibinhluan']){
-        $id_sanpham = $_POST['idpro'];
-        $noi_dung = $_POST['noi_dung'];
-        $id_nguoidung = $_SESSION['nguoidung']['id_nguoi_dung'];
-        $ngay_binh_luan = date('Y-m-d');
-        // echo $id_nguoidung; die();
-        insert_binhluan($noi_dung, $id_nguoidung, $id_sanpham, $ngay_binh_luan);
-        header("Location: ". $_SERVER['HTTP_REFERER']);
-    }
-    ?>
 </body>
 </html>

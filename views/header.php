@@ -36,7 +36,7 @@
           ?>
               <div class="relative" onclick="toggleDropdown()">
                 <div class="flex mr-4">
-                  <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt="">
+                  <img class="mr-3" style="width:35px;height:35px;border-radius: 50%;object-fit: cover;" src="./uploads/<?= $hinh_anh?>" alt="">
                   <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
                 </div>
                 <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-28 bg-white rounded-md shadow-md z-10">

@@ -5,7 +5,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-layer-group"></i><a href="index.php?act=adddm">Danh mục</a>
+            <i class="fa-solid fa-layer-group"></i><a href="index.php?act=listdm">Danh mục</a>
           </p>
 
           <p class="account__tab admlist">
@@ -25,6 +25,11 @@
           </p>
 
           <p class="account__tab admlist">
+          <i class="fa-solid fa-chart-simple"></i><a href="index.php?act=thongke">Thống kê</a>
+          </p>
+
+          <p class="account__tab admlist">
             <i class="fa-solid fa-right-from-bracket"></i><a href="#">Logout</a>
           </p>
+          
         </div>

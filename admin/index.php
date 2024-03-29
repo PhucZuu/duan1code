@@ -6,6 +6,7 @@
     include_once '../models/SanPham.php';
     include_once '../models/taikhoan.php';
     include_once '../models/binhLuan.php';
+    include_once '../models/thongKe.php';
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -380,6 +381,14 @@
                     }
                     $listbinhluan = loadAll_binhluan(0);
                     include "binhluan/list.php";
+                    break;
+                case 'thongke':
+                    $listtke = loadAll_thongke();
+                    include "thongke/list.php";
+                    break;
+                case 'bieudo':
+                    $listtke = loadAll_thongke();
+                    include "thongke/bieudo.php";
                     break;
         }
     }
