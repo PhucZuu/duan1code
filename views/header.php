@@ -39,10 +39,11 @@
                   <img class="mr-3" style="width:35px;height:35px;border-radius: 50%;object-fit: cover;" src="./uploads/<?= $hinh_anh?>" alt="">
                   <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
                 </div>
-                <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-28 bg-white rounded-md shadow-md z-10">
+                <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
                     <div class="grid-cols-1">
-                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm" href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
-                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm" href="index.php?act=thoat">Đăng xuất</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=editmk">Đổi mật khẩu</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=thoat">Đăng xuất</a>
                     </div>
                 </ul>
               </div>

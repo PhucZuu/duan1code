@@ -1,6 +1,6 @@
 <div class="tabs__content">
           <div class="tab__content active-tab">
-            <h3 class="tab__header">Thống kê số lượng sản phẩm theo danh mục</h3>
+            <h3 class="tab__header">Thống kê lượt bán sản phẩm theo danh mục</h3>
             <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 <body>
@@ -15,12 +15,12 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
     // Set Data
     const data = google.visualization.arrayToDataTable([
-        ['Danh mục', 'Số lượng sản phẩm'],
+        ['Danh mục', 'Lượt bán'],
         <?php
         $tongdm = count($listtke);
         $i = 1;
         foreach($listtke as $tke){
-            echo "['".$tke['ten_danh_muc']."', ".$tke['so_san_pham']."]";
+            echo "['".$tke['ten_danh_muc']."', ".$tke['so_luong_ban']."]";
             if($i < $tongdm) {
                 echo ",";
             }

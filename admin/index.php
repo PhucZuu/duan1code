@@ -390,6 +390,14 @@
                     $listtke = loadAll_thongke();
                     include "thongke/bieudo.php";
                     break;
+                case 'doanhthu':
+                    $listtke = loadAll_thongke();
+                    include "thongke/doanhthu.php";
+                    break;
+                case 'luotban':
+                    $listtke = loadAll_thongke();
+                    include "thongke/luotban.php";
+                    break;
         }
     }
     else{

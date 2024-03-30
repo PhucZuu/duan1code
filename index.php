@@ -17,6 +17,7 @@
     include_once './models/giohang.php';
     include_once './models/danhMuc.php';
     include_once './models/taikhoan.php';
+    include_once './models/binhluan.php';
     // Điều hướng
     include_once './views/header.php';
     $products = loadAllPro();
@@ -88,7 +89,7 @@
                 $id_sanpham=$_POST['id_sanpham'];
                 $id_color=$_POST['id_mausac'];
                 $id_size=$_POST['id_kichco'];
-                $quantity=$_POST['quantity'];
+                $quantity=(int)$_POST['quantity'];
                 $details=getVariantById($id_sanpham,$id_color,$id_size);
             }else{
                 $id_bien_the=$_GET['idbt'];
@@ -96,36 +97,133 @@
                 $quantity=1;
             }
             extract($details);
-            $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
-            array_push($_SESSION['myCart'],$addProduct);
-            include 'views/giohang/giohang.php';
+            $i=0;
+            $isExist=false;
+            // kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
+            if(isset($_SESSION['myCart'])&&(count($_SESSION['myCart'])>0)){
+                foreach($_SESSION['myCart'] as $product){
+                    if($product[0]==$id_bien_the){
+                        // thay đổi số lượng
+                        $quantity+=$product[2];
+                        $isExist=true;
+                        // cập nhật lại số lượng sản phẩm trong giỏ hàng
+                        $_SESSION['myCart'][$i][2]=$quantity;
+                        $gia=$gia * ((100 - (int)$giam_gia)/100);
+                        // cập nhật lại thành tiền
+                        $thanhtien=$gia*$quantity;      
+                        $_SESSION['myCart'][$i][7]=$thanhtien;
+                        break;
+                    }
+                    $i++;
+                }
+            }
+            if(!$isExist){
+                $gia=$gia * ((100 - (int)$giam_gia)/100);
+                $thanhtien=$gia*$quantity;
+                $addProduct=[$id_bien_the,$gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac,$thanhtien];
+                array_push($_SESSION['myCart'],$addProduct);
+                // echo '<pre>';
+                // print_r($_SESSION['myCart']);
+                // die;
+            }
+            header('Location: index.php?act=viewCart');
+            break;
+        case 'checkout':
+
+            $ten_nguoi_dung='';
+            $so_dien_thoai='';
+            $dia_chi='';
+            $email='';
+
+            $errName='';
+            $errPhone="";
+            $errAddress='';
+            $errEmail='';
+            $errPay='';
             
 
-            // if(isset($_GET['idpro'])&&isset($_GET['idcolor'])&&isset($_GET['idsize'])){
-            //     $id_sanpham=$_GET['idpro'];
-            //     $id_color=$_GET['idcolor'];
-            //     $id_size=$_GET['idsize'];
-            //     $quantity=$_POST['quantity'];
-            //     // echo '<pre>';
-            //     // print_r([$id_sanpham,$id_color,$id_size]);
-            //     // die;
-            //     $details=getVariantById($id_sanpham,$id_color,$id_size);
-            //     extract($details);
-            //     $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
-            //     echo '<pre>';
-            //     print_r($addProduct);
-            //     die;
+            if(isset($_SESSION['nguoidung'])){
+                $ten_nguoi_dung=$_SESSION['nguoidung']['ho_va_ten'];
+                $so_dien_thoai=$_SESSION['nguoidung']['so_dien_thoai'];
+                $dia_chi=$_SESSION['nguoidung']['dia_chi'];
+                $email=$_SESSION['nguoidung']['email'];
+            }
+            if(isset($_SESSION['myCart'])){
+                $productPrice=$_SESSION['myCart'];  
+                // echo "<pre>";
+                // print_r($_SESSION['myCart']);die;
+            }
+            include 'views/giohang/checkout.php';
+            break;
+        case 'checkoutConfirm':
+            $ten_nguoi_dung='';
+            $so_dien_thoai='';
+            $dia_chi='';
+            $email='';
+            
 
-            // }else if(isset($_GET['idbt'])){
-            //     $id_bien_the=$_GET['idbt'];
-            //     $quantity=1;
-            //     $details=getVariantByIdVar($id_bien_the);
-            //     extract($details);
-            //     $addProduct=[$id_bien_the,$gia,$giam_gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac];
-            //     echo '<pre>';
-            //     print_r($addProduct);
-            //     die;
-            // }
+            $errName='';
+            $errPhone="";
+            $errAddress='';
+            $errEmail='';
+            if(isset($_POST['checkoutConfirm'])&&($_POST['checkoutConfirm'])){
+                $ho_va_ten=trim($_POST['ho_va_ten']);
+                $so_dien_thoai=trim($_POST['so_dien_thoai']);
+                $dia_chi=trim($_POST['dia_chi']);
+                $email=trim($_POST['email']);
+                $payment=$_POST['payment'];
+                $tong_thanh_tien=totalPriceOrders();
+                $check=true;
+                // echo $tong_thanh_tien;
+                // die;
+                if (!$ho_va_ten) {
+                    $errName="Nhập tên người nhận hàng";
+                    $check=false;
+                }
+                if (!$so_dien_thoai) {
+                    $errPhone="Nhập số điện thoại người nhận hàng";
+                    $check=false;
+                }
+                if (!$dia_chi) {
+                    $errAddress="Nhập địa chỉ nhận hàng";
+                    $check=false;
+                }
+                if (!$email) {
+                    $errEmail="Nhập email người nhận hàng";
+                    $check=false;
+                }
+                if (!$payment) {
+                    $errPay="Chọn phương thức thanh toán";
+                    $check=false;
+                }
+                if ($check) {
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,$payment,$tong_thanh_tien);
+                    foreach($_SESSION['myCart'] as $product){
+                        $id_bienthe=$product[0];
+                        $gia=$product[1];
+                        $so_luong=$product[2];
+                        $thanh_tien=$product[7];
+                        addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
+                    }
+                    // cập nhật lại giỏ hàng
+                    unset($_SESSION['myCart']);
+                    if($payment=='2'){
+                        checkOutOnline($tong_thanh_tien,$id_donhang);
+                    }
+                    header("Location: http://localhost/duan1code/views/thankyou.php");
+                }else{
+                    include 'views/giohang/checkout.php';
+                }
+            }
+            break;
+        case 'deleteProductInCart':
+            if(isset($_GET['idProductInCart'])){
+                // xoa mang session cart tu vi tri idCart va cat 1 phan tu
+                array_splice($_SESSION['myCart'],$_GET['idProductInCart'],1);
+            }else{
+                $_SESSION['myCart']=[];
+            }
+            header('Location: index.php?act=viewCart');
             break;
         case 'dangky':
             $ten_dang_nhap = "";
@@ -312,12 +410,35 @@
             }      
             include "views/taikhoan/updatetk.php";
             break;
-
-            
+            case "editmk":
+                if (isset($_POST['doimk'])) {
+                    // Lấy dữ liệu từ biểu mẫu
+                    $mat_khau = $_POST['mat_khau'];
+                    $mat_khau_moi = $_POST['mat_khau_moi'];
+                    $xac_nhan_mk = $_POST['xac_nhan_mk'];
+                    $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                    
+                    // Kiểm tra xem mật khẩu hiện tại có khớp với mật khẩu trong cơ sở dữ liệu hay không
+                    if (!kiemTraMatKhauHienTai($id_nguoi_dung,$mat_khau)) {
+                        $thongbao = "Mật khẩu hiện tại không chính xác.";
+                    }
+                    // // Kiểm tra xem mật khẩu mới và xác nhận mật khẩu có khớp nhau hay không
+                    elseif ($mat_khau_moi != $xac_nhan_mk) {
+                        $thongbao = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                    }
+                    // Tiến hành cập nhật mật khẩu mới
+                    else {
+                        // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
+                        capNhatMatKhauMoi($id_nguoi_dung,$mat_khau_moi);
+                        
+                        $thongbao = "Thay đổi mật khẩu thành công.";
+                    }
+                }
+                include "views/taikhoan/editmk.php";
+            break;
             case "gioithieu":
                 include "views/gioithieu.php";
                 break;
-
            
         default:
             # code...
