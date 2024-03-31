@@ -315,21 +315,9 @@
                     include "nguoidung/list.php";
                     break;
                 case "suatk":
-                    $ten_dang_nhap = "";
-                    $email = "";
-                    $mat_khau = "";
-                    $ho_va_ten = "";
-                    $hinh_anh = "";
-                    $so_dien_thoai = "";
-                    $dia_chi = "";
+                    $vai_tro = '';
+                    $errVaiTro = '';
 
-                    $errTenDangNhap = "";
-                    $errEmail = "";
-                    $errPass = "";
-                    $errImage = "";
-                    $errName = "";
-                    $errSdt = "";
-                    $errDiaChi = "";
                     if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
                         $id_nguoi_dung = $_GET['id_nguoi_dung'];
                         $tk = loadone_taikhoan($id_nguoi_dung);
@@ -340,32 +328,26 @@
                  
 
                 case 'updatetk':
+                    $vai_tro = '';
+                    $errVaiTro = '';
                     if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                        if(isset($_POST['id_nguoi_dung'], $_POST['ten_dang_nhap'], $_POST['email'],$_POST['ho_va_ten'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
+                        if(isset($_POST['id_nguoi_dung'])) {
                             $id_nguoi_dung = $_POST['id_nguoi_dung'];
-                            $ten_dang_nhap = isset($_POST['ten_dang_nhap']) ? $_POST['ten_dang_nhap'] : '';
-                            $email = isset($_POST['email']) ? $_POST['email'] : '';
-                            $so_dien_thoai = isset($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : '';
-                            $ho_va_ten = isset($_POST['ho_va_ten']) ? $_POST['ho_va_ten'] : '';
-                            $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
-                            $vai_tro = isset($_POST['vai_tro']) ? $_POST['vai_tro'] : ''; 
-                            $hinh_anh = $_FILES['hinh_anh']['name'];
-                            $target_dir="./uploads/";
-                            $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
-                            if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                                // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " đã Uploads.";
-                            } else {
-                                //echo "Không Uploads được file";
-                            }                   
-                            update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro);
-                            // $_SESSION['nguoidung'] = checkuser($ten_dang_nhap, $mat_khau);
+                            $vai_tro = $_POST['vai_tro']; 
+                            $isCheck = true;
+                            if(!$vai_tro){
+                                $isCheck = false;
+                                $errVaiTro = 'Bạn không được để trống vai trò';
+                            }
+                            update_taikhoan_admin($id_nguoi_dung,$vai_tro);
                             $thongbao = "Chỉnh sửa tài khoản thành công!";
-                            header('Location: index.php?act=listtk');           
+                            header('Location: index.php?act=listtk');   
+                                 
                         }else{
                             echo 'Không update được';
                         }
                     }      
-                    // include "views/nguoidung/update.php";
+                    // include "nguoidung/update.php";
                     break;
 
                 case 'listbl':

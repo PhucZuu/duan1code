@@ -393,6 +393,7 @@
                     $ho_va_ten = isset($_POST['ho_va_ten']) ? $_POST['ho_va_ten'] : '';
                     $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
                     $hinh_anh = $_FILES['hinh_anh']['name'];
+                    
                     $target_dir="./uploads/";
                     $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
                     if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
@@ -403,7 +404,8 @@
                     update_taikhoan($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi);
                     $_SESSION['nguoidung'] = checkuser($ten_dang_nhap, $mat_khau);
                     $thongbao = "Chỉnh sửa tài khoản thành công!";
-                    header('Location:index.php?act=edit_taikhoan');           
+                    header('Location:index.php?act=edit_taikhoan');   
+                
                 }else{
                     echo 'Không update được';
                 }
@@ -418,20 +420,24 @@
                     $xac_nhan_mk = $_POST['xac_nhan_mk'];
                     $id_nguoi_dung = $_POST['id_nguoi_dung'];
                     
-                    // Kiểm tra xem mật khẩu hiện tại có khớp với mật khẩu trong cơ sở dữ liệu hay không
-                    if (!kiemTraMatKhauHienTai($id_nguoi_dung,$mat_khau)) {
-                        $thongbao = "Mật khẩu hiện tại không chính xác.";
-                    }
-                    // // Kiểm tra xem mật khẩu mới và xác nhận mật khẩu có khớp nhau hay không
-                    elseif ($mat_khau_moi != $xac_nhan_mk) {
-                        $thongbao = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
-                    }
-                    // Tiến hành cập nhật mật khẩu mới
-                    else {
-                        // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
-                        capNhatMatKhauMoi($id_nguoi_dung,$mat_khau_moi);
-                        
-                        $thongbao = "Thay đổi mật khẩu thành công.";
+                    if (empty($mat_khau) || empty($mat_khau_moi) || empty($xac_nhan_mk)) {
+                        $thongbao = "Vui lòng điền đầy đủ thông tin.";
+                    }else{
+                        // Kiểm tra xem mật khẩu hiện tại có khớp với mật khẩu trong cơ sở dữ liệu hay không
+                        if (!kiemTraMatKhauHienTai($id_nguoi_dung,$mat_khau)) {
+                            $thongbao = "Mật khẩu hiện tại không chính xác.";
+                        }
+                        // // Kiểm tra xem mật khẩu mới và xác nhận mật khẩu có khớp nhau hay không
+                        elseif ($mat_khau_moi != $xac_nhan_mk) {
+                            $thongbao = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                        }
+                        // Tiến hành cập nhật mật khẩu mới
+                        else {
+                            // Thực hiện cập nhật mật khẩu mới trong cơ sở dữ liệu
+                            capNhatMatKhauMoi($id_nguoi_dung,$mat_khau_moi);
+                            
+                            $thongbao = "Thay đổi mật khẩu thành công.";
+                        }
                     }
                 }
                 include "views/taikhoan/editmk.php";
