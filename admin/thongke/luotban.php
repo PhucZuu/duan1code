@@ -17,9 +17,9 @@ function drawChart() {
     const data = google.visualization.arrayToDataTable([
         ['Danh mục', 'Lượt bán'],
         <?php
-        $tongdm = count($listtke);
+        $tongdm = count($doanhthu);
         $i = 1;
-        foreach($listtke as $tke){
+        foreach($doanhthu as $tke){
             echo "['".$tke['ten_danh_muc']."', ".$tke['so_luong_ban']."]";
             if($i < $tongdm) {
                 echo ",";

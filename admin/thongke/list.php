@@ -2,9 +2,7 @@
           <div class="tab__content active-tab">
             <h3 class="tab__header">THỐNG KÊ SẢN PHẨM</h3>
             <?php
-                // echo '<pre>';
-                // print_r($listsp);
-                // echo '</pre>';
+            // extract($soluong);
             ?>
             <div class="register">
                 <table>
@@ -12,28 +10,27 @@
                         <th>MÃ DM</th>
                         <th>TÊN DM</th>
                         <th>SỐ LƯỢNG</th>
-                        <th>GIÁ CAO NHẤT</th>
                         <th>GIÁ THẤP NHẤT</th>
+                        <th>GIÁ CAO NHẤT</th>
                         <th>GIÁ TRUNG BÌNH</th>
-                        <th>DOANH THU</th>
-                        <th>LƯỢT BÁN</th>
                     </tr>
                     <?php
-                        foreach($listtke as $tke){
+                        foreach($listtke as $key => $tke){
                             extract($tke);
-                            echo '
+                            // extract($so_san_pham);
+                              echo '
                             <tr>
                                 <td>'.$id_danh_muc.'</td>
                                 <td>'.$ten_danh_muc.'</td>
                                 <td>'.$so_san_pham.'</td>
-                                <td>'.$gia_cao_nhat.'</td>
                                 <td>'.$gia_thap_nhat.'</td>
+                                <td>'.$gia_cao_nhat.'</td>
                                 <td>'.$gia_trung_binh.'</td>
-                                <td>'.$doanh_thu.'</td>
-                                <td>'.$so_luong_ban.'</td>
                             </tr>        
-                            ';
-                        }
+                            ';  
+                            }
+                            
+                        
                     ?>
                 </table>
             </div>

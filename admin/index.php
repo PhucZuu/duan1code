@@ -391,11 +391,11 @@
                     include "thongke/bieudo.php";
                     break;
                 case 'doanhthu':
-                    $listtke = loadAll_thongke();
+                    $doanhthu =loadAll_doanhthu();
                     include "thongke/doanhthu.php";
                     break;
                 case 'luotban':
-                    $listtke = loadAll_thongke();
+                    $doanhthu =loadAll_doanhthu();
                     include "thongke/luotban.php";
                     break;
         }
