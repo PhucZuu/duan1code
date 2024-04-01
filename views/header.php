@@ -153,7 +153,10 @@
                     <div class="grid-cols-1">
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?">Trang chủ</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=shop">Shop</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=theodoidonhang">Quản lý đơn hàng</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=gioithieu">Giới thiệu</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=dangky">Đăng ký</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=dangnhap">Đăng nhập</a>
                     </div>
                 </ul>
               </div>
