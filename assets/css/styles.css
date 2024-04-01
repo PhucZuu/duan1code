@@ -443,6 +443,10 @@ table {
   border: 1px solid #088179;
   border-radius: 9px;
 }
+.login{
+  width: 700px;
+  align-items: center;
+}
 .mar{
   margin: 10px 0px;
 }
@@ -1733,13 +1737,26 @@ table {
   align-items: flex-start; 
 }
 
+.formlogin{
+  display: ruby-text;
+}
+.mt_8{
+  text-align: center;
+}
+.btnlogin{
+  text-align: center;
+}
+.btnw{
+  width: 30%;
+}
 .login,
 .register {
-  border: 1px solid var(--border-color-alt);
+  border: 1px solid #088179 !important;
   padding: 2rem;
   border-radius: 0.5rem;
   justify-content: space-between;
   align-items: center;
+  width: 60%;
 }
 
 .accounts__container {
