@@ -1,6 +1,6 @@
 <div class="tabs__content">
           <div class="tab__content active-tab">
-            <h3 class="tab__header">Bảng điều khiển</h3>
+            <h3 class="tab__header">Chào mừng bạn đến với giao diện quản lý Evara</h3>
 
             <div class="tab__body">
               <p class="tab__description">
