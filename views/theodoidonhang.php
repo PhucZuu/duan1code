@@ -2,28 +2,36 @@
     <section class='container'>
         
     <?php 
-        if(isset($_SESSION['nguoidung'])){   
-            echo '<h3>ĐƠN HÀNG CỦA BẠN</h3>';     
+        if(isset($_SESSION['nguoidung'])){       
             if (!empty($id_order)) {
-                foreach($id_order as $id_don_hang){
-                    extract($id_don_hang);
-                    echo '
+            echo '<h3>ĐƠN HÀNG CỦA BẠN</h3>';
+            foreach($id_order as $id_don_hang){
+                extract($id_don_hang);
+                echo '
                     <table class="order__table mar">
                         <tr>
                             <td colspan="5">
-                                MÃ ĐƠN HÀNG: '.$id_don_hang.'<br>
-                                TRẠNG THÁI THANH TOÁN: '.$trang_thai_thanh_toan.'<br>
-                                TRẠNG THÁI ĐƠN HÀNG: '.$ten_trang_thai.'<br>
-                                TỔNG THÀNH TIỀN: '.$tong_thanh_tien.'
+                                Mã đơn hàng: '.$id_don_hang.'<br>
+                                
                             </td>
                         <tr>
-                        <tr>   
-                            <td>HÌNH ẢNH</td>
-                            <td>SẢN PHẨM</td>
-                            <td>GIÁ</td>
-                            <td>THÀNH TIỀN</td>
+                        <tr>
+                            <td rowspan="4" class="table__rows">
+                                Người nhận hàng: '.$ho_va_ten.'<br>
+                                Số điện thoại: '.$so_dien_thoai.'<br>
+                                Địa chỉ: '.$dia_chi.'<br>
+                                Email: '.$email.'<br>
+                                Trạng thái thanh toán: '.$trang_thai_thanh_toan.'<br>
+                                Trạng thái đơn hàng: '.$ten_trang_thai.'<br>
+                                Tổng thành tiền: $'.$tong_thanh_tien.'
+                            </td>   
+                            <th>HÌNH ẢNH</th>
+                            <th>SẢN PHẨM</th>
+                            <th>GIÁ</th>
+                            <th>THÀNH TIỀN</th>
                         </tr>
-                        ';
+                    
+                    ';
                         $orderDetails=loadAllOrdersDetailsByIdOrder($id_don_hang);
                         foreach($orderDetails as $order){
                             extract($order);
