@@ -12,7 +12,7 @@
         <span style="color:red"><?= $errEmail ?></span>
 
         <div class="form__btn">
-          <input type="submit" class="btn2" value="Gửi" name="guiemail">
+          <input type="submit" class="btn" value="Gửi" name="guiemail">
         </div>
       </form><br>
       <h2 class="thongbao">

@@ -9,14 +9,19 @@
             <input type="file" class="form__input" name="hinh_anh">
 
         <input type="text" placeholder="Tên đăng nhập" class="form__input" name="ten_dang_nhap" value="<?= $ten_dang_nhap ?>">
+        <span style="color:red"><?= $errTenDangNhap ?></span>
 
         <input type="email" placeholder="Email" class="form__input" name="email" value="<?= $email ?>">
+        <span style="color:red"><?= $errEmail ?></span>
 
         <input type="text" placeholder="Họ và tên" class="form__input" name="ho_va_ten" value="<?= $ho_va_ten ?>">
+        <span style="color:red"><?= $errName ?></span>
 
         <input type="text" placeholder="Số điện thoại" class="form__input" name="so_dien_thoai" value="<?= $so_dien_thoai ?>">
+        <span style="color:red"><?= $errSdt ?></span>
 
         <input type="text" placeholder="Địa chỉ" class="form__input" name="dia_chi" value="<?= $dia_chi ?>">
+        <span style="color:red"><?= $errDiaChi ?></span>
 
         <div class="form__btn">
             <input type="hidden" name="id_nguoi_dung" value="<?= $id_nguoi_dung ?>">

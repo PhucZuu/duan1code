@@ -311,99 +311,71 @@
                 }
                 break;
 
-            case "listtk":
-                $listtaikhoan = loadAll_taikhoan();
-                include "nguoidung/list.php";
-                break;
-            case "suatk":
-                $ten_dang_nhap = "";
-                $email = "";
-                $mat_khau = "";
-                $ho_va_ten = "";
-                $hinh_anh = "";
-                $so_dien_thoai = "";
-                $dia_chi = "";
+                case "listtk":
+                    $listtaikhoan = loadAll_taikhoan();
+                    include "nguoidung/list.php";
+                    break;
+                case "suatk":
+                    $vai_tro = '';
+                    $errVaiTro = '';
 
-                $errTenDangNhap = "";
-                $errEmail = "";
-                $errPass = "";
-                $errImage = "";
-                $errName = "";
-                $errSdt = "";
-                $errDiaChi = "";
-                if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
-                    $id_nguoi_dung = $_GET['id_nguoi_dung'];
-                    $tk = loadone_taikhoan($id_nguoi_dung);
-                    // print_r($tk);
-                }
-                include "nguoidung/update.php";
-                break;
-                
-
-            case 'updatetk':
-                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    if(isset($_POST['id_nguoi_dung'], $_POST['ten_dang_nhap'], $_POST['email'],$_POST['ho_va_ten'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
-                        $id_nguoi_dung = $_POST['id_nguoi_dung'];
-                        $ten_dang_nhap = isset($_POST['ten_dang_nhap']) ? $_POST['ten_dang_nhap'] : '';
-                        $email = isset($_POST['email']) ? $_POST['email'] : '';
-                        $so_dien_thoai = isset($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : '';
-                        $ho_va_ten = isset($_POST['ho_va_ten']) ? $_POST['ho_va_ten'] : '';
-                        $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
-                        $vai_tro = isset($_POST['vai_tro']) ? $_POST['vai_tro'] : ''; 
-                        $hinh_anh = $_FILES['hinh_anh']['name'];
-                        $target_dir="./uploads/";
-                        $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
-                        if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                            // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " đã Uploads.";
-                        } else {
-                            //echo "Không Uploads được file";
-                        }                   
-                        update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro);
-                        // $_SESSION['nguoidung'] = checkuser($ten_dang_nhap, $mat_khau);
-                        $thongbao = "Chỉnh sửa tài khoản thành công!";
-                        header('Location: index.php?act=listtk');           
-                    }else{
-                        echo 'Không update được';
+                    if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
+                        $id_nguoi_dung = $_GET['id_nguoi_dung'];
+                        $tk = loadone_taikhoan($id_nguoi_dung);
+                        // print_r($tk);
                     }
-                }      
-                // include "views/nguoidung/update.php";
-                break;
+                    include "nguoidung/update.php";
+                    break;
+                 
 
-            case 'listbl':
-                $listbinhluan = loadAll_binhluan(0);
-                include 'binhluan/list.php';
-                break;
-            case 'xoabl':
-                if(isset($_GET['id_binh_luan'])&&(($_GET['id_binh_luan'])>0)){
-                    $id_binh_luan = $_GET['id_binh_luan'];
-                    // echo $id_binh_luan; die;
-                    delete_binhluan($id_binh_luan);
-                }
-                $listbinhluan = loadAll_binhluan(0);
-                include "binhluan/list.php";
-                break;
-            case 'listorders':
-                $listOrders=loadAllOrders();
-                include "donhang/list.php";
-                break;
-            case 'updatestatusorder':
-                if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
-                    $id_don_hang=$_POST['id_don_hang'];
-                    $id_trangthai=$_POST['id_trang_thai'];
-                    updateStatusOrder($id_don_hang,$id_trangthai);
-                    header('Location: index.php?act=listorders');
-                }
-                break;
-            case 'chitietdonhang':
-                if(isset($_GET['id_don_hang'])&&($_GET['id_don_hang']>0)){
-                    $id_don_hang=$_GET['id_don_hang'];
-                    $orderDetails=getAllOrdersDetails($id_don_hang);
-                    $order=statusOrder($id_don_hang);
-                    extract($order);
-                }
-                $statusOrders=loadAllStatusOrders();
-                include 'donhang/orderdetails.php';
-                break;
+                case 'updatetk':
+                    $vai_tro = '';
+                    $errVaiTro = '';
+                    if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        if(isset($_POST['id_nguoi_dung'])) {
+                            $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                            $vai_tro = $_POST['vai_tro']; 
+                            $isCheck = true;
+                            if(!$vai_tro){
+                                $isCheck = false;
+                                $errVaiTro = 'Bạn không được để trống vai trò';
+                            }
+                            update_taikhoan_admin($id_nguoi_dung,$vai_tro);
+                            $thongbao = "Chỉnh sửa tài khoản thành công!";
+                            header('Location: index.php?act=listtk');   
+                                 
+                        }else{
+                            echo 'Không update được';
+                        }
+                    }      
+                    // include "nguoidung/update.php";
+                    break;
+
+                case 'xoatk':
+                    //kiểm tra id có tồn tại ko để xóa
+                    if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
+                        $id_nguoi_dung = $_GET['id_nguoi_dung'];
+                        delete_taikhoan($id_nguoi_dung);
+    
+                    }
+    
+                    // trong file pdo phần này có return kết quả trả về nền ta cần gán về 1 giá trị
+                    $listtaikhoan = loadAll_taikhoan();
+                    include "nguoidung/list.php";
+                    break;
+                case 'listbl':
+                    $listbinhluan = loadAll_binhluan(0);
+                    include 'binhluan/list.php';
+                    break;
+                case 'xoabl':
+                    if(isset($_GET['id_binh_luan'])&&(($_GET['id_binh_luan'])>0)){
+                        $id_binh_luan = $_GET['id_binh_luan'];
+                        // echo $id_binh_luan; die;
+                        delete_binhluan($id_binh_luan);
+                    }
+                    $listbinhluan = loadAll_binhluan(0);
+                    include "binhluan/list.php";
+                    break;
         }
     }
     else{
