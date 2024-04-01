@@ -5,7 +5,7 @@
       <h3 class="section__title">Tài khoản của tôi</h3>
 
       <form action="index.php?act=edit_taikhoan" method="post" class="form grid" enctype="multipart/form-data">
-          <img style="width:100px;height:100px;border-radius:50%" src="./uploads/<?= $hinh_anh?>" alt=""><br>
+          <img style="width:100px;height:100px;border-radius:50%;object-fit: cover;" src="./uploads/<?= $hinh_anh?>" alt=""><br>
             <input type="file" class="form__input" name="hinh_anh">
 
         <input type="text" placeholder="Tên đăng nhập" class="form__input" name="ten_dang_nhap" value="<?= $ten_dang_nhap ?>">

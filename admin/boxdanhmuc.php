@@ -1,7 +1,7 @@
 
 <div class="account__tabs">
-          <p class="account__tab admlist active-tab">
-            <i class="fa-solid fa-sliders"></i><a href="#">Bảng điều khiển</a> 
+          <p class="account__tab admlist">
+          <i class="fa-solid fa-chart-simple"></i><a href="index.php?act=thongke">Thống kê</a>
           </p>
 
           <p class="account__tab admlist">
@@ -24,7 +24,9 @@
             <i class="fa-solid fa-user"></i><a href="index.php?act=listtk">Người dùng</a>
           </p>
 
+
           <p class="account__tab admlist">
             <i class="fa-solid fa-right-from-bracket"></i><a href="#">Logout</a>
           </p>
+          
         </div>
