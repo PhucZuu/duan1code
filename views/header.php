@@ -123,7 +123,21 @@
         </a>
 
         <div class="header__action-btn nav__toggle" id="nav-toggle">
-          <img src="./assets/img/menu-burger.svg" alt="">
+              <div class="relative" onclick="toggleDropdown()">
+                <div class="flex mr-4">
+                  <!-- <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt=""> -->
+                  <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><img src="./assets/img/menu-burger.svg" alt=""></p>
+                </div>
+                <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                    <div class="grid-cols-1">
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?">Trang chủ</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=shop">Shop</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=gioithieu">Giới thiệu</a>
+                    </div>
+                </ul>
+              </div>
+              
+          <!-- <img src="./assets/img/menu-burger.svg" alt=""> -->
         </div>
       </div>
     </nav>
