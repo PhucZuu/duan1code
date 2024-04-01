@@ -1,6 +1,6 @@
 <section class="login-register section--lg">
     <div class="login-register__container formlogin container box_login">
-    <div class="login">
+    <div class="login bl_r">
             <h3 class="section__title">Đăng nhập</h3>
            
 
