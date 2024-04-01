@@ -109,6 +109,7 @@
     
     <script src="../assets/js/main.js"></script>
     <script src="./assets/js/taikhoan.js"></script>
+    <script src="./assets/js/nav.js"></script>
   </footer>
   
 </body>

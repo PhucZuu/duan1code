@@ -32,31 +32,52 @@
         </p>
           <?php
             if(isset($_SESSION['nguoidung'])){
-              extract( $_SESSION['nguoidung']);
+              extract($_SESSION['nguoidung']);
+              if($vai_tro == 1) {
           ?>
-              <div class="relative" onclick="toggleDropdown()">
+            <div class="relative" onclick="toggleDropdown()">
                 <div class="flex mr-4">
-                  <img class="mr-3" style="width:35px;height:35px;border-radius: 50%;object-fit: cover;" src="./uploads/<?= $hinh_anh?>" alt="">
-                  <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
+                    <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt="">
+                    <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
                 </div>
                 <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
                     <div class="grid-cols-1">
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=editmk">Đổi mật khẩu</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="admin/index.php">Đăng nhập vào admin</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=thoat">Đăng xuất</a>
                     </div>
                 </ul>
-              </div>
-              <?php
-                  }else{
-              ?>
-            <div class="m-7 mr-3 md:mr-7 md:m-0 flex ">
-                <a href="index.php?act=dangnhap"
-                    class="flex text-2xl text-green-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center cursor-pointer">
-                    <i class="fa-regular fa-user"></i>
-                </a>
             </div>
-            <?php } ?>
+          <?php
+            } else {
+          ?>
+              <div class="relative" onclick="toggleDropdown()">
+                  <div class="flex mr-4">
+                      <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt="">
+                      <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><?= $ten_dang_nhap ?></p>
+                  </div>
+                  <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                      <div class="grid-cols-1">
+                          <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=editmk">Đổi mật khẩu</a>
+                          <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
+                          <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=thoat">Đăng xuất</a>
+                      </div>
+                  </ul>
+              </div>
+          <?php
+                  }
+              } else {
+                  ?>
+                  <div class="m-7 mr-3 md:mr-7 md:m-0 flex ">
+                      <a href="index.php?act=dangnhap"
+                        class="flex text-2xl text-green-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center cursor-pointer">
+                          <i class="fa-regular fa-user"></i>
+                      </a>
+                  </div>
+                  <?php
+              }
+            ?>
       
       </div>
     </div>
@@ -123,12 +144,16 @@
         </a>
 
         <div class="header__action-btn nav__toggle" id="nav-toggle">
+          <?php
+            if(isset($_SESSION['nguoidung'])){
+              extract($_SESSION['nguoidung']);
+          ?>
               <div class="relative" onclick="toggleDropdown()">
                 <div class="flex mr-4">
                   <!-- <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt=""> -->
-                  <p id="userDropdownButton" class="font-semibold text-green-400 cursor-pointer"><img src="./assets/img/menu-burger.svg" alt=""></p>
+                  <p id="navDropdownButton" class="font-semibold text-green-400 cursor-pointer"><img src="./assets/img/menu-burger.svg" alt=""></p>
                 </div>
-                <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                <ul id="navDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
                     <div class="grid-cols-1">
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?">Trang chủ</a>
                         <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=shop">Shop</a>
@@ -139,7 +164,24 @@
                     </div>
                 </ul>
               </div>
-              
+            <?php }else{ ?>
+              <div class="relative" onclick="toggleDropdown()">
+                <div class="flex mr-4">
+                  <!-- <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./uploads/<?= $hinh_anh?>" alt=""> -->
+                  <p id="navDropdownButton" class="font-semibold text-green-400 cursor-pointer"><img src="./assets/img/menu-burger.svg" alt=""></p>
+                </div>
+                <ul id="navDropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                    <div class="grid-cols-1">
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?">Trang chủ</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=shop">Shop</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=theodoidonhang">Quản lý đơn hàng</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=gioithieu">Giới thiệu</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=dangky">Đăng ký</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-green-200 text-sm" href="index.php?act=dangnhap">Đăng nhập</a>
+                    </div>
+                </ul>
+              </div>
+              <?php } ?>
           <!-- <img src="./assets/img/menu-burger.svg" alt=""> -->
         </div>
       </div>

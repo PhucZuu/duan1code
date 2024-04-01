@@ -7,6 +7,7 @@
     include_once '../models/taikhoan.php';
     include_once '../models/binhLuan.php';
     include_once '../models/thongKe.php';
+    include_once '../models/donhang.php';
     
     if(isset($_GET["act"])){
         $act = $_GET["act"];
@@ -391,6 +392,28 @@
                 case 'luotban':
                     $doanhthu =loadAll_doanhthu();
                     include "thongke/luotban.php";
+                    break;
+                case 'listorders':
+                    $listOrders=loadAllOrders();
+                    include "donhang/list.php";
+                    break;
+                case 'updatestatusorder':
+                    if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        $id_don_hang=$_POST['id_don_hang'];
+                        $id_trangthai=$_POST['id_trang_thai'];
+                        updateStatusOrder($id_don_hang,$id_trangthai);
+                        header('Location: index.php?act=listorders');
+                    }
+                    break;
+                case 'chitietdonhang':
+                    if(isset($_GET['id_don_hang'])&&($_GET['id_don_hang']>0)){
+                        $id_don_hang=$_GET['id_don_hang'];
+                        $orderDetails=getAllOrdersDetails($id_don_hang);
+                        $order=statusOrder($id_don_hang);
+                        extract($order);
+                    }
+                    $statusOrders=loadAllStatusOrders();
+                    include 'donhang/orderdetails.php';
                     break;
         }
     }
