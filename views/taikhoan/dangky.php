@@ -1,7 +1,7 @@
 <section class="login-register section--lg">
   <div class="login-register__container formlogin container">
     <!-- FORM ĐĂNG KÝ -->
-    <div class="register">
+    <div class="register login bl_r">
       <h3 class="section__title">Đăng ký</h3>
 
       <form action="index.php?act=dangky" method="post" class="form grid" enctype="multipart/form-data">
