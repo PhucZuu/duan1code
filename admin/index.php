@@ -350,6 +350,18 @@
                     // include "nguoidung/update.php";
                     break;
 
+                case 'xoatk':
+                    //kiểm tra id có tồn tại ko để xóa
+                    if(isset($_GET['id_nguoi_dung'])&&(($_GET['id_nguoi_dung'])>0)){
+                        $id_nguoi_dung = $_GET['id_nguoi_dung'];
+                        delete_taikhoan($id_nguoi_dung);
+    
+                    }
+    
+                    // trong file pdo phần này có return kết quả trả về nền ta cần gán về 1 giá trị
+                    $listtaikhoan = loadAll_taikhoan();
+                    include "nguoidung/list.php";
+                    break;
                 case 'listbl':
                     $listbinhluan = loadAll_binhluan(0);
                     include 'binhluan/list.php';
