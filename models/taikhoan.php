@@ -60,14 +60,8 @@
         return $tk;
     }
 
-    function update_taikhoan_admin($id_nguoi_dung,$ten_dang_nhap,$ho_va_ten,$hinh_anh,$email,$so_dien_thoai,$dia_chi,$vai_tro){
-        if($hinh_anh!=""){
-            $sql = "UPDATE nguoidung SET ten_dang_nhap='".$ten_dang_nhap."', ho_va_ten='".$ho_va_ten."', hinh_anh='".$hinh_anh."', email='".$email."', so_dien_thoai='".$so_dien_thoai."', dia_chi='".$dia_chi."',vai_tro='".$vai_tro."' WHERE id_nguoi_dung=".$id_nguoi_dung;
-
-        }else{
-            $sql = "UPDATE nguoidung SET ten_dang_nhap='".$ten_dang_nhap."', ho_va_ten='".$ho_va_ten."', email='".$email."', so_dien_thoai='".$so_dien_thoai."', dia_chi='".$dia_chi."',vai_tro='".$vai_tro."' WHERE id_nguoi_dung=".$id_nguoi_dung;
-
-        }
+    function update_taikhoan_admin($id_nguoi_dung,$vai_tro){
+        $sql = "UPDATE nguoidung SET vai_tro='".$vai_tro."' WHERE id_nguoi_dung=".$id_nguoi_dung;
         echo $sql;
         pdo_execute($sql);
     }
@@ -88,6 +82,11 @@
         return $mk;
     }
 
+    function delete_taikhoan($id_nguoi_dung){
+        // load lên tất cả dữ liệu
+        $sql = "DELETE FROM nguoidung WHERE id_nguoi_dung=".$id_nguoi_dung;
+        pdo_execute($sql);
+    }
    
 
 ?>

@@ -1,5 +1,5 @@
 <section class="login-register section--lg">
-    <div class="login-register__container container grid">
+    <div class="login-register__container formlogin container box_login">
     <div class="login">
             <h3 class="section__title">Đăng nhập</h3>
            
@@ -11,8 +11,8 @@
                 <input type="password" placeholder="Mật khẩu" class="form__input" name="mat_khau" value="<?= $mat_khau ?>">
                 <span style="color:red"><?= $errPass ?></span>
 
-                <div class="form__btn">
-                        <input type="submit" class="btn" value="Đăng nhập" name="dangnhap">
+                <div class="form__btn btnlogin">
+                    <input type="submit" class="btn btnw" value="Đăng nhập" name="dangnhap">
                 </div>
             </form>
             

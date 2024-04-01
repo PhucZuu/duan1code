@@ -91,7 +91,7 @@
           </li>
 
           <li class="nav__item">
-            <a href="index.php?act=taikhoan" class="nav__link">Tài khoản</a>
+            <a href="index.php?act=theodoidonhang" class="nav__link">Theo dõi đơn hàng</a>
           </li>
 
           <li class="nav__item">

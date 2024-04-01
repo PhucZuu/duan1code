@@ -437,6 +437,57 @@ table {
   align-items: center;
 
 }
+.boxempty{
+  padding: 20px 0px;
+  text-align: center;
+  border: 1px solid #088179;
+  border-radius: 9px;
+}
+.login{
+  width: 700px;
+  align-items: center;
+}
+.mar{
+  margin: 10px 0px;
+}
+.table__rows{
+  width: 20%;
+  text-align: left !important; 
+}
+.boxsearch{
+  width: 100%;
+  text-align: center;
+}
+.follow_search{
+  width:500px;
+  border: 1px solid #088179;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.boxempty h3{
+  font-size: 18px;
+}
+.buynow{
+  text-decoration: underline;
+}
+.imgempty{
+  display: flex;
+  justify-content: center;
+}
+.box__follow{
+  display: flex;
+  padding: 0px 100px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.boxsearch #inpPhone{
+  margin: 15px 0px;
+  width: 400px;
+}
 .followOrder{
   color: #088179;
   font-size: large;
@@ -1686,13 +1737,26 @@ table {
   align-items: flex-start; 
 }
 
+.formlogin{
+  display: ruby-text;
+}
+.mt_8{
+  text-align: center;
+}
+.btnlogin{
+  text-align: center;
+}
+.btnw{
+  width: 30%;
+}
 .login,
 .register {
-  border: 1px solid var(--border-color-alt);
+  border: 1px solid #088179 !important;
   padding: 2rem;
   border-radius: 0.5rem;
   justify-content: space-between;
   align-items: center;
+  width: 60%;
 }
 
 .accounts__container {
