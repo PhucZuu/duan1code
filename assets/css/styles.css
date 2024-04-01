@@ -1743,6 +1743,10 @@ table {
 .mt_8{
   text-align: center;
 }
+.bl_r{
+  border: 1px solid #088179 !important;
+  width: 60%;
+}
 .btnlogin{
   text-align: center;
 }
@@ -1751,12 +1755,11 @@ table {
 }
 .login,
 .register {
-  border: 1px solid #088179 !important;
+  border: 1px solid var(--border-color-alt);
   padding: 2rem;
   border-radius: 0.5rem;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
 }
 
 .accounts__container {
