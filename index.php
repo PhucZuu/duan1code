@@ -18,6 +18,7 @@
     include_once './models/danhMuc.php';
     include_once './models/taikhoan.php';
     include_once './models/binhluan.php';
+    include_once './models/donhang.php';
     // Điều hướng
     include_once './views/header.php';
     $products = loadAllPro();
@@ -436,6 +437,18 @@
                 }
                 include "views/taikhoan/editmk.php";
             break;
+            case 'theodoidonhang':
+                $so_dien_thoai=null;
+                if(isset($_SESSION['nguoidung'])){
+                    $so_dien_thoai=$_SESSION['nguoidung']['so_dien_thoai'];
+                    $id_order=loadAllOrdersByPhone($so_dien_thoai);
+                }
+                if(isset($_POST['searchOrder'])){
+                    $so_dien_thoai=$_POST['so_dien_thoai'];  
+                    $id_order=loadAllOrdersByPhone($so_dien_thoai);
+                }
+                include 'views/theodoidonhang.php';
+                break;
             case "gioithieu":
                 include "views/gioithieu.php";
                 break;

@@ -13,7 +13,7 @@
           </p>
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-clipboard"></i><a href="#">Đơn hàng</a>
+            <i class="fa-solid fa-clipboard"></i><a href="index.php?act=listorders">Đơn hàng</a>
           </p>
 
           <p class="account__tab admlist">
