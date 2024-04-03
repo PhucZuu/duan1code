@@ -32,7 +32,7 @@
     
                 echo '
                 <tr>
-                <td>
+                <td class="cart_pro_img">
                   <img src="'.$hinh.'" alt="" class="table__img">
                 </td>
         

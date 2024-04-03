@@ -45,7 +45,7 @@
             ?>
             
             <tr>
-                <td>
+                <td class="cart_pro_img">
                 <img src="./uploads/<?= $cart[4] ?>" alt="productimgae" class="order__img">
                 </td>
 
@@ -72,8 +72,10 @@
 
         <div class="payment__methods">
         <h3 class="checkout__title payment__title">Phương thức thanh toán</h3>
-
-        <div class="payment__option flex">
+        <button type="submit" class="btn btn--md mb" name="thanhtoannhanhang">Thanh toán khi nhận hàng</button>
+        <button type="submit" class="btn btn--md mb" name="vnpay">Thanh toán qua VNPAY</button>
+        <button type="submit" class="btn btn--md mb" name="payUrl">Thanh toán qua MOMO</button>
+        <!-- <div class="payment__option flex">
             <input type="radio" name="payment" value="1" class="payment__input" checked>
             <label for="" class="payment__label">Thanh toán khi nhận hàng</label>
         </div>
@@ -83,11 +85,11 @@
             <label for="" class="payment__label">Thanh toán qua VNPay</label>
         </div>
 
-        <!-- <div class="payment__option flex">
-            <input type="radio" name="vnpay" class="payment__input">
-            <label for="" class="payment__label">Paypal</label>
+        <div class="payment__option flex">
+            <input type="button" name="payUrl" value="2" class="payment__input">
+            <label for="" class="payment__label">Thanh toán qua MoMo</label>
         </div> -->
-        <input type="submit" name="checkoutConfirm" class="btn btn--md" value="Xác nhân thanh toán">
+        <!-- <input type="submit" name="checkoutConfirm" class="btn btn--md" value="Xác nhân thanh toán"> -->
         <!-- <button class="btn btn--md"><a href="#" class="checkoutConfirm">Xác nhận thanh toán</a></button> -->
 
         </div>

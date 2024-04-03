@@ -20,6 +20,9 @@
         return $variant;
     }
     function creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,$payment,$tong_thanh_tien){
+        if($payment>2){
+            $payment=2;
+        }
         $sql="INSERT INTO donhang(id_trangthai,ho_va_ten,email,so_dien_thoai,dia_chi,thanh_toan,tong_thanh_tien) VALUES 
         ('1','$ho_va_ten','$email','$so_dien_thoai','$dia_chi','$payment','$tong_thanh_tien')";
         $id_donhang=pdo_insert_order($sql);
@@ -40,11 +43,13 @@
         pdo_execute($sql);
     }
 
-    function checkOutOnline($sotien,$id_donhang){
+    function checkOutOnlineVnPay($sotien,$id_donhang){
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
+        $apiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
         $vnp_Returnurl = "http://localhost/duan1code/views/thankyou.php";
-        $vnp_TmnCode = "63V0RGC7";//Mã website tại VNPAY 
-        $vnp_HashSecret = "KFWXWHMIGERCIVJMBDZEYQCMVIOBRWWS"; //Chuỗi bí mật
+        $vnp_TmnCode = "8Z7OOO1B";//Mã website tại VNPAY 
+        $vnp_HashSecret = "TYMBGHOWMDCEJEJLCTRPDYFZGKYDJPGU"; //Chuỗi bí mật
 
         $vnp_TxnRef = $id_donhang; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = 'Thanh toán sản phẩm';
@@ -144,4 +149,26 @@
                 echo json_encode($returnData);
             }
             }
+    
+    function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
+    }
+    // function checkOutOnlineMoMo(){
+
+    // }
 ?>

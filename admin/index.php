@@ -415,6 +415,9 @@
                     $statusOrders=loadAllStatusOrders();
                     include 'donhang/orderdetails.php';
                     break;
+                case 'logoutadmin':
+                    header('Location: http://localhost/duan1code/');
+                    break;
         }
     }
     else{
