@@ -357,9 +357,13 @@
                 
                 if($isCheck){
                     if (is_array($checkuser)) {
-                        $_SESSION['nguoidung'] = $checkuser;
-                        $thongbao = "Đăng nhập thành công";
-                        header('Location: index.php');
+                        if ($checkuser['kich_hoat'] == 1) {
+                            $_SESSION['nguoidung'] = $checkuser;
+                            $thongbao = "Đăng nhập thành công";
+                            header('Location: index.php');
+                        } else {
+                            $thongbao = "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên!";
+                        }
                     } else {
                         $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
                     }

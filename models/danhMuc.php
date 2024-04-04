@@ -12,7 +12,8 @@
 
     function delete_danhmuc($id_danh_muc){
         // load lên tất cả dữ liệu
-        $sql = "delete from danhmuc where id_danh_muc=".$id_danh_muc;
+        // $sql = "delete from danhmuc where id_danh_muc=".$id_danh_muc;
+        $sql = "UPDATE danhmuc SET kich_hoat = 0 WHERE id_danh_muc = " . $id_danh_muc;
         pdo_execute($sql);
     }
 

@@ -84,7 +84,8 @@
 
     function delete_taikhoan($id_nguoi_dung){
         // load lên tất cả dữ liệu
-        $sql = "DELETE FROM nguoidung WHERE id_nguoi_dung=".$id_nguoi_dung;
+        // $sql = "DELETE FROM nguoidung WHERE id_nguoi_dung=".$id_nguoi_dung;
+        $sql = "UPDATE nguoidung SET kich_hoat = 0 WHERE id_nguoi_dung = " . $id_nguoi_dung;
         pdo_execute($sql);
     }
    
