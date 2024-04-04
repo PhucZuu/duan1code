@@ -26,7 +26,7 @@
 
 
           <p class="account__tab admlist">
-            <i class="fa-solid fa-right-from-bracket"></i><a href="#">Logout</a>
+            <i class="fa-solid fa-right-from-bracket"></i><a href="index.php?act=logoutadmin">Logout</a>
           </p>
           
         </div>

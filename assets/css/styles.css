@@ -1753,6 +1753,18 @@ table {
 .btnw{
   width: 30%;
 }
+.cart_pro_img{
+  display: flex;
+  justify-content: center;
+}
+.order_tracking_img{
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.mb{
+  margin-bottom: 5px;
+}
 .login,
 .register {
   border: 1px solid var(--border-color-alt);

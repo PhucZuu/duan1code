@@ -37,7 +37,7 @@
                             extract($order);
                             echo '
                             <tr>
-                                <td><img width="90px" src="./uploads/'.$hinh_anh.'" alt=""></td>
+                                <td ><img width="90px" src="./uploads/'.$hinh_anh.'" alt=""></td>
                                 <td><h3 class="table__title"> '.$ten_san_pham.'
                                 </h3>
                                 <p class="table__quantity">Số lượng: '.$so_luong.'</p>
@@ -96,7 +96,7 @@
                         extract($order);
                         echo '
                         <tr>
-                            <td><img width="100px" src="./uploads/'.$hinh_anh.'" alt=""></td>
+                            <td ><img width="100px" src="./uploads/'.$hinh_anh.'" alt=""></td>
                             <td><h3 class="table__title"> '.$ten_san_pham.'
                             </h3>
                             <p class="table__quantity">Số lượng: '.$so_luong.'</p>

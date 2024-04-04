@@ -32,7 +32,6 @@
     </div>
 
 </header>
-
 <main class="main">
     <div class="boxthank container">
         <div class="imgthank">
@@ -41,7 +40,7 @@
         <div class="thankforpurchase">
             <h3>Mua hàng thành công</h3>
             <span>Cảm ơn vì đã mua hàng của chúng tôi. Đơn hàng sẽ được giao đến bạn trong vài ngày tới.</span><br>
-            <span>Bạn có thể theo dõi đơn hàng của mình trong <a class="followOrder" href="index.php?act=theodoidonhang">Theo dõi đơn hàng</a></span>
+            <span>Bạn có thể theo dõi đơn hàng của mình trong <a class="followOrder" href="http://localhost/duan1code/index.php?act=theodoidonhang">Theo dõi đơn hàng</a></span>
         </div>
         <a class="btn btn--md btncontinue" href="http://localhost/duan1code/index.php">TIẾP TỤC MUA HÀNG</a>
     </div>
