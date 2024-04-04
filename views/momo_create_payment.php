@@ -8,8 +8,8 @@
 
     $orderInfo = "Thanh toán qua MoMo";
     $amount = $tong_thanh_tien;
-    // $orderId = $id_donhang;
     $orderId = rand(1,9999);
+    // $orderId = $id_donhang;
     $redirectUrl = "http://localhost/duan1code/views/thankyou.php";
     $ipnUrl = "http://localhost/duan1code/views/thankyou.php";
     $extraData = "";
@@ -50,5 +50,3 @@
     //Just a example, please check more in there
 
     header('Location: ' . $jsonResult['payUrl']);
-
-?>

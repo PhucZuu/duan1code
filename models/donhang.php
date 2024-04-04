@@ -1,6 +1,6 @@
 <?php
     function loadAllOrders(){
-        $sql="SELECT id_don_hang,ten_trang_thai,ho_va_ten,email,so_dien_thoai,dia_chi,trang_thai_thanh_toan,tong_thanh_tien 
+        $sql="SELECT id_don_hang,ten_trang_thai,ho_va_ten,email,so_dien_thoai,dia_chi,trang_thai_thanh_toan,ngay_dat_hang,tong_thanh_tien 
         FROM donhang JOIN trangthai ON donhang.id_trangthai=trangthai.id_trang_thai 
         JOIN thanhtoan ON donhang.thanh_toan=thanhtoan.id_thanh_toan";
         $orders=pdo_query($sql);

@@ -15,6 +15,7 @@
                         <th>EMAIL</th>
                         <th>SỐ ĐIỆN THOẠI</th>
                         <th>ĐỊA CHỈ</th>
+                        <th>NGÀY ĐẶT HÀNG</th>
                         <th>TRẠNG THÁI</th>
                         <th>THANH TOÁN</th>
                         <th>TỔNG THÀNH TIỀN</th>
@@ -32,6 +33,7 @@
                                 <td>'.$email.'</td>
                                 <td>'.$so_dien_thoai.'</td>
                                 <td>'.$dia_chi.'</td>
+                                <td>'.$ngay_dat_hang.'</td>
                                 <td>'.$ten_trang_thai.'</td>
                                 <td>'.$trang_thai_thanh_toan.'</td>
                                 <td>$'.$tong_thanh_tien.'</td>

@@ -43,8 +43,8 @@
                                 <p class="table__quantity">Số lượng: '.$so_luong.'</p>
                                 <p class="table__quantity">Màu: '.$ten_mau_sac.'</p>
                                 <p class="table__quantity">Cỡ: '.$ten_kich_co.'</p></td>
-                                <td>'.$gia.'</td>
-                                <td>'.$thanh_tien.'</td>
+                                <td>$'.$gia.'</td>
+                                <td>$'.$thanh_tien.'</td>
                             </tr>
                             ';
                         }

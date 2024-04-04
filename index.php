@@ -79,6 +79,9 @@
                 }else{
                     header("Location: index.php?act=details&idpro=$id_sanpham&idcolor=$id_color");
                 }
+            }else if(!isset($_POST['colors'])){
+                $id_size=$_POST['sizes'];
+                header("Location: index.php?act=details&idpro=$id_sanpham&idsize=$id_size");
             }
             
             break;
@@ -172,6 +175,7 @@
             $so_dien_thoai=trim($_POST['so_dien_thoai']);
             $dia_chi=trim($_POST['dia_chi']);
             $email=trim($_POST['email']);
+            $ngay_dat_hang=date("Y-m-d");
             $tong_thanh_tien=totalPriceOrders();
             $check=true;
             // echo $tong_thanh_tien;
@@ -194,7 +198,7 @@
             }
             if ($check) {
                 if(isset($_POST['thanhtoannhanhang'])){
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,1,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,1,$ngay_dat_hang,$tong_thanh_tien);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];
@@ -209,7 +213,7 @@
                     // die;
 
                     // thêm đơn hàng vào csdl
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];
@@ -225,7 +229,7 @@
                     // die;
                     // thêm đơn hàng vào csdl
                     
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];
@@ -234,7 +238,6 @@
                         addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
                     }
                     unset($_SESSION['myCart']);
-
                     include './views/momo_create_payment.php';
                 }
             }else{

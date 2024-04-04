@@ -42,7 +42,7 @@
                         <td>'.$ten_kich_co.'</td>
                         <td>$'.$gia.'</td>
                         <td>'.$so_luong.'</td>
-                        <td>'.$thanh_tien.'</td>
+                        <td>$'.$thanh_tien.'</td>
                     </tr>        
                     ';
                 }
