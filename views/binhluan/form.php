@@ -76,7 +76,12 @@ if(isset($_POST['guibinhluan']) && $_POST['guibinhluan']){
                         <span style="color:red"><?= $errNoi_dung ?></span>
                     </form>
                 <?php else : ?>
-                    <p>Bạn cần đăng nhập để bình luận</p>
+                    <div class="need">
+                    <p>Bạn cần </p> <p style="visibility: hidden;"> .</p>
+                    <button class="loginButton" id="loginButton"> ĐĂNG NHẬP </button>
+                    <p style="visibility: hidden;"> .</p>
+                    <p> để bình luận</p>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -84,3 +89,8 @@ if(isset($_POST['guibinhluan']) && $_POST['guibinhluan']){
 
 </body>
 </html>
+<script>
+    document.getElementById("loginButton").onclick = function() {
+        window.location.href = "index.php?act=dangnhap";
+    };
+</script>
