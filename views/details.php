@@ -69,7 +69,8 @@
               extract($color); 
               echo '
                 <li>
-                  <input type="radio" '.($id_color==$id_mau_sac?"checked":"").' name="colors" onclick="return this.form.submit()" class="colors" value='.$id_mau_sac.'><label class="showColor" style="background-color:'.$ma_mau.';"></label>
+                  <input type="radio" '.($id_color==$id_mau_sac?"checked":"").' name="colors" onclick="return this.form.submit()" class="colors" value='.$id_mau_sac.'>
+                  <label class="showColor" style="background-color:'.$ma_mau.';"></label>
                 </li>
               ';
             }
@@ -89,7 +90,8 @@
             extract($size); 
             echo '
             <li>
-              <input type="radio" name="sizes" '.($id_size==$id_kichco?"checked":"").' onclick="return this.form.submit()" value="'.$id_kichco.'" id=""><label>'.$ten_kich_co.'</label>
+              <input type="radio" class="sizes" name="sizes" '.($id_size==$id_kichco?"checked":"").' onclick="return this.form.submit()" value="'.$id_kichco.'" id="">
+              <label class="showSize">'.$ten_kich_co.'</label>
             </li>
             ';
           }

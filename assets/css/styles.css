@@ -2310,3 +2310,86 @@ table {
   padding-top: 10px;
   font-size: 13px;
 }
+/* Định dạng radio button */
+.colors[type="radio"] {
+  position: absolute; /* Đảm bảo radio button nằm ẩn dưới label */
+  opacity: 0; /* Ẩn nút radio */
+  width: 40px; /* Đảm bảo radio button có kích thước để bấm */
+  height: 40px;
+  cursor: pointer; /* Đổi con trỏ khi di chuột qua */
+}
+
+/* Định dạng label */
+.showColor {
+  width: 35px;
+  height: 35px;
+  display: block; /* Đảm bảo label có thể nhận kích thước */
+  border: var(--border-color) solid 1px;
+}
+
+/* Tạo lớp overlay */
+.showColor + .showColor {
+  position: relative;
+}
+
+.showColor + .showColor::before {
+  content: ""; /* Tạo một phần tử giả trước label */
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* ---------------- */
+.sizes[type="radio"] {
+  position: absolute; 
+  opacity: 0; 
+  width: 40px; 
+  height: 40px;
+  cursor: pointer; 
+}
+
+.showSize {
+  width: 35px;
+  height: 35px;
+  display: block; 
+  cursor: pointer; /* Thêm con trỏ vào label */
+  border: solid 0.7px;
+  padding: 0;
+  text-align: center;
+  line-height: 30px;
+}
+
+/* Tạo lớp overlay */
+.showSize + .showSize {
+  position: relative;
+}
+
+.showSize + .showSize::before {
+  content: ""; 
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Áp dụng khi radio button được chọn */
+.sizes[type="radio"]:checked + .showSize {
+  background-color: rgb(201, 192, 192); /* Đổi màu nền */
+  border: 2px solid var(--first-color); /* Thay đổi viền */
+}
+
+.colors[type="radio"]:checked + .showColor {
+  border: 3px solid var(--first-color); /* Thay đổi viền */
+}
+
+.need{
+  display: flex !important;
+}
+.loginButton{
+  color: #088179;
+}
+
