@@ -187,5 +187,8 @@
         }
         return $result;
     }
-    
+    function updateQuantityProduct($id_bienthe,$so_luong){
+        $sql="UPDATE bienthe SET so_luong=so_luong - $so_luong WHERE id_bien_the=$id_bienthe";
+        pdo_execute($sql);
+    }
 ?>

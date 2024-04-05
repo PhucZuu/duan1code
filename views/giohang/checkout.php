@@ -45,8 +45,8 @@
             ?>
             
             <tr>
-                <td class="cart_pro_img">
-                <img src="./uploads/<?= $cart[4] ?>" alt="productimgae" class="order__img">
+                <td>
+                <img src="./uploads/<?= $cart[4] ?>" alt="productimgae" class="order__img ma">
                 </td>
 
                 <td>

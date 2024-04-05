@@ -205,6 +205,8 @@
                         $so_luong=$product[2];
                         $thanh_tien=$product[7];
                         addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
+                        // cập nhật lại số lượng hàng trong kho
+                        updateQuantityProduct($id_bienthe,$so_luong);
                     }
                     unset($_SESSION['myCart']);
                     header('Location: http://localhost/duan1code/views/thankyou.php');
@@ -220,6 +222,8 @@
                         $so_luong=$product[2];
                         $thanh_tien=$product[7];
                         addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
+                        // cập nhật lại số lượng hàng trong kho
+                        updateQuantityProduct($id_bienthe,$so_luong);
                     }
                     unset($_SESSION['myCart']);
                     include './views/vnpay_create_payment.php';
@@ -236,6 +240,8 @@
                         $so_luong=$product[2];
                         $thanh_tien=$product[7];
                         addOrderDetails($id_donhang,$id_bienthe,$gia,$so_luong,$thanh_tien);
+                        // cập nhật lại số lượng hàng trong kho
+                        updateQuantityProduct($id_bienthe,$so_luong);
                     }
                     unset($_SESSION['myCart']);
                     include './views/momo_create_payment.php';

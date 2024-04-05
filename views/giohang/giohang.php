@@ -32,8 +32,8 @@
     
                 echo '
                 <tr>
-                <td class="cart_pro_img">
-                  <img src="'.$hinh.'" alt="" class="table__img">
+                <td>
+                  <img src="'.$hinh.'" alt="" class="table__img ma">
                 </td>
         
                 <td>

@@ -1753,10 +1753,6 @@ table {
 .btnw{
   width: 30%;
 }
-.cart_pro_img{
-  display: flex;
-  justify-content: center;
-}
 .order_tracking_img{
   display: flex;
   justify-content: center;
@@ -1780,6 +1776,9 @@ table {
 .btn_cancle:hover{
   background-color: transparent;
   color: var(--first-color);
+}
+.ma{
+  margin: auto;
 }
 .mb{
   margin-bottom: 5px;
