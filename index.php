@@ -517,6 +517,13 @@
                     $so_dien_thoai=$_POST['so_dien_thoai'];  
                     $id_order=loadAllOrdersByPhone($so_dien_thoai);
                 }
+                if(isset($_POST['cancelOrder'])&&$_POST['cancelOrder']){
+                    $id_don_hang=$_POST['id_donhang'];
+                    cancelOrder($id_don_hang,5);
+                }else if(isset($_POST['returnOrder'])&&$_POST['returnOrder']){
+                    $id_don_hang=$_POST['id_donhang'];
+                    cancelOrder($id_don_hang,7);
+                }
                 include 'views/theodoidonhang.php';
                 break;
             case "gioithieu":

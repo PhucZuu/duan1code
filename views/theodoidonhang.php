@@ -7,12 +7,24 @@
             echo '<h3>ĐƠN HÀNG CỦA BẠN</h3>';
             foreach($id_order as $id_don_hang){
                 extract($id_don_hang);
+                if($id_trangthai==1){
+                    $cancle='<form action="index.php?act=theodoidonhang" method="post">
+                    <input type="hidden" name="id_donhang" value="'.$id_don_hang.'">
+                    <button class="btn_cancle" onclick="return confirm(\'Bạn chắc chắn muốn hủy đơn hàng này\')"><input type="submit" name="cancelOrder" value="Hủy đơn hàng"></button>
+                    </form>';
+                }else if($id_trangthai==6){
+                    $cancle='<form action="index.php?act=theodoidonhang" method="post">
+                    <input type="hidden" name="id_donhang" value="'.$id_don_hang.'">
+                    <button class="btn_cancle" onclick="return confirm(\'Bạn chắc chắn muốn trả hàng?\')"><input type="submit" name="returnOrder" value="Yêu cầu trả hàng"></button>
+                    </form>';
+                }else{
+                    $cancle='';
+                }
                 echo '
                     <table class="order__table mar">
                         <tr>
-                            <td colspan="5">
+                            <td colspan="6">
                                 Mã đơn hàng: '.$id_don_hang.'<br>
-                                
                             </td>
                         <tr>
                         <tr>
@@ -23,7 +35,8 @@
                                 Email: '.$email.'<br>
                                 Trạng thái thanh toán: '.$trang_thai_thanh_toan.'<br>
                                 Trạng thái đơn hàng: '.$ten_trang_thai.'<br>
-                                Tổng thành tiền: $'.$tong_thanh_tien.'
+                                Tổng thành tiền: $'.$tong_thanh_tien.'<br>
+                                '.$cancle.'
                             </td>   
                             <th>HÌNH ẢNH</th>
                             <th>SẢN PHẨM</th>
@@ -66,6 +79,19 @@
             echo '<h3>ĐƠN HÀNG CỦA BẠN</h3>';
             foreach($id_order as $id_don_hang){
                 extract($id_don_hang);
+                if($id_trangthai==1){
+                    $cancle='<form action="index.php?act=theodoidonhang" method="post">
+                    <input type="hidden" name="id_donhang" value="'.$id_don_hang.'">
+                    <button class="btn_cancle" onclick="return confirm(\'Bạn chắc chắn muốn hủy đơn hàng này\')"><input type="submit" name="cancelOrder" value="Hủy đơn hàng"></button>
+                    </form>';
+                }else if($id_trangthai==6){
+                    $cancle='<form action="index.php?act=theodoidonhang" method="post">
+                    <input type="hidden" name="id_donhang" value="'.$id_don_hang.'">
+                    <button class="btn_cancle" onclick="return confirm(\'Bạn chắc chắn muốn trả hàng?\')"><input type="submit" name="returnOrder" value="Yêu cầu trả hàng"></button>
+                    </form>';
+                }else{
+                    $cancle='';
+                }
                 echo '
                 <table class="order__table mar">
                     <tr>
@@ -82,7 +108,8 @@
                             Email: '.$email.'<br>
                             Trạng thái thanh toán: '.$trang_thai_thanh_toan.'<br>
                             Trạng thái đơn hàng: '.$ten_trang_thai.'<br>
-                            Tổng thành tiền: $'.$tong_thanh_tien.'
+                            Tổng thành tiền: $'.$tong_thanh_tien.'<br>
+                            '.$cancle.'
                         </td>   
                         <th>HÌNH ẢNH</th>
                         <th>SẢN PHẨM</th>
