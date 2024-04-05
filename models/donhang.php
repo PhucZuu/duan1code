@@ -31,7 +31,7 @@
         return $ordersDetails;
     }
     function loadAllOrdersByPhone($so_dien_thoai){
-        $sql="SELECT id_don_hang,ho_va_ten,so_dien_thoai,dia_chi,email,trang_thai_thanh_toan,ten_trang_thai,tong_thanh_tien FROM donhang 
+        $sql="SELECT id_don_hang,id_trangthai,ho_va_ten,so_dien_thoai,dia_chi,email,trang_thai_thanh_toan,ten_trang_thai,tong_thanh_tien FROM donhang 
         JOIN trangthai ON trangthai.id_trang_thai=donhang.id_trangthai 
         JOIN thanhtoan ON thanhtoan.id_thanh_toan=donhang.thanh_toan 
         WHERE so_dien_thoai=$so_dien_thoai";
@@ -48,5 +48,9 @@
         WHERE id_donhang=$id_don_hang";
         $orders=pdo_query($sql);
         return $orders;
+    }
+    function cancelOrder($id_don_hang,$id_trangthai){
+        $sql="UPDATE donhang SET id_trangthai=$id_trangthai WHERE id_don_hang=$id_don_hang";
+        pdo_execute($sql);
     }
 ?>
