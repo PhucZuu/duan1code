@@ -386,11 +386,33 @@
                     include "thongke/bieudo.php";
                     break;
                 case 'doanhthu':
-                    $doanhthu =loadAll_doanhthu();
+                    $thang = date('m'); // Lấy tháng hiện tại
+                    $nam = date('Y'); // Lấy năm hiện tại
+
+                    if (isset($_POST['thang']) && isset($_POST['nam'])) {
+                        $thang = $_POST['thang'];
+                        $nam = $_POST['nam'];
+                    }
+
+                    $doanhthu = loadAll_doanhthu($thang, $nam);
                     include "thongke/doanhthu.php";
+                    // print_r($doanhthu);
+                
                     break;
+                    
                 case 'luotban':
-                    $doanhthu =loadAll_doanhthu();
+                    $sort = "DESC";
+                    $thang = date('m'); // Lấy tháng hiện tại
+                    $nam = date('Y'); // Lấy năm hiện tại
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["luotban"])) {
+                        $thang = $_POST['thang'];
+                        $nam = $_POST['nam'];
+                        if ($_POST["sort_option"] == "desc") {
+                            $sort = "DESC";
+                        } else {
+                            $sort = "ASC";
+                        }}
+                    $luotban = loadAll_luotban($thang,$nam,$sort);
                     include "thongke/luotban.php";
                     break;
                 case 'listorders':

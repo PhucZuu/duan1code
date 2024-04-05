@@ -23,7 +23,7 @@ $listtke = pdo_query($sql);
 return $listtke;
 }
 
-function loadAll_doanhthu(){
+function loadAll_doanhthu($thang, $nam){
     $sql = "SELECT 
             dm.ten_danh_muc,
             SUM(ctdh.so_luong) AS so_luong_ban,
@@ -42,11 +42,36 @@ function loadAll_doanhthu(){
             dm.kich_hoat = 1
             AND sp.kich_hoat = 1
             AND dh.id_trangthai = 1
+            AND YEAR(dh.ngay_dat_hang) = $nam
+            AND MONTH(dh.ngay_dat_hang) = $thang
         GROUP BY 
             dm.id_danh_muc, dm.ten_danh_muc;";
+    
     $doanhthu = pdo_query($sql);
     return $doanhthu;
 }
 
+function loadAll_luotban($thang,$nam,$sort){
+    $sql = "SELECT sp.ten_san_pham,
+    sp.id_san_pham,
+    SUM(ctdh.so_luong) AS so_luong_ban,
+    (SELECT SUM(bt.so_luong) 
+     FROM bienthe bt 
+     WHERE bt.id_sanpham = sp.id_san_pham) - SUM(ctdh.so_luong) AS so_luong_con_lai,
+    SUM(ctdh.thanh_tien) AS doanh_thu
+FROM chitietdonhang ctdh
+INNER JOIN bienthe bt ON ctdh.id_bienthe = bt.id_bien_the
+INNER JOIN sanpham sp ON bt.id_sanpham = sp.id_san_pham
+INNER JOIN donhang dh ON ctdh.id_donhang = dh.id_don_hang
+WHERE dh.thanh_toan = 1
+AND YEAR(dh.ngay_dat_hang) = $nam
+AND MONTH(dh.ngay_dat_hang) = $thang
+GROUP BY sp.ten_san_pham
+ORDER BY so_luong_ban $sort, doanh_thu $sort
+LIMIT 3;";
+    
+    $luotban = pdo_query($sql);
+    return $luotban;
+}
 
 ?>

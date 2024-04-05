@@ -2405,3 +2405,9 @@ table {
   color: #088179;
 }
 
+.ad_btn{
+  color: #088179;
+}
+.ad_btn:hover{
+  color: aquamarine;
+}

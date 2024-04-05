@@ -1,50 +1,65 @@
 <div class="tabs__content">
           <div class="tab__content active-tab">
-            <h3 class="tab__header">Thống kê lượt bán sản phẩm theo danh mục</h3>
-            <script src="https://www.gstatic.com/charts/loader.js"></script>
+            <h3 class="tab__header">THỐNG KÊ SẢN PHẨM</h3>
+<form action="index.php?act=luotban" method="post">
+<label for="thang">Tháng:</label>
+<select name="thang" id="thang">
+    <?php
+    for ($i = 1; $i <= 12; $i++) {
+        $selected = ($i == $thang) ? 'selected' : '';
+        echo "<option value=\"$i\" $selected>Tháng $i</option>";
+    }
+    ?>
+</select>
 
-<body>
-<div
-id="myChart" style="width:100%; max-width:600px; height:500px;">
-</div>
 
-<script>
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+<label for="nam">Năm:</label>
+<select name="nam" id="nam">
+    <?php
+    $current_year = date("Y");
+    for ($i = $current_year; $i >= $current_year - 10; $i--) {
+        $selected = ($i == $nam) ? 'selected' : ''; 
+        echo "<option value=\"$i\" $selected>$i</option>";
+    }
+    ?>
+</select>
+<select name="sort_option">
+    <option value="desc" <?php if(isset($_POST["sort_option"]) && $_POST["sort_option"] == "desc") echo "selected"; ?>>BÁN CHẠY</option>
+    <option value="asc" <?php if(isset($_POST["sort_option"]) && $_POST["sort_option"] == "asc") echo "selected"; ?>>ÍT LƯỢT MUA</option>
+</select>
 
-function drawChart() {
-    // Set Data
-    const data = google.visualization.arrayToDataTable([
-        ['Danh mục', 'Lượt bán'],
-        <?php
-        $tongdm = count($doanhthu);
-        $i = 1;
-        foreach($doanhthu as $tke){
-            echo "['".$tke['ten_danh_muc']."', ".$tke['so_luong_ban']."]";
-            if($i < $tongdm) {
-                echo ",";
-            }
-            $i += 1;
-        }
-        ?>
-    ]);
-
-    // Set Options
-    const options = {
-        title: 'Biểu đồ thống kê'
-    };
-
-    // Draw
-    const chart = new google.visualization.PieChart(document.getElementById('myChart'));
-    chart.draw(data, options);
-}
-</script>
-
+<input type="submit" class="ad_btn" name="luotban" value="Xem">
+</form>
             <div class="register">
-               
+                <table>
+                    <tr>
+                        <th>MÃ SP</th>
+                        <th>TÊN SP</th>
+                        <th>SỐ LƯỢNG BÁN</th>
+                        <th>HÀNG TRONG KHO</th>
+                        <th>DOANH THU</th>
+                    </tr>
+                    <?php
+                        foreach($luotban as $lb){
+                            extract($lb);
+                            // extract($so_san_pham);
+                              echo '
+                            <tr>
+                                <td>'.$id_san_pham.'</td>
+                                <td>'.$ten_san_pham.'</td>
+                                <td>'.$so_luong_ban.'</td>
+                                <td>'.$so_luong_con_lai.'</td>
+                                <td>'.$doanh_thu.'</td>
+                            </tr>        
+                            ';  
+                            }
+                            
+                        
+                    ?>
+                </table>
             </div>
             <div class="form__btn">
-            <a href="index.php?act=thongke"><input class="btn" type="button" value="Xem thống kê"></a>
+                <a href="index.php?act=thongke"><input class="btn" type="button" value="Quay lại"></a>
             </div>
           </div>
         </div>

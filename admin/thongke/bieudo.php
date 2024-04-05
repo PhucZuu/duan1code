@@ -44,7 +44,7 @@ function drawChart() {
                
             </div>
             <div class="form__btn">
-            <a href="index.php?act=thongke"><input class="btn" type="button" value="Xem thống kê"></a>
+            <a href="index.php?act=thongke"><input class="btn" type="button" value="Quay lại"></a>
             </div>
           </div>
         </div>
