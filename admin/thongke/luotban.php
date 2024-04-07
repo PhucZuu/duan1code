@@ -2,12 +2,23 @@
           <div class="tab__content active-tab">
             <h3 class="tab__header">THỐNG KÊ SẢN PHẨM</h3>
 <form action="index.php?act=luotban" method="post">
+
+<label for="thang">Ngày:</label>
+<select name="ngay" id="ngay">
+    <?php
+    for ($i = 1; $i <= thang2($thang,$nam); $i++) {
+        $selected = ($i == $ngay) ? 'selected' : '';
+        echo "<option value=\"$i\" $selected> $i</option>";
+    }
+    ?>
+</select>
+
 <label for="thang">Tháng:</label>
 <select name="thang" id="thang">
     <?php
     for ($i = 1; $i <= 12; $i++) {
         $selected = ($i == $thang) ? 'selected' : '';
-        echo "<option value=\"$i\" $selected>Tháng $i</option>";
+        echo "<option value=\"$i\" $selected> $i</option>";
     }
     ?>
 </select>

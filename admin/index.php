@@ -386,15 +386,17 @@
                     include "thongke/bieudo.php";
                     break;
                 case 'doanhthu':
+                    $ngay = date('d');
                     $thang = date('m'); // Lấy tháng hiện tại
                     $nam = date('Y'); // Lấy năm hiện tại
 
-                    if (isset($_POST['thang']) && isset($_POST['nam'])) {
+                    if (isset($_POST['ngay']) && isset($_POST['thang']) && isset($_POST['nam'])) {
+                        $ngay = $_POST['ngay'];
                         $thang = $_POST['thang'];
                         $nam = $_POST['nam'];
                     }
 
-                    $doanhthu = loadAll_doanhthu($thang, $nam);
+                    $doanhthu = loadAll_doanhthu($ngay,$thang,$nam);
                     include "thongke/doanhthu.php";
                     // print_r($doanhthu);
                 
@@ -402,9 +404,11 @@
                     
                 case 'luotban':
                     $sort = "DESC";
+                    $ngay = date('d');
                     $thang = date('m'); // Lấy tháng hiện tại
                     $nam = date('Y'); // Lấy năm hiện tại
                     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["luotban"])) {
+                        $ngay = $_POST['ngay'];
                         $thang = $_POST['thang'];
                         $nam = $_POST['nam'];
                         if ($_POST["sort_option"] == "desc") {
@@ -412,7 +416,7 @@
                         } else {
                             $sort = "ASC";
                         }}
-                    $luotban = loadAll_luotban($thang,$nam,$sort);
+                    $luotban = loadAll_luotban($ngay,$thang,$nam,$sort);
                     include "thongke/luotban.php";
                     break;
                 case 'listorders':

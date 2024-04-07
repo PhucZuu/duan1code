@@ -23,7 +23,7 @@ $listtke = pdo_query($sql);
 return $listtke;
 }
 
-function loadAll_doanhthu($thang, $nam){
+function loadAll_doanhthu($ngay,$thang,$nam){
     $sql = "SELECT 
             dm.ten_danh_muc,
             SUM(ctdh.so_luong) AS so_luong_ban,
@@ -44,6 +44,7 @@ function loadAll_doanhthu($thang, $nam){
             AND dh.id_trangthai = 1
             AND YEAR(dh.ngay_dat_hang) = $nam
             AND MONTH(dh.ngay_dat_hang) = $thang
+            AND DAY(dh.ngay_dat_hang) = $ngay
         GROUP BY 
             dm.id_danh_muc, dm.ten_danh_muc;";
     
@@ -51,13 +52,13 @@ function loadAll_doanhthu($thang, $nam){
     return $doanhthu;
 }
 
-function loadAll_luotban($thang,$nam,$sort){
+function loadAll_luotban($ngay,$thang,$nam,$sort){
     $sql = "SELECT sp.ten_san_pham,
     sp.id_san_pham,
     SUM(ctdh.so_luong) AS so_luong_ban,
     (SELECT SUM(bt.so_luong) 
      FROM bienthe bt 
-     WHERE bt.id_sanpham = sp.id_san_pham) - SUM(ctdh.so_luong) AS so_luong_con_lai,
+     WHERE bt.id_sanpham = sp.id_san_pham) - SUM(ctdh.so_luong) + 1 AS so_luong_con_lai,
     SUM(ctdh.thanh_tien) AS doanh_thu
 FROM chitietdonhang ctdh
 INNER JOIN bienthe bt ON ctdh.id_bienthe = bt.id_bien_the
@@ -66,6 +67,7 @@ INNER JOIN donhang dh ON ctdh.id_donhang = dh.id_don_hang
 WHERE dh.thanh_toan = 1
 AND YEAR(dh.ngay_dat_hang) = $nam
 AND MONTH(dh.ngay_dat_hang) = $thang
+AND DAY(dh.ngay_dat_hang) = $ngay
 GROUP BY sp.ten_san_pham
 ORDER BY so_luong_ban $sort, doanh_thu $sort
 LIMIT 3;";
@@ -74,4 +76,10 @@ LIMIT 3;";
     return $luotban;
 }
 
+function thang2($thang,$nam) {
+    if($thang == 2)
+    {return ($nam % 4 == 0 && ($nam % 100 != 0 || $nam % 400 == 0)) ? 29 : 28;}
+    else{return 31;}
+    
+}
 ?>
