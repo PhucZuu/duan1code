@@ -28,7 +28,8 @@
                             echo '<tr>
                                     <td>'.$id_danh_muc.'</td>
                                     <td>'.$ten_danh_muc.'</td>  
-                                    <td><a class="btn1" href="'.$suadm.'"><input type="button" value="Sửa"></a>   <a class="btn1" href="'.$xoadm.'"><input type="button" value="Xóa"></a>
+                                    <td><a class="btn1" href="'.$suadm.'"><input type="button" value="Sửa"></a>   
+                                    <a class="btn1" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" href="'.$xoadm.'"><input type="button" value="Xóa"></a>
                                 </tr>';
                         }
                         ?>
