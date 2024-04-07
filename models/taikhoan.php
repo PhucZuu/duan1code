@@ -63,6 +63,7 @@
     function update_taikhoan_admin($id_nguoi_dung,$vai_tro){
         $sql = "UPDATE nguoidung SET vai_tro='".$vai_tro."' WHERE id_nguoi_dung=".$id_nguoi_dung;
         echo $sql;
+        // die();
         pdo_execute($sql);
     }
 
