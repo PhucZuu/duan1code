@@ -289,7 +289,7 @@
 
                 // print_r([$ten_dang_nhap,$email,$mat_khau,$ho_va_ten,$so_dien_thoai,$dia_chi]);
                 // die();
-                
+                 
 
                 $isCheck = true;
                 

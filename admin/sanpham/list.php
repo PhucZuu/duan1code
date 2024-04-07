@@ -33,7 +33,7 @@
                                 <td>'.$luot_xem.'</td>
                                 <td>
                                     <a class="btn1" href="'.$suasp.'"><input type="button" value="Sửa"></a>
-                                    <a class="btn1" href="'.$xoasp.'"><input type="button" value="Xóa"></a>
+                                    <a class="btn1" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" href="'.$xoasp.'"><input type="button" value="Xóa"></a>
                                     <a class="btn1" href="'.$xemct.'"><input type="button" value="Xem chi tiết"></a>
                                 </td>
                             </tr>        
