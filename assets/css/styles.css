@@ -2429,3 +2429,14 @@ table {
 .ad_btn:hover{
   color: aquamarine;
 }
+.stats-table {
+  border-collapse: collapse; 
+}
+
+.stats-table th, .stats-table td {
+  border: 1px solid black; 
+  padding: 8px; 
+}
+.stats-table th{
+  background: #BDBBBB;
+}

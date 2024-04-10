@@ -35,7 +35,6 @@
     ?>
 </select>
 
-
     <input type="submit" name="baocao" class="ad_btn" value="Xem báo cáo">
 </form>
             <script src="https://www.gstatic.com/charts/loader.js"></script>

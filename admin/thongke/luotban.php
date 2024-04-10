@@ -42,7 +42,7 @@
 <input type="submit" class="ad_btn" name="luotban" value="Xem">
 </form>
             <div class="register">
-                <table>
+                <table class="stats-table">
                     <tr>
                         <th>MÃ SP</th>
                         <th>TÊN SP</th>

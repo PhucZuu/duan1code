@@ -5,7 +5,7 @@
             // extract($soluong);
             ?>
             <div class="register">
-                <table>
+                <table class="stats-table">
                     <tr>
                         <th>MÃ DM</th>
                         <th>TÊN DM</th>
@@ -37,7 +37,7 @@
             <div class="form__btn">
                 <a href="index.php?act=bieudo"><input class="btn" type="button" value="Biểu đồ số lượng"></a>
                 <a href="index.php?act=doanhthu"><input class="btn" type="button" value="Biểu đồ doanh thu"></a>
-                <a href="index.php?act=luotban"><input class="btn" type="button" value="Biểu đồ lượt bán"></a>
+                <a href="index.php?act=luotban"><input class="btn" type="button" value="Thống kê lượt bán"></a>
             </div>
           </div>
         </div>
