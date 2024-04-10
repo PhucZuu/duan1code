@@ -13,7 +13,12 @@
 
         <form action="index.php?act=updatetk" method="post" class="form grid" enctype="multipart/form-data">
             Vai trò
-            <input type="text" placeholder="Vai trò" class="form__input" name="vai_tro" value="<?= $vai_tro ?>">
+            <!-- <input type="text" placeholder="Vai trò" class="form__input" name="vai_tro" value="<?= $vai_tro ?>"> -->
+            <select class="form__input" name="vai_tro">
+                <option value="">Chọn vai trò</option>
+                <option value="1" <?php if ($vai_tro === '1') echo 'selected'; ?>>Admin</option>
+                <option value="0" <?php if ($vai_tro === '0') echo 'selected'; ?>>Người dùng</option>
+            </select>
             <span style="color:red"><?= $errVaiTro ?></span>
 
             <div class="form__btn">

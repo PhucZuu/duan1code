@@ -34,7 +34,7 @@
                                 <td>'.$giam_gia.'%</td>
                                 <td>
                                     <a class="btn1" href="'.$suabt.'"><input type="button" value="Sửa"></a>
-                                    <a class="btn1" href="'.$xoabt.'"><input type="button" value="Xóa"></a>
+                                    <a class="btn1" onclick="return confirm(\'Bạn có chắc chắn muốn xóa\')" href="'.$xoabt.'"><input type="button" value="Xóa"></a>
                                 </td>
                             </tr>        
                             ';
