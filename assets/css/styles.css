@@ -1758,6 +1758,21 @@ table {
   justify-content: center;
   padding: 0.5rem;
 }
+.noteOrder{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px 30px;
+}
+.noteOrder .noteInfor{
+  text-align: left;
+  margin-bottom: 20px;
+}
+.noteOrder #noteOrderDetail{
+  border: 1px solid gray !important;
+  text-align: left;
+
+}
 .btn_cancle{
   display: inline-block;
   background-color: var(--first-color);

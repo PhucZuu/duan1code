@@ -19,9 +19,9 @@
         $variant = pdo_query_one($sql);
         return $variant;
     }
-    function creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,$thanh_toan,$ngay_dat_hang,$tong_thanh_tien){
-        $sql="INSERT INTO donhang(id_trangthai,ho_va_ten,email,so_dien_thoai,dia_chi,thanh_toan,ngay_dat_hang,tong_thanh_tien) VALUES 
-        ('1','$ho_va_ten','$email','$so_dien_thoai','$dia_chi','$thanh_toan','$ngay_dat_hang','$tong_thanh_tien')";
+    function creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,$thanh_toan,$ngay_dat_hang,$tong_thanh_tien,$ghi_chu){
+        $sql="INSERT INTO donhang(id_trangthai,ho_va_ten,email,so_dien_thoai,dia_chi,thanh_toan,ngay_dat_hang,tong_thanh_tien,ghi_chu) VALUES 
+        ('1','$ho_va_ten','$email','$so_dien_thoai','$dia_chi','$thanh_toan','$ngay_dat_hang','$tong_thanh_tien','$ghi_chu')";
         $id_donhang=pdo_insert_order($sql);
         return $id_donhang;
     }

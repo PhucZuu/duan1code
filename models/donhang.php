@@ -53,4 +53,9 @@
         $sql="UPDATE donhang SET id_trangthai=$id_trangthai WHERE id_don_hang=$id_don_hang";
         pdo_execute($sql);
     }
+    function getNoteOrder($id_don_hang){
+        $sql="SELECT ghi_chu FROM donhang WHERE id_don_hang=$id_don_hang";
+        $note=pdo_query($sql);
+        return $note;
+    }
 ?>

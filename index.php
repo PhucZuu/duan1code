@@ -175,6 +175,7 @@
             $so_dien_thoai=trim($_POST['so_dien_thoai']);
             $dia_chi=trim($_POST['dia_chi']);
             $email=trim($_POST['email']);
+            $ghi_chu=trim($_POST['ghi_chu']);
             $ngay_dat_hang=date("Y-m-d");
             $tong_thanh_tien=totalPriceOrders();
             $check=true;
@@ -198,7 +199,7 @@
             }
             if ($check) {
                 if(isset($_POST['thanhtoannhanhang'])){
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,1,$ngay_dat_hang,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,1,$ngay_dat_hang,$tong_thanh_tien,$ghi_chu);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];
@@ -215,7 +216,7 @@
                     // die;
 
                     // thêm đơn hàng vào csdl
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien,$ghi_chu);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];
@@ -233,7 +234,7 @@
                     // die;
                     // thêm đơn hàng vào csdl
                     
-                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien);
+                    $id_donhang=creatOrder($ho_va_ten,$so_dien_thoai,$dia_chi,$email,2,$ngay_dat_hang,$tong_thanh_tien,$ghi_chu);
                     foreach($_SESSION['myCart'] as $product){
                         $id_bienthe=$product[0];
                         $gia=$product[1];

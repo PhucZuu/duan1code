@@ -24,7 +24,7 @@
 
         <h3 class="checkout__title">Thông tin thêm</h3>
 
-        <textarea name="note" id="" cols="30" rows="10" placeholder="Ghi chú"
+        <textarea name="ghi_chu" id="" cols="30" rows="10" placeholder="Ghi chú"
             class="form__input textarea"></textarea>
 
         <!-- </form> -->

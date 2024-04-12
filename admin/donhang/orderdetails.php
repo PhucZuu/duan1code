@@ -3,7 +3,7 @@
     <h3 class="tab__header">CHI TIẾT ĐƠN HÀNG</h3>
     <?php
         // echo '<pre>';
-        // print_r($orderDetails);
+        // print_r($noteOrder);
         // echo '</pre>';
         // die;
     ?>
@@ -19,6 +19,15 @@
                 ?>
             </select>
         
+    </div>
+    <div class="noteOrder">
+        <span class='noteInfor'>Ghi chú đơn hàng</span>
+        <textarea id="noteOrderDetail" cols="30" rows="7" readonly>
+            <?php
+                extract($noteOrder[0]);
+                echo $ghi_chu;
+            ?>
+        </textarea>
     </div>
     <div class="register">
         <table>

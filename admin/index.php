@@ -434,6 +434,7 @@
                 case 'chitietdonhang':
                     if(isset($_GET['id_don_hang'])&&($_GET['id_don_hang']>0)){
                         $id_don_hang=$_GET['id_don_hang'];
+                        $noteOrder=getNoteOrder($id_don_hang);
                         $orderDetails=getAllOrdersDetails($id_don_hang);
                         $order=statusOrder($id_don_hang);
                         extract($order);
