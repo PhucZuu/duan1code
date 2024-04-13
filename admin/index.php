@@ -395,9 +395,27 @@
                         $thang = $_POST['thang'];
                         $nam = $_POST['nam'];
                     }
-
+                    if ($ngay == "all") {
+                        // Nếu ngày được chọn là "Tất cả", chuyển hướng người dùng đến trang khác
+                        header("Location: index.php?act=doanhthu_thang");
+                        exit; // Đảm bảo không có mã HTML khác được gửi đi sau chuyển hướng
+                    }
                     $doanhthu = loadAll_doanhthu($ngay,$thang,$nam);
                     include "thongke/doanhthu.php";
+                    // print_r($doanhthu);
+                
+                    break;
+                case 'doanhthu_thang':
+                    $thang = date('m'); // Lấy tháng hiện tại
+                    $nam = date('Y'); // Lấy năm hiện tại
+
+                    if (isset($_POST['thang']) && isset($_POST['nam'])) {
+                        $thang = $_POST['thang'];
+                        $nam = $_POST['nam'];
+                    }
+
+                    $doanhthu_thang = loadAll_doanhthu_thang($thang,$nam);
+                    include "thongke/doanhthu_thang.php";
                     // print_r($doanhthu);
                 
                     break;
@@ -416,8 +434,28 @@
                         } else {
                             $sort = "ASC";
                         }}
+                        if ($ngay == "all") {
+                            // Nếu ngày được chọn là "Tất cả", chuyển hướng người dùng đến trang khác
+                            header("Location: index.php?act=luotban_thang");
+                            exit; // Đảm bảo không có mã HTML khác được gửi đi sau chuyển hướng
+                        }
                     $luotban = loadAll_luotban($ngay,$thang,$nam,$sort);
                     include "thongke/luotban.php";
+                    break;
+                case 'luotban_thang':
+                    $sort = "DESC";
+                    $thang = date('m'); // Lấy tháng hiện tại
+                    $nam = date('Y'); // Lấy năm hiện tại
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["luotban"])) {
+                        $thang = $_POST['thang'];
+                        $nam = $_POST['nam'];
+                        if ($_POST["sort_option"] == "desc") {
+                            $sort = "DESC";
+                        } else {
+                            $sort = "ASC";
+                        }}
+                    $luotban_thang = loadAll_luotban_thang($thang,$nam,$sort);
+                    include "thongke/luotban_thang.php";
                     break;
                 case 'listorders':
                     $listOrders=loadAllOrders();

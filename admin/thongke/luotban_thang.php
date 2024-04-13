@@ -1,18 +1,8 @@
 <div class="tabs__content">
           <div class="tab__content active-tab">
             <h3 class="tab__header">THỐNG KÊ SẢN PHẨM</h3>
-<form action="index.php?act=luotban" method="post">
+<form action="index.php?act=luotban_thang" method="post">
 
-<label for="thang">Ngày:</label>
-<select name="ngay" id="ngay">
-    <option value="all">Tất cả</option>
-    <?php
-    for ($i = 1; $i <= thang2($thang,$nam); $i++) {
-        $selected = ($i == $ngay) ? 'selected' : '';
-        echo "<option value=\"$i\" $selected> $i</option>";
-    }
-    ?>
-</select>
 
 <label for="thang">Tháng:</label>
 <select name="thang" id="thang">
@@ -52,7 +42,7 @@
                         <th>DOANH THU</th>
                     </tr>
                     <?php
-                        foreach($luotban as $lb){
+                        foreach($luotban_thang as $lb){
                             extract($lb);
                             // extract($so_san_pham);
                               echo '

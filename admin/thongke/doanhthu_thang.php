@@ -1,18 +1,8 @@
 <div class="tabs__content">
           <div class="tab__content active-tab">
             <h3 class="tab__header">Thống kê doanh thu sản phẩm theo danh mục</h3>
-            <form action="index.php?act=doanhthu" method="post">
+            <form action="index.php?act=doanhthu_thang" method="post">
 
-<label for="thang">Ngày:</label>
-<select name="ngay" id="ngay">
-<option value="all">Tất cả</option>
-    <?php
-    for ($i = 1; $i <= 31; $i++) {
-        $selected = ($i == $ngay) ? 'selected' : '';
-        echo "<option value=\"$i\" $selected> $i</option>";
-    }
-    ?>
-</select>
 
 <label for="thang">Tháng:</label>
 <select name="thang" id="thang">
@@ -50,7 +40,7 @@ $data = array(); // Mảng chứa dữ liệu
 
 // Lặp qua kết quả truy vấn và lấy dữ liệu
 
-foreach ($doanhthu as $row) {
+foreach ($doanhthu_thang as $row) {
     $data[] = array(
         'label' => $row['ten_danh_muc'], // Tên danh mục sản phẩm
         'value' => $row['doanh_thu'], // Doanh thu
@@ -67,7 +57,7 @@ const yValues = <?php echo json_encode(array_column($data, 'value')); ?>;
 const barColors = <?php echo json_encode(array_column($data, 'color')); ?>;
 <?php
 $tong_doanh_thu = 0;
-foreach ($doanhthu as $row) {
+foreach ($doanhthu_thang as $row) {
     $tong_doanh_thu += $row['doanh_thu'];
 }
 $tong_doanh_thu = '$' . number_format($tong_doanh_thu, 0, ',', '.');
