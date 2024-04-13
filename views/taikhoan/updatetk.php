@@ -1,7 +1,6 @@
 <section class="login-register section--lg">
-  <div class="login-register__container container grid">
-    <!-- FORM ĐĂNG KÝ -->
-    <div class="register">
+    <div class="login-register__container formlogin container box_login">
+    <div class="login bl_r">
       <h3 class="section__title">Tài khoản của tôi</h3>
 
       <form action="index.php?act=edit_taikhoan" method="post" class="form grid" enctype="multipart/form-data">
@@ -23,9 +22,9 @@
         <input type="text" placeholder="Địa chỉ" class="form__input" name="dia_chi" value="<?= $dia_chi ?>">
         <span style="color:red"><?= $errDiaChi ?></span>
 
-        <div class="form__btn">
+        <div class="form__btn btnlogin">
             <input type="hidden" name="id_nguoi_dung" value="<?= $id_nguoi_dung ?>">
-          <input type="submit" class="btn" value="Cập nhật" name="capnhat">
+          <input type="submit" class="btn btnw" value="Cập nhật" name="capnhat">
         </div>
       </form><br>
       <h2 class="thongbao">

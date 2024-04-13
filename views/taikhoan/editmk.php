@@ -1,6 +1,6 @@
 <section class="login-register section--lg">
-    <div class="login-register__container container grid">
-    <div class="login">
+    <div class="login-register__container formlogin container box_login">
+    <div class="login bl_r">
             <h3 class="section__title">Đổi mật khẩu</h3>
            
 
@@ -11,9 +11,9 @@
 
                 <input type="password" placeholder="Xác nhận mật khẩu" class="form__input" name="xac_nhan_mk">
 
-                <div class="form__btn">
+                <div class="form__btn btnlogin">
                     <input type="hidden" name="id_nguoi_dung" value="<?= $id_nguoi_dung ?>">
-                    <input type="submit" class="btn" value="Đổi mật khẩu" name="doimk">
+                    <input type="submit" class="btn btnw" value="Đổi mật khẩu" name="doimk">
                 </div>
             </form>
             

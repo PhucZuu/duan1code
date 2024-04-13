@@ -1,7 +1,6 @@
 <section class="login-register section--lg">
-  <div class="login-register__container container grid">
-    <!-- FORM ĐĂNG KÝ -->
-    <div class="register">
+    <div class="login-register__container formlogin container box_login">
+    <div class="login bl_r">
       <h3 class="section__title">Quên mật khẩu</h3>
 
       <form action="index.php?act=quenmk" method="post" class="form grid" enctype="multipart/form-data">
@@ -11,8 +10,8 @@
         <input type="email" placeholder="Email" class="form__input" name="email">
         <span style="color:red"><?= $errEmail ?></span>
 
-        <div class="form__btn">
-          <input type="submit" class="btn" value="Gửi" name="guiemail">
+        <div class="form__btn btnlogin">
+          <input type="submit" class="btn btnw" value="Gửi" name="guiemail">
         </div>
       </form><br>
       <h2 class="thongbao">
