@@ -2331,10 +2331,9 @@ table {
 
 /* hỗ trợ */
 .hotro{
-  max-width: 1350px;
   display: flex;
   flex-wrap: wrap;
-  margin: 40px 70px;
+  justify-content: center;
 }
 .hotro article{
   width: 250px;
