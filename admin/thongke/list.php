@@ -23,9 +23,9 @@
                                 <td>'.$id_danh_muc.'</td>
                                 <td>'.$ten_danh_muc.'</td>
                                 <td>'.$so_san_pham.'</td>
-                                <td>'.$gia_thap_nhat.'</td>
-                                <td>'.$gia_cao_nhat.'</td>
-                                <td>'.$gia_trung_binh.'</td>
+                                <td>$'.$gia_thap_nhat.'</td>
+                                <td>$'.$gia_cao_nhat.'</td>
+                                <td>$'.$gia_trung_binh.'</td>
                             </tr>        
                             ';  
                             }

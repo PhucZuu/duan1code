@@ -18,7 +18,7 @@
                 $errTendm = '';
 
                 if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
-                    $ten_danh_muc = $_POST['ten_danh_muc'];
+                    $ten_danh_muc = trim($_POST['ten_danh_muc']);
 
                     $isCheck = true;
                     if(!$ten_danh_muc){
@@ -69,7 +69,7 @@
                 $errTendm = '';
                 if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                     $id_danh_muc = $_POST['id_danh_muc'];
-                    $ten_danh_muc = $_POST['ten_danh_muc'];
+                    $ten_danh_muc = trim($_POST['ten_danh_muc']);
 
                     // echo '<pre>';
                     // print_r([$id_danh_muc,$ten_danh_muc]);
@@ -104,9 +104,9 @@
                 if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
                     $check=true;
                     $id_danhmuc=$_POST['id_danhmuc'];
-                    $ten_san_pham=$_POST['ten_san_pham'];
+                    $ten_san_pham=trim($_POST['ten_san_pham']);
                     $hinh_anh=$_FILES['hinh_anh']['name'];
-                    $mo_ta=$_POST['mo_ta'];
+                    $mo_ta=trim($_POST['mo_ta']);
                     if($ten_san_pham==""){
                         $errNameProduct="Tên sản phẩm không được để trống";
                         $check=false;
@@ -159,11 +159,11 @@
                 $allowed=['jpg','jpeg','png'];
                 if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                     $check=true;
-                    $id_san_pham=$_POST['id_san_pham'];
+                    $id_san_pham=trim($_POST['id_san_pham']);
                     $id_danhmuc=$_POST['id_danhmuc'];
-                    $ten_san_pham=$_POST['ten_san_pham'];
+                    $ten_san_pham=trim($_POST['ten_san_pham']);
                     $hinh_anh=$_FILES['hinh_anh']['name'];
-                    $mo_ta=$_POST['mo_ta'];
+                    $mo_ta=trim($_POST['mo_ta']);
                     // echo "<pre>";
                     // print_r([$id_san_pham,$id_danhmuc,$ten_san_pham,$hinh_anh,$mo_ta]);
                     // die;
@@ -225,9 +225,9 @@
                     $id_sanpham=$_POST['id_sanpham'];
                     $id_kichco=$_POST['id_kichco'];
                     $id_mausac=$_POST['id_mausac'];
-                    $gia=$_POST['gia'];
-                    $so_luong=$_POST['so_luong'];
-                    $giam_gia=$_POST['giam_gia'];
+                    $gia=trim($_POST['gia']);
+                    $so_luong=trim($_POST['so_luong']);
+                    $giam_gia=trim($_POST['giam_gia']);
                     if($gia==""){
                         $errPrice="Giá sản phẩm không được để trống";
                         $check=false;
@@ -273,9 +273,9 @@
                     $id_sanpham=$_POST['id_sanpham'];
                     $id_kichco=$_POST['id_kichco'];
                     $id_mausac=$_POST['id_mausac'];
-                    $gia=$_POST['gia'];
-                    $so_luong=$_POST['so_luong'];
-                    $giam_gia=$_POST['giam_gia'];
+                    $gia=trim($_POST['gia']);
+                    $so_luong=trim($_POST['so_luong']);
+                    $giam_gia=trim($_POST['giam_gia']);
                     if($gia==""){
                         $errPrice="Giá sản phẩm không được để trống";
                         $check=false;

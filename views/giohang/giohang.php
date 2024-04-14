@@ -44,7 +44,7 @@
         
                 <td><span class="table__price">$'.$value[1].'</span></td>
         
-                <td><input type="number" min="1" step="1" value="'.$value[2].'" class="quantity"></td>
+                <td><input type="number" min="1" step="1" value="'.$value[2].'" class="quantity" readonly></td>
         
                 <td>
                   <span>

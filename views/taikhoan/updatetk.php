@@ -5,7 +5,7 @@
 
       <form action="index.php?act=edit_taikhoan" method="post" class="form grid" enctype="multipart/form-data">
           <img style="width:100px;height:100px;border-radius:50%;object-fit: cover;" src="./uploads/<?= $hinh_anh?>" alt=""><br>
-            <input type="file" class="form__input" name="hinh_anh">
+            <input type="file" class="form__input" name="hinh_anh"><span style="color:red"><?= $errImg ?></span>
 
         <input type="text" placeholder="Tên đăng nhập" class="form__input" name="ten_dang_nhap" value="<?= $ten_dang_nhap ?>">
         <span style="color:red"><?= $errTenDangNhap ?></span>

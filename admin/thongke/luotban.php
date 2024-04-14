@@ -61,7 +61,7 @@
                                 <td>'.$ten_san_pham.'</td>
                                 <td>'.$so_luong_ban.'</td>
                                 <td>'.$so_luong_con_lai.'</td>
-                                <td>'.$doanh_thu.'</td>
+                                <td>$'.$doanh_thu.'</td>
                             </tr>        
                             ';  
                             }

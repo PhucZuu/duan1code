@@ -281,12 +281,12 @@
                 //  print_r($_FILES);
                 //  die();
                 // echo "</pre>";
-                $ten_dang_nhap = $_POST["ten_dang_nhap"];
-                $email = $_POST["email"];
-                $mat_khau = $_POST["mat_khau"];
-                $ho_va_ten = $_POST["ho_va_ten"];
-                $so_dien_thoai = $_POST["so_dien_thoai"];
-                $dia_chi = $_POST["dia_chi"];
+                $ten_dang_nhap = trim($_POST["ten_dang_nhap"]);
+                $email = trim($_POST["email"]);
+                $mat_khau = trim($_POST["mat_khau"]);
+                $ho_va_ten = trim($_POST["ho_va_ten"]);
+                $so_dien_thoai = trim($_POST["so_dien_thoai"]);
+                $dia_chi = trim($_POST["dia_chi"]);
 
                 // print_r([$ten_dang_nhap,$email,$mat_khau,$ho_va_ten,$so_dien_thoai,$dia_chi]);
                 // die();
@@ -433,15 +433,17 @@
             $errEmail = "";
             $errName = "";
             $errSdt = "";
+            $errImg= "";
             $errDiaChi = "";
+            $allowed=['jpg','jpeg','png'];
             if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
                 if(isset($_POST['id_nguoi_dung'], $_POST['ten_dang_nhap'], $_POST['email'],$_POST['ho_va_ten'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
                     $id_nguoi_dung = $_POST['id_nguoi_dung'];
-                    $ten_dang_nhap = isset($_POST['ten_dang_nhap']) ? $_POST['ten_dang_nhap'] : '';
-                    $email = isset($_POST['email']) ? $_POST['email'] : '';
-                    $so_dien_thoai = isset($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : '';
-                    $ho_va_ten = isset($_POST['ho_va_ten']) ? $_POST['ho_va_ten'] : '';
-                    $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
+                    $ten_dang_nhap = isset($_POST['ten_dang_nhap']) ? trim($_POST['ten_dang_nhap']) : '';
+                    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+                    $so_dien_thoai = isset($_POST['so_dien_thoai']) ? trim($_POST['so_dien_thoai']) : '';
+                    $ho_va_ten = isset($_POST['ho_va_ten']) ? trim($_POST['ho_va_ten']) : '';
+                    $dia_chi = isset($_POST['dia_chi']) ? trim($_POST['dia_chi']) : ''; 
                     $hinh_anh = $_FILES['hinh_anh']['name'];
                     
                     $isCheck = true;
@@ -453,6 +455,13 @@
                         $isCheck = false;
                         $errEmail = 'Bạn không được để trống email';
                     } 
+                    if($hinh_anh){
+                        $img_ex=pathinfo($hinh_anh, PATHINFO_EXTENSION);
+                        if(!in_array($img_ex,$allowed)){
+                            $errImg="Không đúng định dạng ảnh";
+                            $isCheck=false;
+                        }
+                    }
                     if (!$so_dien_thoai) {
                         $isCheck = false;
                         $errSdt = 'Bạn không được để trống số điện thoại';
@@ -487,10 +496,10 @@
             case "editmk":
                 if (isset($_POST['doimk'])) {
                     // Lấy dữ liệu từ biểu mẫu
-                    $mat_khau = $_POST['mat_khau'];
-                    $mat_khau_moi = $_POST['mat_khau_moi'];
-                    $xac_nhan_mk = $_POST['xac_nhan_mk'];
-                    $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                    $mat_khau = trim($_POST['mat_khau']);
+                    $mat_khau_moi = trim($_POST['mat_khau_moi']);
+                    $xac_nhan_mk = trim($_POST['xac_nhan_mk']);
+                    $id_nguoi_dung = trim($_POST['id_nguoi_dung']);
                     
                     if (empty($mat_khau) || empty($mat_khau_moi) || empty($xac_nhan_mk)) {
                         $thongbao = "Vui lòng điền đầy đủ thông tin.";
@@ -538,7 +547,8 @@
                 break;
            
         default:
-            # code...
+            $products=loadAllProducts();
+            include_once './views/home.php';
             break;
     }
     include_once './views/footer.php';

@@ -106,7 +106,7 @@
       <div class="details__action">
       
       <form action="index.php?act=addToCart" method="post">
-        <input type="number" name="quantity" id="" class="quantity" min="1" step="1" value="1">
+        <input type="number" name="quantity" id="" class="quantity" min="1" max="10" step="1" value="1">
         <input type="hidden" name="id_sanpham" id="" class="quantity" min="1" step="1" value="'.$id_sanpham.'">
         <input type="hidden" name="id_mausac" id="" class="quantity" min="1" step="1" value="'.$get_id_color.'">
         <input type="hidden" name="id_kichco" id="" class="quantity" min="1" step="1" value="'.$get_id_size.'">
