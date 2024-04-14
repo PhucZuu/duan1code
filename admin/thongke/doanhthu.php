@@ -5,9 +5,9 @@
 
 <label for="thang">Ngày:</label>
 <select name="ngay" id="ngay">
-<option value="all">Tất cả</option>
+<option value="all" <?php echo ($ngay == 'all') ? 'selected' : ''; ?>>Tất cả</option>
     <?php
-    for ($i = 1; $i <= 31; $i++) {
+    for ($i = 1; $i <= thang2($thang,$nam); $i++) {
         $selected = ($i == $ngay) ? 'selected' : '';
         echo "<option value=\"$i\" $selected> $i</option>";
     }
