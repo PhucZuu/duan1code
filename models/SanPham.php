@@ -91,7 +91,7 @@
     }
     function loadOthers_pro($id_sanpham,$id_danhmuc){
         $sql="SELECT id_san_pham,ten_san_pham,hinh_anh,ten_danh_muc FROM sanpham JOIN danhmuc ON danhmuc.id_danh_muc=sanpham.id_danhmuc WHERE sanpham.kich_hoat=1 
-        AND id_san_pham<>$id_sanpham AND id_danhmuc=$id_danhmuc";
+        AND id_san_pham<>$id_sanpham AND id_danhmuc=$id_danhmuc LIMIT 4";
         $list=pdo_query($sql);
         return $list;
     }
