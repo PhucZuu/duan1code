@@ -148,7 +148,10 @@ echo "<li><a href='index.php?act=shop&iddm=".$onePro['id_danhmuc']."' class='bre
 
         <!-- sẢN PHẨM -->
       <?php 
+      
       $othersPro = loadOthers_pro($id_sanpham,$id_danhmuc);
+      extract($hot);
+      $hot_ids = hot();
       foreach ($othersPro as $others){
         extract($others);
         $variant_price_others = loadPriceVariantOthers($id_san_pham);
@@ -156,6 +159,14 @@ echo "<li><a href='index.php?act=shop&iddm=".$onePro['id_danhmuc']."' class='bre
         $gia = $variant_price_others['gia'];
         $giam_gia = $variant_price_others['giam_gia'];
         $linkPro = "index.php?act=details&idpro=".$id_san_pham;
+        $hott = "";
+        $check = false;
+        if (in_array($id_san_pham, $hot_ids)) {
+          $hott = "Hot";
+          $check = true;
+        }else{
+          $hott ="";
+        }
       echo '
       <div class="product__item">
       <div class="product__banner">
@@ -166,7 +177,7 @@ echo "<li><a href='index.php?act=shop&iddm=".$onePro['id_danhmuc']."' class='bre
         </a>
 
         <!-- SALE/HOT -->
-        <div class="product__badge light-pink">'.(empty($giam_gia) ? "Hot" : "-".$giam_gia."%").'</div>
+        <div class="product__badge light-pink' . ($check == true ? '' : 'light-red hidden') . '">' . ($check == true ? $hott : '') . '</div>
       </div>
 
       <div class="product_content">
@@ -176,9 +187,10 @@ echo "<li><a href='index.php?act=shop&iddm=".$onePro['id_danhmuc']."' class='bre
         </a>
         
         <div class="product__price flex">
-          <span class="new__price">$'.($giam_gia==0?$gia:($gia * ((100 - $giam_gia) / 100))).'</span>
-          <span class="old__price">' . (empty($giam_gia) ? "" :"$". $gia) . '</span>
-        </div>
+        <span class="new__price">$' . ($giam_gia == 0 ? $gia : $gia * ((100 - $giam_gia) / 100)) . '</span>
+        <span class="old__price">' . (empty($giam_gia) ? "" :"$". $gia) . '</span>
+        <span class="discount">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</span>
+    </div>
 
         <!-- THÊM VÀO GIỎ -->
         <a href="index.php?act=addToCart&idbt='.$id_bien_the.'" class="action__btn cart__btn" aria-lable="Thêm vào giỏ hàng">

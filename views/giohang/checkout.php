@@ -1,11 +1,11 @@
 <main class="main">
 <section class="breadcrumb">
     <ul class="breadcrumb__list flex container">
-    <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+    <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
     <li><span class="breadcrumb__link">></span></li>
-    <li><span class="breadcrumb__link">Shop</span></li>
+    <li><a href="index.php?act=viewCart" class="breadcrumb__link">Giỏ hàng</a></li>
     <li><span class="breadcrumb__link">></span></li>
-    <li><span class="breadcrumb__link">Checkout</span></li>
+    <li><span class="breadcrumb__link">Thanh toán</span></li>
     </ul>
 </section>
 <section class="checkout section--lg">

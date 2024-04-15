@@ -2,9 +2,9 @@
 
 <section class="breadcrumb">
   <ul class="breadcrumb__list flex container">
-    <li><a href="index.html" class="breadcrumb__link">Home</a></li>
+    <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
     <li><span class="breadcrumb__link">></span></li>
-    <li><span class="breadcrumb__link">Shop</span></li>
+    <li><a href="index.php?act=shop" class="breadcrumb__link">Shop</a></li>
     <li><span class="breadcrumb__link">></span></li>
     <li><span class="breadcrumb__link">Cart</span></li>
   </ul>
