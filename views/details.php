@@ -3,6 +3,7 @@
       <ul class="breadcrumb__list flex container">
         <?php 
         extract($onePro);
+        // print_r($onePro); die();
         // echo $id_sanpham; die();
         // kiểm tra xem người dùng có chọn vào các thuộc tính sản phẩm
         $get_id_color=null;
@@ -14,8 +15,12 @@
         ?>
         <li><a href="index.php" class="breadcrumb__link">Trang chủ</a></li>
         <li><span class="breadcrumb__link">></span></li>
-        <li><span class="breadcrumb__link"></span></li>
-        
+        <?php
+echo "<li><a href='index.php?act=shop&iddm=".$onePro['id_danhmuc']."' class='breadcrumb__link'>".$tendm."</a></li>";
+?>
+        <li><span class="breadcrumb__link">></span></li>
+        <li><span class="breadcrumb__link"><?=$ten_san_pham ?></span></li>
+
       </ul>
     </section>
     <section class="details section--lg">

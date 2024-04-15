@@ -60,7 +60,8 @@
                     $sizes=getAllSizesById($id_sanpham);
                 }
                 $onePro = loadOne_pro($id_sanpham);
-                
+                $iddm =$onePro['id_danhmuc'];
+                $tendm = load_ten_dm($iddm);
                 include_once './views/details.php';
                 view($id_sanpham);
             }else{
