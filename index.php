@@ -338,7 +338,7 @@
                 if($isCheck){
                     insert_taikhoan($ten_dang_nhap,$email,$mat_khau,$ho_va_ten,$so_dien_thoai,$dia_chi);
                     $thongbao = "Đăng ký thành công";
-                    // header('Location: index.php');
+                    header('Location: index.php?act=dangnhap');
                 }
             }
             include "views/taikhoan/dangky.php";
