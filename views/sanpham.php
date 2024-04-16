@@ -47,7 +47,7 @@
                         
                         <div class="product__price flex">
                         <span class="new__price">$' . ($giam_gia == 0 ? $gia : $gia * ((100 - $giam_gia) / 100)) . '</span>
-                        <span class="old__price">' . (empty ($giam_gia) ? "" : $gia) . '</span>
+                        <span class="old__price">$' . (empty ($giam_gia) ? "" : $gia) . '</span>
                         <span class="discount">' . (empty($giam_gia) ? '' : "-".$giam_gia."%") . '</span>
                     </div>
                     
