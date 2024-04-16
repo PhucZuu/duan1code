@@ -6,7 +6,7 @@
     <li><span class="breadcrumb__link">></span></li>
     <li><a href="index.php?act=shop" class="breadcrumb__link">Shop</a></li>
     <li><span class="breadcrumb__link">></span></li>
-    <li><span class="breadcrumb__link">Cart</span></li>
+    <li><span class="breadcrumb__link">Giỏ hàng</span></li>
   </ul>
 </section>
 
