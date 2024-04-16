@@ -20,6 +20,19 @@
                 }else{
                     $cancle='';
                 }
+                if ($ten_trang_thai == "Giao hàng thành công") {
+                    $mau = "green"; // Màu xanh lá
+                } else {
+                    $mau = "red"; // Màu đỏ
+                }
+                if ($ten_trang_thai == "Giao hàng thành công") {
+                    $trang_thai_thanh_toan = "Đã thanh toán";
+                }
+                if ($trang_thai_thanh_toan == "Đã thanh toán") {
+                    $mau2 = "green"; // Màu xanh lá
+                } else {
+                    $mau2 = "red"; // Màu đỏ
+                }
                 echo '
                     <table class="order__table mar">
                         <tr>
@@ -29,13 +42,13 @@
                         <tr>
                         <tr>
                             <td rowspan="4" class="table__rows">
-                                Người nhận hàng: '.$ho_va_ten.'<br>
-                                Số điện thoại: '.$so_dien_thoai.'<br>
-                                Địa chỉ: '.$dia_chi.'<br>
-                                Email: '.$email.'<br>
-                                Trạng thái thanh toán: '.$trang_thai_thanh_toan.'<br>
-                                Trạng thái đơn hàng: '.$ten_trang_thai.'<br>
-                                Tổng thành tiền: $'.$tong_thanh_tien.'<br>
+                                Người nhận hàng: <span style="color: #088179;">'.$ho_va_ten.'</span><br>
+                                Số điện thoại: <span style="color: #088179;">'.$so_dien_thoai.'</span><br>
+                                Địa chỉ: <span style="color: #088179;">'.$dia_chi.'</span><br>
+                                Email: <span style="color: #088179;">'.$email.'</span><br>
+                                Trạng thái thanh toán: <span style="color: '.$mau2.';">'.$trang_thai_thanh_toan.'</span><br>
+                                Trạng thái đơn hàng: <span style="color: '.$mau.';">'.$ten_trang_thai.'</span><br>
+                                Tổng thành tiền: <span style="color: #088179;">$'.$tong_thanh_tien.'</span><br>
                                 '.$cancle.'
                             </td>   
                             <th>HÌNH ẢNH</th>
