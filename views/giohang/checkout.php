@@ -74,7 +74,7 @@
         <h3 class="checkout__title payment__title">Phương thức thanh toán</h3>
         <button type="submit" class="btn btn--md mb" name="thanhtoannhanhang">Thanh toán khi nhận hàng</button>
         <button type="submit" class="btn btn--md mb" name="vnpay">Thanh toán qua VNPAY</button>
-        <button type="submit" class="btn btn--md mb" name="payUrl">Thanh toán qua MOMO</button>
+        <!-- <button type="submit" class="btn btn--md mb" name="payUrl">Thanh toán qua MOMO</button> -->
         <!-- <div class="payment__option flex">
             <input type="radio" name="payment" value="1" class="payment__input" checked>
             <label for="" class="payment__label">Thanh toán khi nhận hàng</label>
